@@ -1,0 +1,21 @@
+:root {
+	--foreground-color: blue;
+	--foreground-accent-color: blue;
+
+	--background-color: yellow;
+	--background-accent-color: blue;
+
+	--font-color: white;
+	--font-accent-color: white;
+	--font-size: 1rem;
+}
+
+h1 {
+	font-size: 50px;
+	background-color: var(--background-color);
+
+}
+
+button {
+
+}
