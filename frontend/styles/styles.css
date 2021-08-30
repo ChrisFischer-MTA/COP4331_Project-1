@@ -2,20 +2,56 @@
 	--foreground-color: blue;
 	--foreground-accent-color: blue;
 
-	--background-color: yellow;
+	--background-color: #c0c5ce;
 	--background-accent-color: blue;
+
+	--button-color: #6699cc;
+	--delete-button-color: #EC5f67;
+	--delete-button-hglt-color: #d16d92;
+	--button-hglt-color: #62b3b2;
 
 	--font-color: white;
 	--font-accent-color: white;
-	--font-size: 1rem;
+	--font-size: 2rem;
+
 }
 
-h1 {
-	font-size: 50px;
+body {
+	border: 2.5px solid black;
+	padding: 10px;
+	margin: 5px;
 	background-color: var(--background-color);
 
 }
 
-button {
+h1 {
+	font-size: var(--font-size);
 
+}
+
+button {
+	border: none;
+	text-align: center;
+	background-color: var(--button-color);
+	padding: 50px;
+	margin: 10px;
+	width: 200px;
+
+}
+
+#delete_button {
+	background-color: var(--delete-button-color);
+
+}
+
+#delete_button:hover {
+	background-color: var(--delete-button-hglt-color);
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+	transition-duration: 0.6s;
+}
+
+button:hover {
+	background-color: var(--button-hglt-color);
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+	transition-duration: 0.6s;
 }
