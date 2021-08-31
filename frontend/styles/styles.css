@@ -4,15 +4,16 @@
 :root {
 	--background-color: white;
 	--accent-color: #c0c5ce;
+	--accent-color-two: #1b2b34;
 
 	--button-color: #6699cc;
 	--delete-button-color: #EC5f67;
 	--delete-button-hglt-color: #d16d92;
 	--button-hglt-color: #62b3b2;
 
-	--font-color: white;
+	--font-color: #282c34;
 	--font-accent-color: white;
-	--font-size: 2rem;
+	--font-size: 1.2em;
 
 }
 
@@ -26,25 +27,34 @@ body {
 
 }
 
+ul {
+	list-style: none;
+	background-color: var(--accent-color-two);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 h1 {
-	font-size: var(--font-size);
+	font-size: var(10px);
+	text-align: center;
 
 }
 
 button {
-	border: none;
+	border: 2px solid var(--accent-color);
 	text-align: center;
 	background-color: var(--button-color);
-	padding: 50px;
+	padding: 5px;
 	margin: 10px;
-	width: 150px;
+	height: 10vh;
+	width: 15vw;
 	font-family: 'Inter', sans-serif;
-
+	font-size: var(--font-size);
 }
 
 #delete_button {
 	background-color: var(--delete-button-color);
-
 }
 
 #delete_button:hover {
