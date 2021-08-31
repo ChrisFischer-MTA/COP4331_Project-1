@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+  <script src="js/login.js"></script>
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -21,10 +23,41 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <div id="login-signup">
-      <button type="button">Login</button>
-      <button type="button">Signup</button>
-      <p id="login-form">login shit</p>
-      <p id="signup-form">signup shit</p>
+      <button type="button" onclick="showLoginForm()">Login</button>
+      <button type="button" onclick="showSignupForm()">Signup</button>
+      <!-- 
+        Only one of the following divs w/ IDs "login-form" and "signup-form"
+        is displayed at a time. "login-form" is the default one to display.
+      -->
+      <div id="login-form">
+        <form>
+          <fieldset>
+            <label for="login-username">Username:</label><br>
+            <input type="text" id="login-username" name="login-username"><br>
+
+            <label for="login-password">Password:</label><br>
+            <input type="text" id="login-password" name="login-password"><br>
+
+            <input id="try-login" type="submit" value="Login">
+          </fieldset>
+        </form>
+      </div>
+      <div id="signup-form" style="display: none;">
+        <form>
+          <fieldset>
+            <label for="signup-username">Username:</label><br>
+            <input type="text" id="signup-username" name="signup-username"><br>
+
+            <label for="signup-password">Password:</label><br>
+            <input type="text" id="signup-password" name="signup-password"><br>
+
+            <label for="signup-confirm-password">Confirm Password:</label><br>
+            <input type="text" id="signup-confirm-password" name="signup-confirm-password"><br>
+
+            <input id="try-signup" type="submit" value="Signup">
+          </fieldset>
+        </form>
+      </div>
     </div>
   </body>
 </html>
