@@ -8,13 +8,6 @@ function showSignupForm() {
   document.getElementById("signup-section").style.display = "block"
 }
 
-function handleFormSubmit(event) {
-  console.log("Handing form submission")
-  const data = new FormData(event.target);
-  const formJson = Object.fromEntries(data.entries());
-  console.log(JSON.stringify(formJson));
-}
-
 function validateLoginCredentials(creds) {
   return creds.username != "" && creds.password != "";
 }
