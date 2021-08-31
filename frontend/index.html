@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <script src="js/login.js"></script>
-
+  <!--FIX: Maybe there's a better way to do init stuff-->
+  <script defer src="js/login.js"></script>
+      <script type="text/javascript">
+        console.log("reloaded page");
+      </script>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,53 +14,39 @@
     <header>
       <h1>A Contact Manager</h1> 
     </header>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
     <div id="login-signup">
       <button type="button" onclick="showLoginForm()">Login</button>
       <button type="button" onclick="showSignupForm()">Signup</button>
       <!-- 
         Only one of the following divs w/ IDs "login-form" and "signup-form"
         is displayed at a time. "login-form" is the default one to display.
+        https://codepen.io/jlengstorf/embed/rNMpJNy?default-tab=result&theme-id=light
       -->
-      <div id="login-form">
-        <form>
-          <fieldset>
-            <label for="login-username">Username:</label><br>
-            <input type="text" id="login-username" name="login-username"><br>
+      <section id="login-section">
+        <form id="login-form">
+          <label for="login-username">Username:</label><br>
+          <input type="text" id="login-username" name="username"><br>
 
-            <label for="login-password">Password:</label><br>
-            <input type="password" id="login-password" name="login-password"><br>
+          <label for="login-password">Password:</label><br>
+          <input type="password" id="login-password" name="password"><br>
 
-            <input id="try-login" type="submit" value="Login">
-          </fieldset>
+          <button type="button" onclick="tryLogin()">Login</button>
         </form>
-      </div>
-      <div id="signup-form" style="display: none;">
-        <form>
-          <fieldset>
-            <label for="signup-username">Username:</label><br>
-            <input type="text" id="signup-username" name="signup-username"><br>
+      </section>
+      <section id="signup-section" style="display: none;">
+        <form id="signup-form">
+          <label for="signup-username">Username:</label><br>
+          <input type="text" id="signup-username" name="username"><br>
 
-            <label for="signup-password">Password:</label><br>
-            <input type="password" id="signup-password" name="signup-password"><br>
+          <label for="signup-password">Password:</label><br>
+          <input type="password" id="signup-password" name="password"><br>
 
-            <label for="signup-confirm-password">Confirm Password:</label><br>
-            <input type="password" id="signup-confirm-password" name="signup-confirm-password"><br>
+          <label for="signup-confirm-password">Confirm Password:</label><br>
+          <input type="password" id="signup-confirm-password" name="confirmedPassword"><br>
 
-            <input id="try-signup" type="submit" value="Signup">
-          </fieldset>
+          <button type="button" onclick="trySignup()">Signup</button>
         </form>
-      </div>
+      </section>
     </div>
   </body>
 </html>
