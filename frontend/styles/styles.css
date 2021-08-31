@@ -17,13 +17,16 @@
                                                                                           
 }                                                                                         
                                                                                           
-body {                                                                                    
+#login-signup { 
     border: 2.5px solid var(--accent-color);                                              
     padding: 10px;                                                                        
     margin: 5px;                                                                          
     background-color: var(--background-color);                                            
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.34),0 17px 50px 0 rgba(0,0,0,0.29);            
     font-family: 'Montserrat', sans-serif;                                                
+	display: flex;
+	align-items: center;
+	justify-content: center; 
                                                                                           
 }                                                                                         
                                                                                           
@@ -38,7 +41,6 @@ ul {
 h1 {                                                                                      
     font-size: var(10px);                                                                 
     text-align: center;                                                                   
-                                                                                          
 }                                                                                         
                                                                                           
 button {                                                                                  
@@ -56,3 +58,17 @@ button {
 #delete_button {                                                                          
     background-color: var(--delete-button-color);                                         
 }   
+
+#delete_button:hover {                                                                          
+    background-color: var(--delete-button-hglt-color);                                         
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.09);
+	transition-duration: 0.6s;
+	color: white;                                                                             
+}
+
+button:hover {                                                                               
+	background-color: var(--button-hglt-color);
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.09);                  
+	transition-duration: 0.6s;                                        
+    color: white;                                                          
+}  
