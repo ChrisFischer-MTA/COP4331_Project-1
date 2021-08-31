@@ -42,3 +42,9 @@ function trySignup() {
     console.log("Failed to signup!");
 }
 
+function tryGetPasswordHint() {
+  const form = new FormData(document.getElementById("login-form"));
+  const formJson = Object.fromEntries(form.entries());
+  console.log("Attempting to get password hint for username: " + formJson.username);
+  // TODO: Get password hint
+}
