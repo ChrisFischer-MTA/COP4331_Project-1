@@ -35,7 +35,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center; 
-	height: 50vh;
+	height: 70vh;
 	width: 90vw;
                                                                                           
 }                                                                                         
@@ -70,11 +70,11 @@ h1 {
 
 .forgot{
 	color: var(--delete-button-hglt-color);
-	text-align: left;
+	text-align: right;
 }
 
 label {
-	font-size: 1.25rem;
+	font-size: 1.35rem;
 	text-align: left;
 	margin-bottom: 0;
 	padding-bottom: 0;
