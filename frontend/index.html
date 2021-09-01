@@ -15,9 +15,11 @@
     <header>
       <h1>A Contact Manager</h1> 
     </header>
+	  <div id="option-buttons">
+		  <button id="option-button" type="button" onclick="showLoginForm()">Login</button>
+		  <button id="option-button" type="button" onclick="showSignupForm()">Signup</button>
+	  </div>
     <div id="login-signup">
-      <button type="button" onclick="showLoginForm()">Login</button>
-      <button type="button" onclick="showSignupForm()">Signup</button>
       <!-- 
         Only one of the following divs w/ IDs "login-form" and "signup-form"
         is displayed at a time. "login-form" is the default one to display.
@@ -25,12 +27,17 @@
       -->
       <section id="login-section">
         <form id="login-form">
-          <label for="login-username">Username:</label><br>
-          <input type="text" id="login-username" name="username"><br>
+		  <div class="button-bundle">
+			  <label for="login-username">Username:</label>
+			  <input type="text" id="login-username" name="username">
+			  <a class="forgot" id="passwordHint">Forgot Username</a>
+		  </div>
 
-          <a id="passwordHint" onclick="tryGetPasswordHint()">Forgot password</a><br>
-          <label for="login-password">Password:</label><br>
-          <input type="password" id="login-password" name="password"><br>
+		  <div class="button-bundle">
+			  <label for="login-password">Password:</label>
+			  <input type="password" id="login-password" name="password">
+			  <a class="forgot" id="passwordHint" onclick="tryGetPasswordHint()">Forgot password</a>
+		  </div>
 
           <button type="button" onclick="tryLogin()">Login</button>
         </form>
@@ -38,14 +45,20 @@
 
       <section id="signup-section" style="display: none;">
         <form id="signup-form">
-          <label for="signup-username">Username:</label><br>
-          <input type="text" id="signup-username" name="username"><br>
+		  <div class="button-bundle">
+			  <label for="signup-username">Username:</label>
+			  <input type="text" id="signup-username" name="username">
+		  </div>
 
-          <label for="signup-password">Password:</label><br>
-          <input type="password" id="signup-password" name="password"><br>
+		  <div class="button-bundle">
+			  <label for="signup-password">Password:</label>
+			  <input type="password" id="signup-password" name="password">
+		  </div>
 
-          <label for="signup-confirm-password">Confirm Password:</label><br>
-          <input type="password" id="signup-confirm-password" name="confirmedPassword"><br>
+		  <div class="button-bundle">
+			  <label for="signup-confirm-password">Confirm Password:</label>
+			  <input type="password" id="signup-confirm-password" name="confirmedPassword">
+		  </div>
 
           <button type="button" onclick="trySignup()">Signup</button>
         </form>
