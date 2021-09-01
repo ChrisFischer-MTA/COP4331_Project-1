@@ -62,7 +62,7 @@ h1 {
 
 }
 
-#option-button {
+#option-button-login, #option-button-signup {
 	margin: 0;
 	padding: 0;
 	width: 50%;
