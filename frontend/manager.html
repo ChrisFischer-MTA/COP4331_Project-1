@@ -20,84 +20,51 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Contact Manager</a>
-    <!-- TODO: Fill in user's name -->
-    <div class="nav-text">
-      <span>Hello, User Name</span>
-      <i class="bi bi-journal-text" href=""></i>
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Contact Manager</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="#">Sign out</a>
     </div>
   </div>
-</nav>
+</header>
 
-<!-- https://stackoverflow.com/questions/19595719/html5-main-element-versus-aria-landmark-role-main -->
-<main>
-  <div class="container-xl ">
-    <div class="row mt-4 justify-content-between">
-      <div class="col-5 p-0">
-        <input type="text" class="form-control" placeholder="Search">
+<main class="container-fluid d-flex flex-column">
+  <div class="row">
+    <div class="btn-toolbar justify-content-between" role="toolbar">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-outline-secondary">1</button>
+        <button type="button" class="btn btn-outline-secondary">2</button>
+        <button type="button" class="btn btn-outline-secondary">3</button>
+        <button type="button" class="btn btn-outline-secondary">4</button>
       </div>
-      <div class="col-2 text-right p-0">
-        <button type="button text-right" class="btn btn-primary">Create Contact</button>
+      <div class="input-group">
+        <div class="input-group-text" id="btnGroupAddon2">@</div>
+        <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
       </div>
     </div>
   </div>
-
-  <div class="container-xl bg-dark">
-    <div class="row mt-4 ">
-      <div class="col ">col</div>
-    </div>
-    <div class="row flex-fill">
-        <div class="col-4 list-group list-group-flush border-bottom scrollarea">
-          <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight">
-            <div class="d-flex w-100 align-items-center justify-content-between">
-              <strong class="mb-1">List group item heading</strong>
-              <small>Wed</small>
-            </div>
-            <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action  py-3 lh-tight">
-            <div class="d-flex w-100 align-items-center justify-content-between">
-              <strong class="mb-1">List group item heading</strong>
-              <small>Wed</small>
-            </div>
-            <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-            <div class="d-flex w-100 align-items-center justify-content-between">
-              <strong class="mb-1">List group item heading</strong>
-              <small>Wed</small>
-            </div>
-            <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-          </a>
-        </div>
-      <div class="col bg-purple">
-        col
+  <div class="row flex-fill">
+    <div id="contactsList" class="col-3 d-flex flex-column p-0 bg-list items-list">
+      <div class="position-sticky">
+        <ul class="flex-column list-group bg-dark">
+          <li class="list-group-item"> Item 1</li>
+          <li class="list-group-item"> Item 2</li>
+          <li class="list-group-item"> Item 3</li>
+          <li class="list-group-item"> Item 4</li>
+          <li class="list-group-item"> Item 5</li>
+        </ul>
       </div>
     </div>
-
-    <!--
-    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;">
-      <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-        <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
-        <span class="fs-5 fw-semibold">List group</span>
-      </a>
-      <div class="list-group list-group-flush border-bottom scrollarea">
-        <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
-          <div class="d-flex w-100 align-items-center justify-content-between">
-            <strong class="mb-1">List group item heading</strong>
-            <small>Wed</small>
-          </div>
-          <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-        </a>
-      </div>
+    <div id="contactInfo" class="col d-flex flex-column p-0 bg-purple">
+      Contact Info
     </div>
-    <div class="b-example-divider"></div>
-    -->
   </div>
 </main>
-
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
