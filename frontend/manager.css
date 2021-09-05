@@ -1,0 +1,37 @@
+.bg-purple { background-color: #6f42c1; }
+.bg-blue { background-color: #0000FF; }
+
+
+.scrollarea {
+  overflow-y: auto;
+}
+
+.contacts-divider {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+ html, body, .container-fluid {
+  height: 100%;
+  background: lightyellow;
+}
+
+.col {
+  border: solid 1px #6c757d;
+}
+
+.content-1 {
+  background-color: lightcoral;
+}
+
+.content-2 {
+    background-color: lightgreen;
+}
+
+.content-3 {
+  background-color: lightblue;
+}
