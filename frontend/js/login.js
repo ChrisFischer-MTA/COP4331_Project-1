@@ -1,6 +1,8 @@
 const login = document.getElementById("option-button-login");
 const signup = document.getElementById("option-button-signup");
 
+showLoginForm();
+
 function showLoginForm() {
   login.classList.remove('disabled');
   login.className += " active";
