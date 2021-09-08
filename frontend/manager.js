@@ -66,9 +66,19 @@ function removeContactListItem(contact) {
   contactsList.removeChild(li);
 }
 
-const paul = new Contact('Paul', 'Wood');
-const aaron = new Contact('Aaron', 'Wood');
-addContactListItem(paul);
-addContactListItem(aaron);
+function createContact() {
+  console.log('Creating contact');
+  const paul = new Contact('Paul', 'Wood');
+  const aaron = new Contact('Aaron', 'Wood');
+  addContactListItem(paul);
+  addContactListItem(aaron);
+}
 
-removeContactListItem(paul);
+function saveContact() {
+  // const form = document.getElementById('contactInfoForm');
+  // form.innerHTML = 'Saved';
+  $("#contactInfoForm").load("testForm.html #testForm");
+}
+
+// 
+// removeContactListItem(paul);
