@@ -77,8 +77,24 @@ function createContact() {
 function saveContact() {
   // const form = document.getElementById('contactInfoForm');
   // form.innerHTML = 'Saved';
-  $("#contactInfoForm").load("testForm.html #testForm");
+  // $("#contactInfoForm").load("testForm.html #testForm");
+  const form = document.getElementById('contactInfoForm'); 
+  // let elements = form.elements;
+
+  // console.log(form);
+  // console.log(form.children);
+  // console.log(form.elements);
+  // console.log(new FormData(form).entries());
+  // console.log($(form).serializeArray());
+  // for (let i = 0; i < elements.length; i++) {
+  //   console.log(elements[i]);
+  //   elements[i].readOnly = true;
+  // }
+  for (let e in (new FormData(form)).entries()) {
+    console.log(e);
+  }
 }
+
 
 // 
 // removeContactListItem(paul);
