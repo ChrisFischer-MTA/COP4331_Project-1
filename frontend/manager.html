@@ -55,11 +55,9 @@
   <!-- Contacts -->
   <div class="row flex-fill">
     <!-- Contacts List -->
-    <div class="col-3 d-flex flex-column p-0 bg-list items-list">
-      <div class="position-sticky">
-        <ul id="contactsList" class="flex-column list-group bg-dark">
-        </ul>
-      </div>
+    <div class="col-3 d-flex flex-column p-0 bg-list">
+      <ul id="contactsList" class="list-group list-group-flush border-bottom scrollarea">
+      </ul>
     </div>
 
     <!-- Contact Info/Editor -->
@@ -88,7 +86,6 @@
         <div class="col-md-2">
           <label for="inputZip" class="form-label">Zip</label>
           <input type="text" class="form-control" id="inputZip" name="zip">
-        </div>
         </div>
         <div class="col-12 d-flex justify-content-center py-5">
           <button id="saveContactBtn" type="button" 

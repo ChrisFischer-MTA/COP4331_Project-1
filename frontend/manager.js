@@ -39,7 +39,7 @@ class Contact {
   }
 }
 
-const listItemClass = 'list-group-item';
+const listItemClass = 'list-group-item list-group-item-action';
 const contactsList = document.getElementById('contactsList');
 console.log(contactsList);
 
@@ -50,7 +50,7 @@ console.log(contactsList);
 
 function contactListItemId(contact) {
   // TODO: need to use some sort of unique ID
-  return `contact-li-${contact.firstName}-${contact.lastName}`;
+  return `contact-li-${contact.firstName}${contact.lastName}`;
 }
 
 function addContactListItem(contact) {
@@ -90,9 +90,10 @@ function saveContact() {
   //   console.log(elements[i]);
   //   elements[i].readOnly = true;
   // }
-  for (let e in (new FormData(form)).entries()) {
-    console.log(e);
-  }
+  // for (let e of (new FormData(form)).entries()) {
+  //   console.log(e);
+  // }
+  console.log(Object.fromEntries(new FormData(form)));
 }
 
 

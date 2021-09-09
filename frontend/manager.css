@@ -11,7 +11,18 @@
 body, html, main {
   height: 100vh;
   overflow: hidden;
+  /* display: flex; */
 }
+
+/* main { */
+/*   display: flex; */
+/*   flex-wrap: nowrap; */
+/*   height: 100vh; */
+/*   height: -webkit-fill-available; */
+/*   max-height: 100vh; */
+/*   overflow-x: auto; */
+/*   overflow-y: hidden; */
+/* } */
 
 /* https://stackoverflow.com/questions/29038596/bootstrap-fixed-header-and-footer-with-scrolling-body-content-area-in-fluid-cont */
 /* html body { */
@@ -36,6 +47,9 @@ header {
 
 .scrollarea {
   overflow-y: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  max-height: 100vh;
 }
 
 .items-list {
