@@ -44,7 +44,7 @@
         </button>
       </div>
 
-      <button type="button" class="btn btn-primary" onclick="createContact()"> Create Contact</button>
+      <button id="create-contact-btn" type="button" class="btn btn-primary"> Create Contact</button>
       <!-- <div class="input-group"> -->
       <!--   <div class="input-group-text" id="btnGroupAddon2">@</div> -->
       <!--   <input type="text" class="form-control" placeholder="Test"> -->
@@ -56,42 +56,12 @@
   <div class="row flex-fill">
     <!-- Contacts List -->
     <div class="col-3 d-flex flex-column p-0 bg-list">
-      <ul id="contactsList" class="list-group list-group-flush border-bottom scrollarea">
-      </ul>
+      <div id="contacts-list"></div>
     </div>
 
     <!-- Contact Info/Editor -->
     <div class="col d-flex flex-column p-0">
-      <form id="contactInfoForm" class="row g-3 px-5 py-4">
-        <div class="col-md-6">
-          <label for="inputEmail4" class="form-label">Email</label>
-          <input type="email" class="form-control" id="inputEmail4" name="email">
-        </div>
-        <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Password</label>
-          <input type="password" class="form-control" id="inputPassword4" name="password">
-        </div>
-        <div class="col-12">
-          <label for="inputAddress" class="form-label">Address</label>
-          <input type="text" class="form-control" id="inputAddress" name="address1">
-        </div>
-        <div class="col-12">
-          <label for="inputAddress2" class="form-label">Address 2</label>
-          <input type="text" class="form-control" id="inputAddress2" name="address2">
-        </div>
-        <div class="col-md-6">
-          <label for="inputCity" class="form-label">City</label>
-          <input type="text" class="form-control" id="inputCity" name="city">
-        </div>
-        <div class="col-md-2">
-          <label for="inputZip" class="form-label">Zip</label>
-          <input type="text" class="form-control" id="inputZip" name="zip">
-        </div>
-        <div class="col-12 d-flex justify-content-center py-5">
-          <button id="saveContactBtn" type="button" 
-            class="btn btn-primary col-6" onclick="saveContact()">Save</button>
-        </div>
-      </form>
+      <div id="contacts-form"></div>
     </div>
   </div>
 </main>
@@ -105,6 +75,6 @@
   crossorigin="anonymous">
 </script>
 
-<script src="manager.js"></script>
+<script type="module" src="js/manager.js"></script>
 </body>
 </html>
