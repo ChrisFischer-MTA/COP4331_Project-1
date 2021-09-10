@@ -70,7 +70,7 @@ class ContactList extends Component {
     this.element.innerHTML = `
       <ul id="contactsList" class="list-group list-group-flush border-bottom scrollarea">
         ${contacts.map(contact => {
-          let liClass = 'list-group-item';
+          let liClass = 'list-group-item list-group-item-action';
 
           if (selection != null && selection.id == contact.id) {
             liClass += ' active';
@@ -81,7 +81,14 @@ class ContactList extends Component {
         }).join('')}
       </ul>
     `;
+
+    this.element.querySelectorAll('li').forEach((li, index) => {
+      li.addEventListener('click', () => {
+        store.dispatch('selectContact', store.state.manager.contacts[index]);
+      });
+    }); 
   }
+
 }
 
 
@@ -91,6 +98,7 @@ class ContactForm extends Component {
     super({store, element});
   }
 
+  // TODO: this is horrible
   static canViewOther() {
     let formStatus = store.state.form.status;
     return formStatus != FORM_STATUS.edit_changes;
@@ -105,35 +113,37 @@ class ContactForm extends Component {
     let readOnly = (ContactForm.isEditable()) ? '' : 'readonly';
     console.log(readOnly);
     let otherAttr = `${readOnly}`;
+    let c = store.state.form.selection;
+
     this.element.innerHTML = `
       <form class="row g-3 px-5 py-4">
         <div class="col-md-6">
-          <label for="inputEmail4" class="form-label">Email</label>
-          <input type="email" class="form-control" id="inputEmail4" name="email" ${otherAttr}>
+          <label for="contact-first-name" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="contact-first-name" value="${c.firstName}" name="firstName" ${otherAttr}>
         </div>
         <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Password</label>
-          <input type="password" class="form-control" id="inputPassword4" name="password" ${otherAttr}>
+          <label for="contact-last-name" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="contact-last-name" value="${c.lastName}" name="lastName" ${otherAttr}>
         </div>
         <div class="col-12">
           <label for="inputAddress" class="form-label">Address</label>
-          <input type="text" class="form-control" id="inputAddress" name="address1" ${otherAttr}>
+          <input type="text" class="form-control" id="inputAddress" name="address1" value="${c.addr1}" ${otherAttr}>
         </div>
         <div class="col-12">
           <label for="inputAddress2" class="form-label">Address 2</label>
-          <input type="text" class="form-control" id="inputAddress2" name="address2" ${otherAttr}>
+          <input type="text" class="form-control" id="inputAddress2" name="address2" value="${c.addr2}" ${otherAttr}>
         </div>
         <div class="col-md-6">
           <label for="inputCity" class="form-label">City</label>
-          <input type="text" class="form-control" id="inputCity" name="city" ${otherAttr}>
+          <input type="text" class="form-control" id="inputCity" name="city" value="${c.city}" ${otherAttr}>
         </div>
         <div class="col-md-2">
           <label for="inputZip" class="form-label">Zip</label>
-          <input type="text" class="form-control" id="inputZip" name="zip" ${otherAttr}>
+          <input type="text" class="form-control" id="inputZip" name="zip" value="${c.zip}" ${otherAttr}>
         </div>
         <div class="col-12 d-flex justify-content-center py-5">
           <button id="saveContactBtn" type="button" 
-            class="btn btn-primary col-6" onclick="saveContact()">Save</button>
+            class="btn btn-primary col-6">Edit</button>
         </div>
       </form>
     `;
@@ -148,6 +158,10 @@ const actions = {
     context.commit('updateContactForm', {
       editable: true,
     });
+  },
+
+  selectContact(context, contact) {
+    context.commit('makeSelection', contact);
   }
 };
 
