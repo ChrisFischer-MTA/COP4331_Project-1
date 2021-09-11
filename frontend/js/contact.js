@@ -39,8 +39,16 @@ export default class Contact {
     );
   }
 
-  static fromForm(id) {
-    // TODO
+  // Assumption: form entry name attributes match contact properties
+  updateFromEntries(formEntries) {
+    for (let el of formEntries) {
+      let key = el.name;
+      console.log(`attempting to update ${key}=${el.value}`);
+      if (this[key] != null) {
+        console.log('   updating');
+        this[key] = el.value;
+      }
+    }
   }
 }
 
