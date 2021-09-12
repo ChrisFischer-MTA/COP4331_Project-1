@@ -6,8 +6,6 @@ const listElement = document.getElementById('contacts-list');
 const formElement = document.getElementById('contacts-form');
 const createContactBtnElement = document.getElementById('create-contact-btn');
 
-console.log(listElement);
-
 const FORM_STATUS = {
   nosel: 'nosel',
   view: 'view',
@@ -42,15 +40,25 @@ class ContactList extends Component {
         new Contact('Paul', 'Aye'),
         new Contact('Ligma', 'Balls'),
       ],
+      deleteNewestContact: false,
+      // NOTE: maybe remove these
+      prepend: (c) => this.prepend(c),
+      append: (c) => this.append(c),
     };
 
     store.state[name] = this.state;
   }
 
+  prepend(contact) {
+    this.state.elements.unshift(contact);
+  }
+
+  append(contact) {
+    this.state.elements.push(contact);
+  }
+
   render() {
     let contacts = store.state.manager.elements;
-    console.log('hi');
-    console.log(contacts);
 
     if (contacts.length === 0) {
       this.element.innerHTML = `
@@ -59,7 +67,6 @@ class ContactList extends Component {
       return;
     }
 
-    console.log('rendering list...');
     store.state.toolbar.sortFunc(contacts);
     let selection = store.state.form.selection;
 
@@ -84,6 +91,9 @@ class ContactList extends Component {
           // TODO: show an alert 
         }
         else {
+          if (this.state.deleteNewestContact) {
+            store.dispatch('deleteContact', {});
+          }
           store.dispatch('selectContact', store.state.manager.elements[index]);
         }
       });
@@ -126,9 +136,6 @@ class ContactForm extends Component {
 
   // Only locally
   saveContact() {
-    // console.log(this.element);
-    console.log(this.element.querySelector('form'));
-    console.log(this.element.querySelector('form').elements);
     this.state.selection.updateFromEntries(this.element.querySelector('form').elements);
   }
 
@@ -136,7 +143,6 @@ class ContactForm extends Component {
     let readOnly = (this.isEditable()) ? '' : 'readonly';
     let renderedButtons;
     let doPostRender = [];
-    console.log(readOnly);
     let otherAttr = `${readOnly}`;
     let c = store.state.form.selection;
 
@@ -228,7 +234,6 @@ class ContactForm extends Component {
     `;
 
     for (let el of this.element.querySelectorAll('input')) {
-      console.log(el);
       el.addEventListener('input', () => {
         this.state.status = FORM_STATUS.edit_changes;
       });
@@ -264,6 +269,8 @@ const actions = {
     });
   },
 
+  // The following have no other parameters because they use the selected contact (form.selection),
+  // or don't need to actually have control over the contact object.
   editContact(context, _) {
     context.commit('updateContactForm', {
       editable: true,
@@ -274,6 +281,12 @@ const actions = {
     context.commit('updateContactForm', {
       editable: false,
     });
+
+    if (context.state.manager.deleteNewestContact) {
+      context.commit('updateContactList', {
+        deleteSelection: true,
+      })
+    }
   },
 
   saveContact(context, _) {
@@ -285,19 +298,40 @@ const actions = {
 
   },
 
-  deleteContact(context) {
-
+  deleteContact(context, _) {
+    context.commit('updateContactList', {
+      deleteSelection: true,
+    });
+    context.commit('updateContactForm', {
+        deleteContact: true, 
+    });
   }
 };
 
+// TODO: fix mutations functions - I hate how it's organized
 const mutations = {
   updateContactList(state, params) {
     if (params.create) {
-      state.manager.elements.unshift(params.contact);
+      state.manager.prepend(params.contact);
     }
 
     if (params.select) {
       state.form.selection = params.contact;
+    }
+
+    if (params.deleteSelection) {
+      state.manager.deleteNewestContact = false;
+
+      let contacts = state.manager.elements;
+      let toDeleteId = state.form.selection.id;
+      for (let i = 0; i < contacts.length; i++) {
+        if (contacts[i].id === toDeleteId) {
+          // TODO: API endpoint
+          let deletedContact = contacts.splice(i, 1);
+          console.log(`deleted: ${deletedContact}`);
+          break;
+        }
+      }
     }
 
     return state;
@@ -313,13 +347,16 @@ const mutations = {
     }
 
     if (params.saveContact) {
-      console.log('Saving contact...');
       state.form.saveContact();
+      state.manager.deleteNewestContact = false;
     }
 
     if (params.deleteContact) {
-
+      // state.manager.delete(state.form.selection);
+      state.form.selection = null;
+      state.form.status = FORM_STATUS.nosel;
     }
+
     return state;
   },
 
@@ -333,12 +370,14 @@ let store = new Store({
 
 createContactBtnElement.addEventListener('click', (event) => {
   event.preventDefault();
-  console.log('Create contact button was pressed');
 
+  let list = store.state.manager;
+  let form = store.state.form;
   // Only allow creation of a contact if a contact isn't being edited with changes
-  if (store.state.form.canViewOther()) {
+  if (!list.deleteNewestContact && form.canViewOther()) {
     console.log('Creating blank contact...');
     store.dispatch('createContact', new Contact('First', 'Last'));
+    list.deleteNewestContact = true; 
   }
   else {
     console.log('Cannot view other contact with pending changes!');
@@ -351,5 +390,3 @@ const contactForm = new ContactForm(store, formElement, 'form');
 
 contactList.render();
 contactForm.render();
-
-console.log(store);
