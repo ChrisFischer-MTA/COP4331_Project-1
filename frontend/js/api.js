@@ -28,11 +28,12 @@ export default class API {
     
   static async tryNewContact(contact) {
     let request = {
-      Fname: contact.firstName,
-      Lname: contact.lastName,
-      Address: contact.addr1,
-      Zip: contact.zip,
-      Number: contact.number,
+      FirstName: contact.firstName,
+      LastName: contact.lastName,
+      Street1: contact.addr1,
+      Street2: contact.addr1,
+      ZipCode: contact.zip,
+      PhoneNumber: contact.number,
     };
 
     return API.jsonPost('newContact.php', request);
