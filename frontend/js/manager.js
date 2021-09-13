@@ -1,6 +1,7 @@
 import Store from './beedle.js';
 import Component from './component.js';
 import Contact from './contact.js';
+import API from './api.js';
 
 const listElement = document.getElementById('contacts-list');
 const formElement = document.getElementById('contacts-form');
@@ -40,7 +41,7 @@ class ContactList extends Component {
         new Contact('Paul', 'Aye'),
         new Contact('Ligma', 'Balls'),
       ],
-      deleteNewestContact: false,
+      topIsNewContact: false,
       // NOTE: maybe remove these
       prepend: (c) => this.prepend(c),
       append: (c) => this.append(c),
@@ -91,7 +92,7 @@ class ContactList extends Component {
           // TODO: show an alert 
         }
         else {
-          if (this.state.deleteNewestContact) {
+          if (this.state.topIsNewContact) {
             store.dispatch('deleteContact', {});
           }
           store.dispatch('selectContact', store.state.manager.elements[index]);
@@ -282,7 +283,7 @@ const actions = {
       editable: false,
     });
 
-    if (context.state.manager.deleteNewestContact) {
+    if (context.state.manager.topIsNewContact) {
       context.commit('updateContactList', {
         deleteSelection: true,
       })
@@ -290,7 +291,9 @@ const actions = {
   },
 
   saveContact(context, _) {
-    // TODO: send to server and show success or error alert
+    const response = API.tryNewContact(context.state.form.selection);
+    console.log(response);
+
     context.commit('updateContactForm', {
       editable: false,
       saveContact: true,
@@ -320,7 +323,7 @@ const mutations = {
     }
 
     if (params.deleteSelection) {
-      state.manager.deleteNewestContact = false;
+      state.manager.topIsNewContact = false;
 
       let contacts = state.manager.elements;
       let toDeleteId = state.form.selection.id;
@@ -348,7 +351,7 @@ const mutations = {
 
     if (params.saveContact) {
       state.form.saveContact();
-      state.manager.deleteNewestContact = false;
+      state.manager.topIsNewContact = false;
     }
 
     if (params.deleteContact) {
@@ -374,10 +377,10 @@ createContactBtnElement.addEventListener('click', (event) => {
   let list = store.state.manager;
   let form = store.state.form;
   // Only allow creation of a contact if a contact isn't being edited with changes
-  if (!list.deleteNewestContact && form.canViewOther()) {
+  if (!list.topIsNewContact && form.canViewOther()) {
     console.log('Creating blank contact...');
     store.dispatch('createContact', new Contact('First', 'Last'));
-    list.deleteNewestContact = true; 
+    list.topIsNewContact = true; 
   }
   else {
     console.log('Cannot view other contact with pending changes!');
@@ -390,3 +393,5 @@ const contactForm = new ContactForm(store, formElement, 'form');
 
 contactList.render();
 contactForm.render();
+
+console.log(API.tryLogin('SamH', 'Test'));
