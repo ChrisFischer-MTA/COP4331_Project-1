@@ -34,6 +34,7 @@ export default class API {
       Street2: contact.addr1,
       ZipCode: contact.zip,
       PhoneNumber: contact.number,
+      UserID: 2, 
     };
 
     return API.jsonPost('newContact.php', request);
