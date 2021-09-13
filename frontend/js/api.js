@@ -34,6 +34,9 @@ export default class API {
       Street2: contact.addr1,
       ZipCode: contact.zip,
       PhoneNumber: contact.number,
+      DOB: contact.dob,
+      Relationship: contact.relation,
+      Notes: contact.notes,
       UserID: 2, 
     };
 
