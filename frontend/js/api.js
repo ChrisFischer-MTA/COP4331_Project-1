@@ -5,7 +5,7 @@ export default class API {
     this.userId = userId;
   }
 
-  static jsonPost(endpoint, req) {
+  static async jsonPost(endpoint, req) {
     const url = 'webapp.thegentlemengaming.com/LAMPAPI';
     const reqUrl = `https://${url}/${endpoint}`;
     const reqJson = JSON.stringify(req);
@@ -49,7 +49,7 @@ export default class API {
     }
   }
 
-  static login(username, password) {
+  static async login(username, password) {
     let request = {
       login: username,
       password: password,
