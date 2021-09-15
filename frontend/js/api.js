@@ -3,6 +3,8 @@
 export default class API {
   constructor(userId) {
     this.userId = userId;
+    // Last reponse promise
+    this.context = null;
   }
 
   static async jsonPost(endpoint, req) {
@@ -26,7 +28,17 @@ export default class API {
     return response.json();
   }
     
-  newContact(contact) {
+  static login(username, password) {
+    let request = {
+      login: username,
+      password: password,
+    };
+
+    let response = API.jsonPost('login.php', request);
+    return new API(response.then((loginData) => loginData.id));
+  }
+
+  async newContact(contact) {
     let request = {
       FirstName: contact.firstName,
       LastName: contact.lastName,
@@ -39,60 +51,48 @@ export default class API {
       DOB: contact.dob,
       Relationship: contact.relation,
       Notes: contact.notes,
-      UserID: this.userId, 
+      UserID: await this.userId, 
     };
 
     let r = API.jsonPost('newContact.php', request);
-    return {
-      error: r.error,
-      contactId: r.contactId,
-    }
+    return r.then((data) => {
+      return {
+        error: data.error,
+        contactId: data.contactId,
+      };
+    });
   }
 
-  static login(username, password) {
-    let request = {
-      login: username,
-      password: password,
-    };
-
-    let response = API.jsonPost('login.php', request);
-    return new API(response.id);
-    // if (this.responseHasError(response)) {
-    //   return null;
-    // }
-    // else {
-    //   return new API(reponse.id);
-    // }
-
-  }
-
-  static responseHasError(response) {
-    return response.error != '';
+  static async responseHasError(response) {
+    return response.then((data) => data.error != '');
   }
 
   async readContact(contactId) {
     let request = {
       UserID: contactId,
-      ContactID: this.userId,
+      ContactID: await this.userId,
     };
 
-    let r = API.jsonPost('read', request);
+    let response = API.jsonPost('read', request);
 
-    return {
-      error: r.error,
-      contactInfo: {
-        firstName: r.firstName,
-        lastName: r.lastName,
-        addr1: r.Street1,
-        addr2: r.Street2,
-        city: r.City,
-        state: r.State,
-        zip: r.ZipCode,
-        relation: r.Relationship,
-        phoneno: r.PhoneNumber,
-        notes: r.Notes,
-      }
-    };
+    return response.then(
+      (data) => {
+        return {
+          error: data.error,
+          contactInfo: {
+            firstName: data.firstName,
+            lastName: data.lastName,
+            addr1: data.Street1,
+            addr2: data.Street2,
+            city: data.City,
+            state: data.State,
+            zip: data.ZipCode,
+            relation: data.Relationship,
+            phoneno: data.PhoneNumber,
+            notes: data.Notes,
+          },
+        };
+    });
   }
 
   async updateContact(contact) {
@@ -108,14 +108,18 @@ export default class API {
       DOB: contact.dob,
       Relationship: contact.relation,
       Notes: contact.notes,
-      ID: this.userId, 
+      ID: await this.userId, 
     };
 
-    let r = API.jsonPost('updateContact', request);
+    let response = API.jsonPost('updateContact', request);
 
-    return {
-      error: r.error,
-    };
+    return response.then(
+      (data) => {
+        return {
+          error: data.error,
+        };
+      }
+    );
   }
 
   async deleteContact(contactIds) {
@@ -123,11 +127,15 @@ export default class API {
       ContactIds: contactIds,
     };
 
-    let r = API.jsonPost('deleteContact', request);
+    let response = API.jsonPost('deleteContact', request);
 
-    return {
-      error: r.error,
-    };
+    return response.then(
+      (data) => {
+        return {
+          error: data.error,
+        };
+      }
+    );
   }
 
   async search(text) {
