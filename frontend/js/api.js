@@ -23,7 +23,7 @@ export default class API {
     });
 
     // console.log(`Got response: ${response.text()}`);
-    response.json().then(function(json) {return json});
+    return response.json();
   }
     
   async newContact(contact) {
@@ -56,6 +56,7 @@ export default class API {
     };
 
     let response = API.jsonPost('login.php', request);
+    console.log(response);
     if (this.responseHasError(response)) {
       return null;
     }
