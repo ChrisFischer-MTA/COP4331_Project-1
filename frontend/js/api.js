@@ -25,7 +25,8 @@ export default class API {
     });
 
     console.log(response);
-    return response.json();
+    let responseText = response.text();
+    return JSON.parse(responseText);
   }
     
   static login(username, password) {
