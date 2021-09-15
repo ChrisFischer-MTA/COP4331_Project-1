@@ -19,6 +19,10 @@ const createContactBtnElement = document.getElementById('create-contact-btn');
 const searchBtnElement = document.getElementById('search-btn');
 const searchInputElement = document.getElementById('search-input');
 
+const disabledEndpoints = [
+  'readContact',
+];
+
 const FORM_STATUS = {
   nosel: 'nosel',
   view: 'view',
@@ -158,6 +162,8 @@ class ContactForm extends Component {
     let doPostRender = [];
     let otherAttr = `${readOnly}`;
     let c = store.state.form.selection;
+    // field spacing
+    const fs = 'py-3';
 
     if (store.state.form.selection == null) {
       this.element.innerHTML = `
@@ -168,15 +174,15 @@ class ContactForm extends Component {
     
     if (store.state.form.isEditable()) {
       renderedButtons = `
-        <div class="col-6 d-flex justify-content-center py-5">
+        <div class="col-md-6 d-flex justify-content-center py-5">
           <button id="cancel-edit-contact-btn" type="button" 
             class="btn btn-secondary col-6">Cancel</button>
         </div>
-        <div class="col-6 d-flex justify-content-center py-5">
+        <div class="col-md-6 d-flex justify-content-center py-5">
           <button id="save-contact-btn" type="button" 
             class="btn btn-primary col-6">Save</button>
         </div>
-        <div class="col-6 d-flex justify-content-center py-5">
+        <div class="col-md-6 d-flex justify-content-center py-5">
           <button id="delete-contact-btn" type="button" 
             class="btn btn-danger col-6">Delete</button>
         </div>
@@ -217,30 +223,65 @@ class ContactForm extends Component {
 
     // TODO make separate render functions for fields and buttons
     this.element.innerHTML = `
-      <form class="row g-3 px-5 py-4">
-        <div class="col-md-6">
+      <form class="d-flex row g-3 px-5 py-4">
+        <!-- Column 1 -->
+        <div class="col-md-4 ${fs}">
           <label for="contact-first-name" class="form-label">First Name</label>
           <input type="text" class="form-control" id="contact-first-name" value="${c.firstName}" name="firstName" ${otherAttr}>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4 ${fs}">
           <label for="contact-last-name" class="form-label">Last Name</label>
           <input type="text" class="form-control" id="contact-last-name" value="${c.lastName}" name="lastName" ${otherAttr}>
         </div>
-        <div class="col-12">
-          <label for="inputAddress" class="form-label">Address</label>
-          <input type="text" class="form-control" id="inputAddress" name="addr1" value="${c.addr1}" ${otherAttr}>
+        <div class="col-md-4 ${fs}">
+          <label for="contact-dob" class="form-label">Date of Birth</label>
+          <input type="text" class="form-control" id="contact-dob" value="${c.dob}" name="dob" ${otherAttr}>
         </div>
-        <div class="col-12">
-          <label for="inputAddress2" class="form-label">Address 2</label>
-          <input type="text" class="form-control" id="inputAddress2" name="addr2" value="${c.addr2}" ${otherAttr}>
+
+        <!-- Column 2 -->
+        <div class="col-12 ${fs}">
+          <label for="contact-addr1" class="form-label">Street Address 1</label>
+          <input type="text" class="form-control" id="contact-addr1" name="addr1" value="${c.addr1}" ${otherAttr}>
         </div>
-        <div class="col-md-6">
-          <label for="inputCity" class="form-label">City</label>
-          <input type="text" class="form-control" id="inputCity" name="city" value="${c.city}" ${otherAttr}>
+
+        <!-- Column 3 -->
+        <div class="col-12 ${fs}">
+          <label for="contact-addr2" class="form-label">Street Address 2</label>
+          <input type="text" class="form-control" id="contact-addr2" name="addr2" value="${c.addr2}" ${otherAttr}>
         </div>
-        <div class="col-md-2">
-          <label for="inputZip" class="form-label">Zip</label>
-          <input type="text" class="form-control" id="inputZip" name="zip" value="${c.zip}" ${otherAttr}>
+
+        <!-- Column 4 -->
+        <div class="col-md-4 ${fs}">
+          <label for="contact-city" class="form-label">City</label>
+          <input type="text" class="form-control" id="contact-city" name="city" value="${c.city}" ${otherAttr}>
+        </div>
+        <div class="col-md-4 ${fs}">
+          <label for="contact-state" class="form-label">State</label>
+          <input type="text" class="form-control" id="contact-state" name="state" value="${c.state}" ${otherAttr}>
+        </div>
+        <div class="col-md-4 ${fs}">
+          <label for="contact-zip" class="form-label">Zip Code</label>
+          <input type="text" class="form-control" id="contact-zip" name="zip" value="${c.zip}" ${otherAttr}>
+        </div>
+
+        <!-- Column 5 -->
+        <div class="col-md-4 ${fs}">
+          <label for="contact-relationship" class="form-label">Relationship</label>
+          <input type="text" class="form-control" id="contact-relationship" name="relation" value="${c.relation}" ${otherAttr}>
+        </div>
+        <div class="col-md-4 ${fs}">
+          <label for="contact-profession" class="form-label">Profession</label>
+          <input type="text" class="form-control" id="contact-profession" name="profession" value="${c.profession}" ${otherAttr}>
+        </div>
+        <div class="col-md-4 ${fs}">
+          <label for="contact-phoneno" class="form-label">Phone Number</label>
+          <input type="text" class="form-control" id="contact-phoneno" name="phoneno" value="${c.phoneno}" ${otherAttr}>
+        </div>
+
+        <!-- Column 6 -->
+        <div class="col-md-12 ${fs}">
+          <label for="contact-notes" class="form-label">Notes</label>
+          <input type="text" class="form-control contact-notes" id="contact-notes" name="notes" value="${c.notes}" ${otherAttr}>
         </div>
         ${renderedButtons}
       </form>
@@ -274,6 +315,9 @@ const actions = {
   selectContact(context, contact) {
     // TODO(Rick): Read contact
     let response = api.readContact(contact.id);
+    if (disabledEndpoints.includes('readContact')) {
+      response = Promise.resolve({});
+    }
     response.then(
       (newFields) => {
         contact.updateFromObj(newFields);
