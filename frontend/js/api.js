@@ -25,7 +25,7 @@ export default class API {
     });
 
     console.log(response);
-    let responseText = response.text();
+    let responseText = response.text().then((string) => string.trim());
     console.log(responseText);
     return JSON.parse(responseText);
   }
