@@ -24,7 +24,7 @@ export default class API {
       body: reqJson,
     });
 
-    console.log(`Got response: ${response.text()}`);
+    console.log(response);
     return response.json();
   }
     
