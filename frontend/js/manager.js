@@ -3,7 +3,7 @@ import Component from './component.js';
 import Contact from './contact.js';
 import API from './api.js';
 
-let api = API.login('DeezNuts', 'morenutsplease').then((r) => console.log(r));
+let api = API.login('DeezNuts', 'morenutsplease');
 console.log('API:');
 console.log(api);
 
