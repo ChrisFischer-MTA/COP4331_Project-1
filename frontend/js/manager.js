@@ -290,6 +290,7 @@ const actions = {
 
       (error) => {
         console.log(`Error reading contact! ${error}`);
+        createErrorAlert(`Error reading contact! ${error}`);
         // TODO: display error alert
       }
     );
@@ -344,6 +345,7 @@ const actions = {
       }, 
       (error) => {
         console.log(`Error saving contact! ${error}`);
+        createErrorAlert(`Error saving contact! ${error}`);
         // TODO: display error alert
       }
     );
@@ -375,6 +377,7 @@ const actions = {
       }, 
       (error) => {
         console.log(`Error deleting contact! ${error}`);
+        createErrorAlert(`Error deleting contact! ${error}`);
         // TODO: display error alert
       }
     );
