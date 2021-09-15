@@ -357,9 +357,12 @@ const actions = {
         context.commit('updateContactForm', {
           deleteContact: true,
         });
+        context.commit('updateContactList', {
+          deleteSelection: true,
+        })
       }, 
       (error) => {
-        console.log(`Error saving contact! ${error}`);
+        console.log(`Error deleting contact! ${error}`);
         // TODO: display error alert
       }
     );

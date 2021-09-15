@@ -3,8 +3,9 @@
 export default class API {
   constructor(userId) {
     this.userId = userId;
-    // Last reponse promise
-    this.context = null;
+    this.nopEndpoints = [
+      'readContact',
+    ];
   }
 
   static async jsonPost(endpoint, req) {
