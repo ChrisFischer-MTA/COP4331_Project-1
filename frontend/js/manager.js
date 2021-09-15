@@ -354,12 +354,12 @@ const actions = {
     
     response.then(
       (_) => {
+        context.commit('updateContactList', {
+          deleteSelection: true,
+        });
         context.commit('updateContactForm', {
           deleteContact: true,
         });
-        context.commit('updateContactList', {
-          deleteSelection: true,
-        })
       }, 
       (error) => {
         console.log(`Error deleting contact! ${error}`);
