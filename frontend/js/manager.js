@@ -2,6 +2,12 @@ import Store from './beedle.js';
 import Component from './component.js';
 import Contact from './contact.js';
 import API from './api.js';
+import {createTimedAlert, dismissAllAlerts} from './alert.js';
+
+const timeout = 5000;
+const alertPositionElement = parent=document.getElementById('alert-position');
+let createErrorAlert = (message) => createTimedAlert('danger', message, timeout, alertPositionElement);
+let dismissAlerts = () => dismissAllAlerts(alertPositionElement);
 
 let api = API.login('DeezNuts', 'morenutsplease');
 console.log('API:');
@@ -298,6 +304,8 @@ const actions = {
   },
   
   cancelContactEdit(context, _) {
+    dismissAlerts();
+
     context.commit('updateContactForm', {
       editable: false,
     });
@@ -310,6 +318,8 @@ const actions = {
   },
 
   saveContact(context, _) {
+    dismissAlerts();
+
     // This is the Contact object to save or create
     let contact = context.state.form.selection;
     let response;
@@ -340,6 +350,8 @@ const actions = {
   },
 
   deleteContact(context, _) {
+    dismissAlerts();
+
     let contact = context.state.form.selection;
 
     // TODO(Rick): delete contact
@@ -460,6 +472,7 @@ createContactBtnElement.addEventListener('click', (event) => {
   else {
     console.log('Cannot view other contact with pending changes!');
     // TODO: Display error popup
+    createErrorAlert('You must save your changes.');
   }
 });
 
