@@ -54,12 +54,15 @@ export default class API {
       UserID: await this.userId, 
     };
 
-    let r = API.jsonPost('newContact.php', request);
-    return r.then((data) => {
-      return {
-        error: data.error,
-        contactId: data.contactId,
-      };
+    let response = API.jsonPost('newContact.php', request);
+    return response.then(
+      (data) => {
+        if (data.error == '') {
+          return Promise.resolve(data.contactId);
+        } 
+        else {
+          return Promise.reject(data.error);
+        }
     });
   }
 
@@ -77,25 +80,28 @@ export default class API {
 
     return response.then(
       (data) => {
-        return {
-          error: data.error,
-          contactInfo: {
-            firstName: data.firstName,
-            lastName: data.lastName,
-            addr1: data.Street1,
-            addr2: data.Street2,
-            city: data.City,
-            state: data.State,
-            zip: data.ZipCode,
-            relation: data.Relationship,
-            phoneno: data.PhoneNumber,
-            notes: data.Notes,
-          },
-        };
+        if (data.error == '') {
+          return Promise.resolve({
+              firstName: data.firstName,
+              lastName: data.lastName,
+              addr1: data.Street1,
+              addr2: data.Street2,
+              city: data.City,
+              state: data.State,
+              zip: data.ZipCode,
+              relation: data.Relationship,
+              phoneno: data.PhoneNumber,
+              notes: data.Notes,
+          });
+        }
+        else {
+          return Promise.reject(data.error);
+        }
     });
   }
 
   async updateContact(contact) {
+    let id = await this.userId;
     let request = {
       FirstName: contact.firstName,
       LastName: contact.lastName,
@@ -108,21 +114,26 @@ export default class API {
       DOB: contact.dob,
       Relationship: contact.relation,
       Notes: contact.notes,
-      ID: await this.userId, 
+      ID: id, 
     };
 
     let response = API.jsonPost('updateContact', request);
 
     return response.then(
       (data) => {
-        return {
-          error: data.error,
-        };
+        if (data.error == '') {
+          return Promose.resolve(id);
+        }
+        else {
+          return Promise.reject(data.error);
+        }
       }
     );
   }
 
   async deleteContact(contactIds) {
+    let id = await this.userId;
+
     let request = {
       ContactIds: contactIds,
     };
@@ -131,9 +142,12 @@ export default class API {
 
     return response.then(
       (data) => {
-        return {
-          error: data.error,
-        };
+        if (data.error == '') {
+          return Promose.resolve(id);
+        }
+        else {
+          return Promise.reject(data.error);
+        }
       }
     );
   }

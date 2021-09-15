@@ -268,23 +268,25 @@ const actions = {
   selectContact(context, contact) {
     // TODO(Rick): Read contact
     let response = api.read(contact.id);
-    
-    if (!response.error) {
-      contact.updateFromObj(response.contactInfo);
+    response.then(
+      (newFields) => {
+        contact.updateFromObj(newFields);
 
-      context.commit('updateContactList', {
-        select: true,
-        contact,
-      });
+        context.commit('updateContactList', {
+          select: true,
+          contact,
+        });
 
-      context.commit('updateContactForm', {
-        editable: false,
-      });
-    }
-    else {
-      console.log(`Error reading contact! ${error}`);
-      // TODO: display error alert
-    }
+        context.commit('updateContactForm', {
+          editable: false,
+        });
+      },
+
+      (error) => {
+        console.log(`Error reading contact! ${error}`);
+        // TODO: display error alert
+      }
+    );
   },
 
   // The following have no other parameters because they use the selected contact (form.selection),
@@ -322,17 +324,19 @@ const actions = {
       response = api.updateContact(contact);
     }
 
-    if (!response.error) {
-      contact.id = response.contactId;
-      context.commit('updateContactForm', {
-        editable: false,
-        saveContact: true,
-      });
-    }
-    else {
-      console.log(`Error saving contact! ${error}`);
-      // TODO: display error alert
-    }
+    response.then(
+      (userId) => {
+        contact.id = userId;
+        context.commit('updateContactForm', {
+          editable: false,
+          saveContact: true,
+        });
+      }, 
+      (error) => {
+        console.log(`Error saving contact! ${error}`);
+        // TODO: display error alert
+      }
+    );
   },
 
   deleteContact(context, _) {
@@ -341,18 +345,19 @@ const actions = {
     // TODO(Rick): delete contact
     let response = api.deleteContact([contact.id]);
     
-    if (!response.error) {
-      context.commit('updateContactList', {
-        deleteSelection: true,
-      });
-      context.commit('updateContactForm', {
-          deleteContact: true, 
-      });
-    }
-    else {
-      console.log(`Error deleting contact! ${error}`);
-      // TODO: display error alert
-    }
+    response.then(
+      (userId) => {
+        contact.id = userId;
+        context.commit('updateContactForm', {
+          editable: false,
+          saveContact: true,
+        });
+      }, 
+      (error) => {
+        console.log(`Error saving contact! ${error}`);
+        // TODO: display error alert
+      }
+    );
   },
 
   search(context, searchText) {
