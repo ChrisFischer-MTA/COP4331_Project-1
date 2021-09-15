@@ -3,7 +3,7 @@ let contactId = 0;
 
 export default class Contact {
   constructor(
-    firstName, lastName, dob='', addr1='', addr2='', city='', 
+    firstName, lastName, id=null, dob='', addr1='', addr2='', city='', 
     state='', zip='', relation='', profession='', phoneno='', notes=''
   ) {
     this.firstName = firstName;
@@ -18,8 +18,13 @@ export default class Contact {
     this.profession = profession;
     this.phoneno = phoneno;
     this.notes = notes;
-    this.id = contactId;
-    contactId++;
+    if (!id) {
+      this.id = contactId;
+      contactId++;
+    }
+    else {
+      this.id = id;
+    }
   }
 
   static fromObj(obj) {
@@ -37,6 +42,12 @@ export default class Contact {
       obj.phoneno,
       obj.notes
     );
+  }
+
+  updateFromObj(obj) {
+    Object.entries(obj).forEach(([key, val]) => {
+      this[key] = val;
+    });
   }
 
   // Assumption: form entry name attributes match contact properties

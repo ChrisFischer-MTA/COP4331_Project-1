@@ -3,9 +3,15 @@ import Component from './component.js';
 import Contact from './contact.js';
 import API from './api.js';
 
+let api = API.login('DeezNuts', 'morenutsplease');
+console.log('API:');
+console.log(api);
+
 const listElement = document.getElementById('contacts-list');
 const formElement = document.getElementById('contacts-form');
 const createContactBtnElement = document.getElementById('create-contact-btn');
+const searchBtnElement = document.getElementById('search-btn');
+const searchInputElement = document.getElementById('search-input');
 
 const FORM_STATUS = {
   nosel: 'nosel',
@@ -260,14 +266,25 @@ const actions = {
   },
 
   selectContact(context, contact) {
-    context.commit('updateContactList', {
-      select: true,
-      contact,
-    });
+    // TODO(Rick): Read contact
+    let response = api.read(contact.id);
+    
+    if (!response.error) {
+      contact.updateFromObj(response.contactInfo);
 
-    context.commit('updateContactForm', {
-      editable: false,
-    });
+      context.commit('updateContactList', {
+        select: true,
+        contact,
+      });
+
+      context.commit('updateContactForm', {
+        editable: false,
+      });
+    }
+    else {
+      console.log(`Error reading contact! ${error}`);
+      // TODO: display error alert
+    }
   },
 
   // The following have no other parameters because they use the selected contact (form.selection),
@@ -291,28 +308,73 @@ const actions = {
   },
 
   saveContact(context, _) {
-    const response = API.tryNewContact(context.state.form.selection);
-    console.log(response);
+    // This is the Contact object to save or create
+    let contact = context.state.form.selection;
+    let response;
 
-    context.commit('updateContactForm', {
-      editable: false,
-      saveContact: true,
-    });
+    // Set error only if there's an error, not the error field in the API response
+    if (context.state.manager.topIsNewContact) {
+      // TODO(Rick): create new contact 
+      response = api.createContact(contact);
+    }
+    else {
+      // TODO(Rick): update contact
+      response = api.updateContact(contact);
+    }
 
+    if (!response.error) {
+      contact.id = response.contactId;
+      context.commit('updateContactForm', {
+        editable: false,
+        saveContact: true,
+      });
+    }
+    else {
+      console.log(`Error saving contact! ${error}`);
+      // TODO: display error alert
+    }
   },
 
   deleteContact(context, _) {
-    context.commit('updateContactList', {
-      deleteSelection: true,
-    });
-    context.commit('updateContactForm', {
-        deleteContact: true, 
-    });
+    let contact = context.state.form.selection;
+
+    // TODO(Rick): delete contact
+    let response = api.deleteContact([contact.id]);
+    
+    if (!response.error) {
+      context.commit('updateContactList', {
+        deleteSelection: true,
+      });
+      context.commit('updateContactForm', {
+          deleteContact: true, 
+      });
+    }
+    else {
+      console.log(`Error deleting contact! ${error}`);
+      // TODO: display error alert
+    }
+  },
+
+  search(context, searchText) {
+    let results = [];
+    // TODO(Rick): do search - set results to a list of Contact objects
+    console.log('Ignoring search - not implemented');
+    return;
+
+    let response = api.search(searchText);
+
+    context.commit('setListElements', results);
   }
 };
 
 // TODO: fix mutations functions - I hate how it's organized
 const mutations = {
+  setListElements(state, elements) {
+    state.manager.elements = elements;
+
+    return state;
+  },
+
   updateContactList(state, params) {
     if (params.create) {
       state.manager.prepend(params.contact);
@@ -388,10 +450,17 @@ createContactBtnElement.addEventListener('click', (event) => {
   }
 });
 
+searchBtnElement.addEventListener('click', () => {
+  store.dispatch('search', searchInputElement.value);
+});
+
+searchInputElement.addEventListener('keypress', () => {
+  store.dispatch('search', searchInputElement.value);
+});
+
 const contactList = new ContactList(store, listElement, 'manager');
 const contactForm = new ContactForm(store, formElement, 'form');
 
 contactList.render();
 contactForm.render();
 
-console.log(API.tryLogin('SamH', 'Test'));

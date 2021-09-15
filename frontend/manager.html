@@ -26,7 +26,6 @@
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
       <a class="nav-link px-3" href="#">Sign out</a>
@@ -39,9 +38,11 @@
   <div class="row d-flex flex-column bg-secondary">
     <div class="btn-toolbar d-flex justify-content-between" role="toolbar">
       <div class="btn-group" role="group">
-        <button id="deleteContactsButton" type="button" 
-          class="btn btn-outline-secondary bi bi-trash bg-light">
-        </button>
+        <!-- <button id="deleteContactsButton" type="button"  -->
+        <!--   class="btn btn-outline-secondary bi bi-trash bg-light"> -->
+        <!-- </button> -->
+        <input id="search-input" class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+        <button id="search-btn" type="button" class="btn btn-primary">Search</button>
       </div>
 
       <button id="create-contact-btn" type="button" class="btn btn-primary"> Create Contact</button>
