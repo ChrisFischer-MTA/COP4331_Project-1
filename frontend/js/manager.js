@@ -343,14 +343,19 @@ const actions = {
     let contact = context.state.form.selection;
 
     // TODO(Rick): delete contact
-    let response = api.deleteContact([contact.id]);
+    let response;
+
+    if (context.state.manager.topIsNewContact) {
+      response = Promise.resolve(69);
+    }
+    else {
+      response = api.deleteContact([contact.id]);
+    }
     
     response.then(
-      (userId) => {
-        contact.id = userId;
+      (_) => {
         context.commit('updateContactForm', {
-          editable: false,
-          saveContact: true,
+          deleteContact: true,
         });
       }, 
       (error) => {

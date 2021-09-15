@@ -9,7 +9,7 @@ export default class API {
 
   static async jsonPost(endpoint, req) {
     const url = 'webapp.thegentlemengaming.com/LAMPAPI';
-    const reqUrl = `https://${url}/${endpoint}`;
+    const reqUrl = `https://${url}/${endpoint}.php`;
     const reqJson = JSON.stringify(req);
     console.log(`Sending request to "${reqUrl}": ${reqJson}`);
 
@@ -34,7 +34,7 @@ export default class API {
       password: password,
     };
 
-    let response = API.jsonPost('login.php', request);
+    let response = API.jsonPost('login', request);
     return new API(response.then((loginData) => loginData.id));
   }
 
@@ -54,7 +54,7 @@ export default class API {
       UserID: await this.userId, 
     };
 
-    let response = API.jsonPost('newContact.php', request);
+    let response = API.jsonPost('newContact', request);
     return response.then(
       (data) => {
         if (data.error == '') {
