@@ -49,20 +49,20 @@ export default class API {
     }
   }
 
-  static async login(username, password) {
+  static login(username, password) {
     let request = {
       login: username,
       password: password,
     };
 
     let response = API.jsonPost('login.php', request);
-    console.log(response);
-    if (this.responseHasError(response)) {
-      return null;
-    }
-    else {
-      return new API(reponse.id);
-    }
+    return new API(response.id);
+    // if (this.responseHasError(response)) {
+    //   return null;
+    // }
+    // else {
+    //   return new API(reponse.id);
+    // }
 
   }
 
