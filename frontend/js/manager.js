@@ -384,14 +384,12 @@ const actions = {
   },
 
   search(context, searchText) {
-    let results = [];
-    // TODO(Rick): do search - set results to a list of Contact objects
-    console.log('Ignoring search - not implemented');
-    return;
-
-    let response = api.search(searchText);
-
-    context.commit('setListElements', results);
+    api.search(searchText).then(
+      (results) => context.commit('setListElements', results),
+      (error) => {
+        createErrorAlert(`Error performing search: ${error}`)
+      }
+    );
   }
 };
 

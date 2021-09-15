@@ -156,11 +156,30 @@ export default class API {
   }
 
   async search(text) {
-    let request = {
+    let id = await this.id;
 
+    let request = {
+      Search: text,
+      UserID: id,
     };
-    // TODO
-    return;
+
+    let response = API.jsonPost('search', request);
+
+    return response.then(
+    (data) => {
+      if (data.error == '') {
+        let contacts = [];
+
+        for (let result of data.searchResults) {
+          contacts = new Contact(result.firstName, result.lastName, id=result.id);
+        }
+
+        return Promise.resolve(contacts);
+      }
+      else {
+        return Promise.reject(data.error);
+      }
+    });
   }
 }
 
