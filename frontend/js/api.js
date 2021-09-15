@@ -23,7 +23,7 @@ export default class API {
     });
 
     // console.log(`Got response: ${response.text()}`);
-    return response.json();
+    return await response.json();
   }
     
   async newContact(contact) {
