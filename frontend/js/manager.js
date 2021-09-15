@@ -267,7 +267,7 @@ const actions = {
 
   selectContact(context, contact) {
     // TODO(Rick): Read contact
-    let response = api.read(contact.id);
+    let response = api.readContact(contact.id);
     response.then(
       (newFields) => {
         contact.updateFromObj(newFields);
