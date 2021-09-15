@@ -26,6 +26,7 @@ export default class API {
 
     console.log(response);
     let responseText = response.text();
+    console.log(responseText);
     return JSON.parse(responseText);
   }
     
