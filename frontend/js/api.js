@@ -106,7 +106,7 @@ export default class API {
       (data) => {
         if (!data.error || data.error == '') {
           return Promise.resolve({
-              firstName: data.FirstName,
+              firstName: data.firstName,
               lastName: data.lastName,
               addr1: data.Street1,
               addr2: data.Street2,
