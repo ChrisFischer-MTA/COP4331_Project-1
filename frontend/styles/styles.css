@@ -24,6 +24,14 @@ body {
 }
 */
                                                                                           
+a:link {
+	color: red;
+	background-color: red;
+	
+
+}
+
+
 #login-signup { 
     border: 2.5px solid var(--accent-color);                                              
 	border-top: none;
@@ -70,8 +78,15 @@ h1 {
 }
 
 .forgot{
-	color: var(--delete-button-hglt-color);
 	text-align: right;
+	color: blue;
+}
+
+.forgot > a {
+	color: blue;
+	background-color: red;
+	font-size: 100px;
+
 }
 
 label {

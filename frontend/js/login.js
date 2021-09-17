@@ -1,26 +1,30 @@
-const login = document.getElementById("option-button-login");
-const signup = document.getElementById("option-button-signup");
+const login_button = document.getElementById("option-button-login");
+const signup_button = document.getElementById("option-button-signup");
 
-showLoginForm();
+const login_form  = document.getElementById("login-form")
+const signup_form  = document.getElementById("signup-form")
+
 
 function showLoginForm() {
-	login.classList.remove('disabled');
-	login.className += " active";
+	login_button.classList.remove('disabled');
+	login_button.className += " active";
 
-	signup.className += " disabled";
+	signup_button.className += " disabled";
 
-	document.getElementById("login-section").style.display = "block"
-	document.getElementById("signup-section").style.display = "none"
+	login_form.style.display = "block"
+	signup_form.style.display = "none"
+	signup_form.reset();
 }
 
 function showSignupForm() {
-	signup.classList.remove('disabled');
-	signup.className += " active";
+	signup_button.classList.remove('disabled');
+	signup_button.className += " active";
 
-	login.className += " disabled";
+	login_button.className += " disabled";
 
-	document.getElementById("login-section").style.display = "none"
-	document.getElementById("signup-section").style.display = "block"
+	login_form.style.display = "none"
+	login_form.reset();
+	signup_form.style.display = "block"
 }
 
 function validateLoginCredentials(creds) {
@@ -28,29 +32,25 @@ function validateLoginCredentials(creds) {
 }
 
 function tryLogin() {
-	const myForm = document.getElementById("login-form");
+	const myForm = login_form;
 	const formData = new FormData(myForm);
-	//var jsonObj =  JSON.parse(JSON.stringify($('#formId').serializeObject()));
 
 	let object  = {};
-	formData.forEach((key, value) =>  {
+	formData.forEach((value, key) =>  {
 		object[key] = value;
 	});
 	console.log(object);
 
-	let json =  JSON.stringify(object);
-	console.log(json);
-
-	console.log(formData);
+	/*
 	for (var pair of formData.entries()) {
 		console.log(pair);
 	}
+	*/
 }
 
 function trySignup() {
-	const myForm = document.getElementById("signup-form");
+	const myForm = signup_form;
 	const formData = new FormData(myForm);
-	//var jsonObj =  JSON.parse(JSON.stringify($('#formId').serializeObject()));
 
 	let object  = {};
 	formData.forEach((key, value) =>  {
@@ -67,3 +67,5 @@ function trySignup() {
 	}
 }
 
+// Main
+showLoginForm();

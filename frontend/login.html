@@ -17,47 +17,42 @@
 		  <button class="btn btn-large btn-block"  id="option-button-signup" type="button" onclick="showSignupForm()">Signup</button>
 	  </div>
     <div id="login-signup">
-      <section id="login-section">
-        <form action="/public"id="login-form">
-		  <div class="button-bundle">
-			  <label for="login-username">Username:</label>
-			  <input type="text" id="login-username" name="username">
-			  <a class="link-danger forgot" id="passwordHint">Forgot Username</a>
-		  </div>
+      <form action="/public"id="login-form">
+	  <div class="button-bundle">
+		  <label for="login-username">Username:</label>
+		  <input type="text" id="login-username" name="username">
+	  </div>
 
-		  <div class="button-bundle">
-			  <label for="login-password">Password:</label>
-			  <input type="password" id="login-password" name="password">
-			  <a class="link-danger forgot" id="passwordHint" onclick="tryGetPasswordHint()">Forgot password</a>
-		  </div>
+	  <div class="button-bundle">
+		  <label for="login-password">Password:</label>
+		  <input type="password" id="login-password" name="password">
+		  <a class="forgot" onclick="tryGetPasswordHint()">Forgot password</a>
+	  </div>
 
-          <button class="btn"class="btn"type="button" onclick="tryLogin()">Login</button>
-        </form>
-      </section>
+	  <button class="btn"class="btn"type="button" onclick="tryLogin()">Login</button>
+	</form>
 
-      <section id="signup-section" style="display: none;">
-        <form id="signup-form">
-		  <div class="button-bundle">
-			  <label for="signup-username">Username:</label>
-			  <input type="text" id="signup-username" name="username">
-			  <br>
-		  </div>
+	<form id="signup-form" style="display: none;">
+	  <div class="button-bundle">
+		  <label for="signup-username">Username:</label>
+		  <input type="text" id="signup-username" name="username">
+		  <br>
+	  </div>
 
-		  <div class="button-bundle">
-			  <label for="signup-password">Password:</label>
-			  <input type="password" id="signup-password" name="password">
-			  <br>
-		  </div>
+	  <div class="button-bundle">
+		  <label for="signup-password">Password:</label>
+		  <input type="password" id="signup-password" name="password">
+		  <br>
+	  </div>
 
-		  <div class="button-bundle">
-			  <label for="signup-confirm-password">Confirm Password:</label>
-			  <input type="password" id="signup-confirm-password" name="confirmedPassword">
-			  <br>
-		  </div>
+	  <div class="button-bundle">
+		  <label for="signup-confirm-password">Confirm Password:</label>
+		  <input type="password" id="signup-confirm-password" name="confirmedPassword">
+		  <br>
+	  </div>
 
-          <button class="btn"type="button" onclick="trySignup()">Signup</button>
-        </form>
-      </section>
+	  <button class="btn"type="button" onclick="trySignup()">Signup</button>
+	</form>
 	  <!--<img src="./public/undraw_Sign_in_re_o58h.png" alt="undraw image"> -->
   </body>
 </html>
