@@ -372,12 +372,12 @@ const actions = {
     // Set error only if there's an error, not the error field in the API response
     if (context.state.manager.topIsNewContact) {
       // TODO(Rick): create new contact 
-      context.state.form.save();
+      context.state.form.saveContact();
       response = api.newContact(contact);
     }
     else {
       // TODO(Rick): update contact
-      context.state.form.save();
+      context.state.form.saveContact();
       response = api.updateContact(contact);
     }
 
