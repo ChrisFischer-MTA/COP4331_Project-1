@@ -46,7 +46,7 @@ export default class Contact {
 
   updateFromObj(obj) {
     Object.entries(obj).forEach(([key, val]) => {
-      if (this.key) {
+      if (this.key != null && this.key != undefined) {
         this[key] = val;
       }
       else {
