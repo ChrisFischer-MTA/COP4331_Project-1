@@ -20,7 +20,7 @@ const searchBtnElement = document.getElementById('search-btn');
 const searchInputElement = document.getElementById('search-input');
 
 const disabledEndpoints = [
-  'readContact',
+  // 'readContact',
 ];
 
 const FORM_STATUS = {
