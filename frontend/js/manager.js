@@ -376,6 +376,7 @@ const actions = {
     }
     else {
       // TODO(Rick): update contact
+      context.state.form.save();
       response = api.updateContact(contact);
     }
 
