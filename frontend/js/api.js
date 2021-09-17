@@ -41,6 +41,27 @@ export default class API {
     return new API(response.then((loginData) => loginData.id));
   }
 
+  async register(firstname, lastname, password, login) {
+    let request = {
+      firstname: firstname,
+      lastname: lastname,
+      password: password,
+      login: login,
+    };
+
+    let response = API.jsonPost('register', request);
+    return response.then(
+      (data) => {
+        if (data.error == '') {
+          return Promise.resolve();
+        }
+        else {
+          return Promise.reject(data.error);
+        }
+      }
+    )
+  }
+
   async newContact(contact) {
     let request = {
       FirstName: contact.firstName,
@@ -83,9 +104,9 @@ export default class API {
 
     return response.then(
       (data) => {
-        if (data.error == '') {
+        if (!data.error || data.error == '') {
           return Promise.resolve({
-              firstName: data.firstName,
+              firstName: data.FirstName,
               lastName: data.lastName,
               addr1: data.Street1,
               addr2: data.Street2,
