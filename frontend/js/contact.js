@@ -46,7 +46,12 @@ export default class Contact {
 
   updateFromObj(obj) {
     Object.entries(obj).forEach(([key, val]) => {
-      this[key] = val;
+      if (this.key) {
+        this[key] = val;
+      }
+      else {
+        console.log(`Unable to update key "${key}"`);
+      }
     });
   }
 
