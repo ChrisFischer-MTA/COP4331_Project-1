@@ -74,7 +74,7 @@
       . '","Relationship":"' . $Relationship
       . '","PhoneNumber":"' . $PhoneNumber
       . '","Notes":"' . $Notes
-      . '""}';
+      . '"}';
 
 
 		sendResultInfoAsJson( $retValue );
