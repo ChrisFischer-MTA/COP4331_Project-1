@@ -146,7 +146,7 @@ export default class API {
     return response.then(
       (data) => {
         if (data.error == '') {
-          return Promose.resolve(id);
+          return Promise.resolve(id);
         }
         else {
           return Promise.reject(data.error);
