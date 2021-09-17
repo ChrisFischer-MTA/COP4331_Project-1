@@ -96,8 +96,8 @@ export default class API {
 
   async readContact(contactId) {
     let request = {
-      ContactID: contactId,
-      UserID: await this.userId,
+      ID: contactId,
+      // UserID: await this.userId,
     };
 
     let response = API.jsonPost('read', request);
