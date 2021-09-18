@@ -10,7 +10,7 @@ let createErrorAlert = (message) => createTimedAlert('danger', message, timeout,
 let dismissAlerts = () => dismissAllAlerts(alertPositionElement);
 
 let api;
-API.login('DeezNuts', 'morenutsplease').then(
+API.login('RickL', 'COP4331').then(
   (apiInst) => {
     api = apiInst;
     console.log(`logged in. ID=${apiInst.id}`);
