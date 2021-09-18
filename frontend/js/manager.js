@@ -11,18 +11,25 @@ let dismissAlerts = () => dismissAllAlerts(alertPositionElement);
 
 // TODO: get the id from the URL "URL?id=THE_ID" using URLSearchParams and call "new API(id)"
 // Has to be called "api"
-// let api = new API(URLId);
+// let api = new API(userId);
+let api = null;
 //
-// This is just testing
-// API.login('RickL', 'COP4331').then(
-//   (apiInst) => {
-//     api = apiInst;
-//     console.log(`logged in. ID=${apiInst.userId}`);
-//   },
-//   (error) => console.log(`failed to login: "${error}"`)
-// );
-// console.log('API:');
-// console.log(api);
+// This is just testing - remove later
+API.login('RickL', 'COP4331').then(
+  (apiInst) => {
+    api = apiInst;
+    console.log(`logged in. ID=${apiInst.userId}`);
+  },
+  (error) => console.log(`failed to login: "${error}"`)
+);
+console.log('API:');
+console.log(api);
+
+if (api == null) {
+  document.body.innerHTML = '<p>You are not logged in.</p>';
+  return;
+}
+
 
 const listElement = document.getElementById('contacts-list');
 const formElement = document.getElementById('contacts-form');

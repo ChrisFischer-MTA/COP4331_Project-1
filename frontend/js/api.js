@@ -148,7 +148,7 @@ export default class API {
       DOB: contact.dob,
       Relationship: contact.relation,
       Notes: contact.notes,
-      ID: id, 
+      ID: contact.id, 
     };
 
     let response = API.jsonPost('updateContact', request);
