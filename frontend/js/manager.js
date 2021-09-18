@@ -12,16 +12,21 @@ let dismissAlerts = () => dismissAllAlerts(alertPositionElement);
 // TODO: get the id from the URL "URL?id=THE_ID" using URLSearchParams and call "new API(id)"
 // Has to be called "api"
 // let api = new API(userId);
+let searchParams = new URLSearchParams(window.location.search.split('?', 2)[1]);
 let api = null;
-//
+
+if (searchParams.has('id')) {
+  api = new API(searchParams.id);
+}
+
 // This is just testing - remove later
-API.login('RickL', 'COP4331').then(
-  (apiInst) => {
-    api = apiInst;
-    console.log(`logged in. ID=${apiInst.userId}`);
-  },
-  (error) => console.log(`failed to login: "${error}"`)
-);
+// API.login('RickL', 'COP4331').then(
+//   (apiInst) => {
+//     api = apiInst;
+//     console.log(`logged in. ID=${apiInst.userId}`);
+//   },
+//   (error) => console.log(`failed to login: "${error}"`)
+// );
 console.log('API:');
 console.log(api);
 
