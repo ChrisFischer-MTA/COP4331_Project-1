@@ -1,8 +1,8 @@
 <?php
-
+  mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
   $inputData = getRequestInfo();
 
-  $username = "";
+  $Login = "";
 
   $conn = new mysqli("localhost", "TheTester", "WeLoveCOP4331", "SmallProject");
 
@@ -12,18 +12,19 @@
   }
   else
   {
-    $stmt = $conn->prepare("SELECT passwordHint FROM Users where login =?");
-    $stmt->bind_param("s", $inData["passwordhint"]);
+    $stmt = $conn->prepare("SELECT PasswordHint FROM Users WHERE Login =?");
+    $stmt->bind_param("s", $inputData["login"]);
 		$stmt->execute();
 		$result = $stmt->get_result();
 
 		if($row = $result->fetch_assoc())
 		{
-			returnWithInfo( $row['passwordhint']);
+			return returnWithInfo( $row['PasswordHint']);
 		}
+
 		else
 		{
-			return FailwithReason("User name not found");
+			return FailwithReason("Username not found");
 		}
 
 		$stmt->close();
@@ -43,13 +44,13 @@
 
 	function failWithReason( $err )
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = '{"error":' . $err . ',"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo( $firstName, $lastName, $id )
+	function returnWithInfo( $PasswordHint )
 	{
-		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		$retValue = '{"passwordhint":' . $PasswordHint . ',"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 ?>

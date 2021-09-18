@@ -13,6 +13,7 @@
   $Relationship = "";
   $PhoneNumber = "";
   $Notes = "";
+  $id = $inputData["ID"];
 
   $conn = new mysqli("localhost", "TheTester", "WeLoveCOP4331", "SmallProject");
 
@@ -22,25 +23,23 @@
   }
   else
   {
-    $stmt = $conn->prepare("SELECT * FROM Contact where ID =?");
-    $stmt->bind_param("i", $inData["ID"]);
-		$stmt->execute();
-    $result = $stmt->get_result();
+    $records = mysqli_query($conn, "SELECT * FROM Contact WHERE id = $id");
+    $row = mysqli_fetch_assoc($records);
 
-    $stmt->close();
-		$conn->close();
+    $conn->close();
 
-		if( $row = $result->fetch_assoc() )
-		{
-			return returnWithInfo($row['FirstName'], $row['LastName'],$row['DOB'],
+    if($row)
+    {
+      return returnWithInfo($row['FirstName'], $row['LastName'],$row['DOB'],
                      $row['Street1'],$row['Street2'],$row['City'],
                      $row['State'],$row['ZipCode'],$row['Relationship'],
                      $row['PhoneNumber'],$row['Notes']);
-		}
+    }
+
 		else
-		{
-			return FailwithReason("Contact info not found!");
-		}
+    {
+      return failWithReason("Account not found!");
+    }
 	}
 
 	function getRequestInfo()
@@ -74,7 +73,7 @@
       . '","Relationship":"' . $Relationship
       . '","PhoneNumber":"' . $PhoneNumber
       . '","Notes":"' . $Notes
-      . '"}';
+      . '""}';
 
 
 		sendResultInfoAsJson( $retValue );

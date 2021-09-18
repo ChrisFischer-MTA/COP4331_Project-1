@@ -26,13 +26,13 @@
 																		$inData['City'],$inData['State'],$inData['ZipCode'],
 																		$inData['Relationship'],$inData['PhoneNumber'],$inData['Notes']);
 		$stmt->execute();
+		if (!mysqli_query($conn, "SET a=1")) {
+    printf("Error message: %s\n", mysqli_error($conn));
+}
+		$records = mysqli_query($conn, "SELECT * FROM Contact WHERE id = $id");
+    $row = mysqli_fetch_assoc($records);
 
-		$stmt2 = $conn->prepare("SELECT ID FROM Contact WHERE FirstName=? AND LastName =?");
-		$stmt2->bind_param("ss", $FirstName, $LastName);
-		$stmt2->execute();
-		$result = $stmt2->get_result()
-
-		if( $row = $result->fetch_assoc() )
+    if($row)
 		{
 			returnWithID($row['id']);
 		}

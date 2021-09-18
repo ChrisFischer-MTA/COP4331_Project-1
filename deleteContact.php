@@ -15,20 +15,21 @@
 
     if($data = mysqli_fetch_array($records))
     {
-      $del = mysqli_query($conn, "DELETE from Users Where id = '$id'");
+      foreach( $id as $ident)
+      {
+        $del = mysqli_query($conn, "DELETE from Contact WHERE id = '$ident'");
+      }
 
       $conn->close();
 
       return returnwithInfo();
     }
 
-    else
-    {
-      $conn->close();
-      return failWithReason("Account not found!");
-    }
 
-  }
+    $conn->close();
+    return failWithReason("Account not found!");
+
+	}
 
 	function getRequestInfo()
 	{
@@ -43,13 +44,13 @@
 
 	function failWithReason( $err )
 	{
-		$retValue = '{"","error":"' . $err . '"}';
+		$retValue = '{""error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
 	function returnWithInfo()
 	{
-    $retValue = '{"Contact(s) deleted"}';
+    $retValue = '{"Contact(s) deleted!"}';
 
 		sendResultInfoAsJson( $retValue );
 	}

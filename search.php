@@ -1,7 +1,6 @@
 <?php
-
+  mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
   $inputData = getRequestInfo();
-
   $substring = $inputData["sub"];
 
   $conn = new mysqli("localhost", "TheTester", "WeLoveCOP4331", "SmallProject");
@@ -12,22 +11,22 @@
   }
   else
   {
-    $stmt = $conn->prepare("SELECT FirstName, LastName FROM Contact where str_contains(substring)");
-    $stmt->bind_param("ss", $FirstName, $LastName);
-		$stmt->execute();
+    $result = mysqli_query($conn, "SELECT FirstName, LastName, ID FROM Contact WHERE FirstName LIKE '%$substring%' OR LastName LIKE '%$substring%'");
+    $found = False;
 
-		$result = $stmt->get_result();
 
-		if($row = $result->fetch_assoc())
-		{
-			returnWithInfo( $row['passwordhint']);
-		}
-		else
-		{
-			return FailwithReason("User name not found");
-		}
+    while($row = $result->fetch_array())
+    {
+      returnWithInfo( $row['FirstName'], $row['LastName'], $row['ID']);
+      $found = True;
+    }
 
-		$stmt->close();
+    if(!$found)
+    {
+			 return FailwithReason("User name not found");
+    }
+
+
 		$conn->close();
 	}
 
@@ -42,7 +41,7 @@
 		echo $obj;
 	}
 
-	function failWithReason( $err )
+	function FailWithReason( $err )
 	{
 		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
@@ -50,7 +49,7 @@
 
 	function returnWithInfo( $firstName, $lastName, $id )
 	{
-		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '"},';
 		sendResultInfoAsJson( $retValue );
 	}
 ?>

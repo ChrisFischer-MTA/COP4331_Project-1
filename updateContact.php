@@ -25,11 +25,14 @@
 	{
 		$stmt = $conn->prepare("UPDATE Contact SET FirstName = ?,LastName = ?,DOB = ?,Street1 = ?,Street2 = ?,City =? ,State = ?,ZipCode = ?,Relationship = ?,PhoneNumber = ?,Notes = ? WHERE ID = ?");
 		$stmt->bind_param("ssissssisssi", $FirstName, $LastName,$DOB,$Street1,$Street2,$City,$State,$ZipCode,$Relationship,$PhoneNumber,$Notes,$ID);
-		$result= $stmt->execute();
-
-	print 'Success! record updated';
-
-	}
+    if (!$result= $stmt->execute()) {
+      returnWithError("Server error: " . $stmt->error);
+      return;
+    }
+    else {
+      returnWithConfirm("Success");
+    }
+}
 
 	function getRequestInfo()
 	{
@@ -48,4 +51,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
+	function returnWithConfirm($err)
+	{
+		$retValue = '{"' . $err . '"}';
+		sendResultInfoAsJson( $retValue );
+	}
 ?>

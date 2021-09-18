@@ -50,6 +50,7 @@
 	function returnWithInfo()
 	{
     $retValue = '{"Account deleted! Thank you for using our services!"}';
+    
 		sendResultInfoAsJson( $retValue );
 	}
 ?>
