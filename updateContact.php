@@ -14,8 +14,6 @@
 	$Notes = $inData["Notes"];
 	$ID = $inData["ID"];
 
-
-
 	$conn = new mysqli("localhost", "TheTester", "WeLoveCOP4331", "SmallProject");
 	if ($conn->connect_error)
 	{
@@ -47,13 +45,13 @@
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"error":"' . $err . '"}';
+		$retValue = '{"Status":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
 	function returnWithConfirm($err)
 	{
-		$retValue = '{"' . $err . '"}';
+		$retValue = '{"Status":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 ?>

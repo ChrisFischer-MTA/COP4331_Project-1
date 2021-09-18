@@ -50,7 +50,7 @@
 
 	function returnWithInfo( $PasswordHint )
 	{
-		$retValue = '{"passwordhint":' . $PasswordHint . ',"error":""}';
+		$retValue = '{"Hint":"' . $PasswordHint . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 ?>

@@ -4,10 +4,7 @@
 	$Login= $inData["Login"];
   $Password = $inData["Password"];
   $ID = $inData["ID"];
-	# User wouldn't even know their own ID. ID is a reference to Contact database anyway
-	# User might want to change their address, phone number, password hint
-
-
+	$passH = $inData["PasswordHint"];
 
 	$conn = new mysqli("localhost", "TheTester", "WeLoveCOP4331", "SmallProject");
 	if ($conn->connect_error)
@@ -16,11 +13,16 @@
 	}
 	else
 	{
-		$stmt = $conn->prepare("UPDATE Users SET Login= ?, Password = ? WHERE ID = ?");
-		$stmt->bind_param("ssi", $Login, $Password, $ID);
+		$stmt = $conn->prepare("UPDATE Users SET Login= ?, Password = ?, PasswordHint = ? WHERE ID = ?");
+		$stmt->bind_param("sssi", $Login, $Password, $passH, $ID);
 		$result= $stmt->execute();
 
-	print 'Success! record updated';
+		if(!$result)
+		{
+			return returnWithError("Cannot locate this account. Please contact Support");
+		}
+
+		return returnWithConfirm("Success");
 
 	}
 
@@ -41,4 +43,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
+	function returnWithConfirm($err)
+	{
+		$retValue = '{"Status":"' . $err . '"}';
+		sendResultInfoAsJson( $retValue );
+	}
 ?>

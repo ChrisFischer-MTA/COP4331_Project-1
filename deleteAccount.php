@@ -19,7 +19,7 @@
 
       $conn->close();
 
-      return returnwithInfo();
+      return returnwithInfo("Account deleted! Thank you for using our services!");
     }
 
 		else
@@ -47,10 +47,10 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo()
+	function returnWithInfo($err)
 	{
-    $retValue = '{"Account deleted! Thank you for using our services!"}';
-    
+    $retValue = '{"Status":"' . $err . '"}';
+
 		sendResultInfoAsJson( $retValue );
 	}
 ?>

@@ -22,7 +22,7 @@
 
       $conn->close();
 
-      return returnwithInfo();
+      return returnwithInfo("Contact(s) deleted!");
     }
 
 
@@ -48,9 +48,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo()
+	function returnWithInfo($err)
 	{
-    $retValue = '{"Contact(s) deleted!"}';
+    $retValue = '{"Status":"' . $err . '"}';
 
 		sendResultInfoAsJson( $retValue );
 	}
