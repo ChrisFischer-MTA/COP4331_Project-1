@@ -13,7 +13,7 @@ let api;
 API.login('RickL', 'COP4331').then(
   (apiInst) => {
     api = apiInst;
-    console.log(`logged in. ID=${apiInst.id}`);
+    console.log(`logged in. ID=${apiInst.userId}`);
   },
   (error) => console.log(`failed to login: "${error}"`)
 );
