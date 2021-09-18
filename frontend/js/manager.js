@@ -27,7 +27,6 @@ console.log(api);
 
 if (api == null) {
   document.body.innerHTML = '<p>You are not logged in.</p>';
-  return;
 }
 
 
