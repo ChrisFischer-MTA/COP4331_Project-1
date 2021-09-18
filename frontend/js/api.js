@@ -31,14 +31,24 @@ export default class API {
     return responseTextPromise.then((string) => JSON.parse(string));
   }
     
-  static login(username, password) {
+  static async login(username, password) {
     let request = {
       login: username,
       password: password,
     };
 
     let response = API.jsonPost('login', request);
-    return new API(response.then((loginData) => loginData.id));
+    // return new API(response.then((loginData) => loginData.id));
+    return response.then(
+      (loginData) => {
+        if (loginData.error == '') {
+          return Promise.resolve(new API(loginData.id));
+        }
+        else {
+          return Promise.reject('Invalid credentials');
+        }
+      }
+    )
   }
 
   async register(firstname, lastname, password, login) {
@@ -75,7 +85,7 @@ export default class API {
       DOB: contact.dob,
       Relationship: contact.relation,
       Notes: contact.notes,
-      UserID: await this.userId, 
+      UserID: this.userId, 
     };
 
     let response = API.jsonPost('newContact', request);
@@ -97,7 +107,7 @@ export default class API {
   async readContact(contactId) {
     let request = {
       ID: contactId,
-      // UserID: await this.userId,
+      // UserID: this.userId,
     };
 
     let response = API.jsonPost('read', request);
@@ -125,7 +135,7 @@ export default class API {
   }
 
   async updateContact(contact) {
-    let id = await this.userId;
+    let id = this.userId;
     let request = {
       FirstName: contact.firstName,
       LastName: contact.lastName,
@@ -156,7 +166,7 @@ export default class API {
   }
 
   async deleteContact(contactIds) {
-    let id = await this.userId;
+    let id = this.userId;
 
     let request = {
       ContactIds: contactIds,
@@ -177,7 +187,7 @@ export default class API {
   }
 
   async search(text) {
-    let id = await this.id;
+    let id = this.id;
 
     let request = {
       Search: text,

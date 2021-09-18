@@ -9,7 +9,14 @@ const alertPositionElement = parent=document.getElementById('alert-position');
 let createErrorAlert = (message) => createTimedAlert('danger', message, timeout, alertPositionElement);
 let dismissAlerts = () => dismissAllAlerts(alertPositionElement);
 
-let api = API.login('DeezNuts', 'morenutsplease');
+let api;
+API.login('DeezNuts', 'morenutsplease').then(
+  (apiInst) => {
+    api = apiInst;
+    console.log(`logged in. ID=${apiInst.id}`);
+  },
+  (error) => console.log(`failed to login: "${error}"`)
+);
 console.log('API:');
 console.log(api);
 
