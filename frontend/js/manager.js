@@ -9,16 +9,20 @@ const alertPositionElement = parent=document.getElementById('alert-position');
 let createErrorAlert = (message) => createTimedAlert('danger', message, timeout, alertPositionElement);
 let dismissAlerts = () => dismissAllAlerts(alertPositionElement);
 
-let api;
-API.login('RickL', 'COP4331').then(
-  (apiInst) => {
-    api = apiInst;
-    console.log(`logged in. ID=${apiInst.userId}`);
-  },
-  (error) => console.log(`failed to login: "${error}"`)
-);
-console.log('API:');
-console.log(api);
+// TODO: get the id from the URL "URL?id=THE_ID" using URLSearchParams and call "new API(id)"
+// Has to be called "api"
+// let api = new API(URLId);
+//
+// This is just testing
+// API.login('RickL', 'COP4331').then(
+//   (apiInst) => {
+//     api = apiInst;
+//     console.log(`logged in. ID=${apiInst.userId}`);
+//   },
+//   (error) => console.log(`failed to login: "${error}"`)
+// );
+// console.log('API:');
+// console.log(api);
 
 const listElement = document.getElementById('contacts-list');
 const formElement = document.getElementById('contacts-form');
