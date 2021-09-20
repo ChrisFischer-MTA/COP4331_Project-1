@@ -1,0 +1,5 @@
+h2 {
+	background-color: var(--accent-color);
+	font-size: 1.75rem;
+	text-align: center;
+}
