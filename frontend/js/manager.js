@@ -16,7 +16,7 @@ let searchParams = new URLSearchParams(window.location.search.split('?', 2)[1]);
 let api = null;
 
 if (searchParams.has('id')) {
-  api = new API(searchParams.id);
+  api = new API(searchParams.get('id'));
 }
 
 // This is just testing - remove later
