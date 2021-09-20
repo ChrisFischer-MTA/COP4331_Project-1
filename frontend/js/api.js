@@ -155,11 +155,13 @@ export default class API {
 
     return response.then(
       (data) => {
-        if (data.error == '') {
+        // if (data.error == '') {
+        if (data.Status == 'Success') {
           return Promise.resolve(id);
         }
         else {
-          return Promise.reject(data.error);
+          return Promise.reject(data.Status);
+          // return Promise.reject(data.error);
         }
       }
     );
