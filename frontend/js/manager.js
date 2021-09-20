@@ -404,8 +404,8 @@ const actions = {
     }
 
     response.then(
-      (userId) => {
-        contact.id = userId;
+      (contactId) => {
+        contact.id = contactId;
         context.commit('updateContactForm', {
           editable: false,
           saveContact: true,
