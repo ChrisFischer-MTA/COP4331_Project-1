@@ -8,7 +8,7 @@ const signup_button = document.getElementById("option-button-signup");
 const login_form  = document.getElementById("login-form")
 const signup_form  = document.getElementById("signup-form")
 
-function showLoginForm() {
+export function showLoginForm() {
 	login_button.classList.remove('disabled');
 	login_button.className += " active";
 
@@ -19,7 +19,7 @@ function showLoginForm() {
 	signup_form.reset();
 }
 
-function showSignupForm() {
+export function showSignupForm() {
 	signup_button.classList.remove('disabled');
 	signup_button.className += " active";
 
@@ -30,11 +30,11 @@ function showSignupForm() {
 	signup_form.style.display = "block"
 }
 
-function validateLoginCredentials(creds) {
+export function validateLoginCredentials(creds) {
 	return creds.username != "" && creds.password != "";
 }
 
-function tryLogin() {
+export function tryLogin() {
 	const myForm = login_form;
 	const formData = new FormData(myForm);
 
@@ -73,7 +73,7 @@ function tryLogin() {
 	*/
 }
 
-function trySignup() {
+export function trySignup() {
 	const myForm = signup_form;
 	const formData = new FormData(myForm);
 
