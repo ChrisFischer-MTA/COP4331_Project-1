@@ -96,4 +96,3 @@ function trySignup() {
 // Main
 showLoginForm();
 
-export default login;
