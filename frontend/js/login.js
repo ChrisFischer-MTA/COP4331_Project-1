@@ -69,11 +69,11 @@ option_login_button.addEventListener("click", showLoginForm);
 option_signup_button.addEventListener("click", showSignupForm);
 ////////////////////////////////////////////////////////////
 
-const login-button = document.getElementById("login-button");
-const signup-button = document.getElementById("signup-button");
+const login_button = document.getElementById("login-button");
+const signup_button = document.getElementById("signup-button");
 
-login-button.addEventListener("click", tryLogin);
-login-button.addEventListener("click", trySignup);
+login_button.addEventListener("click", tryLogin);
+signup_button.addEventListener("click", trySignup);
 
 ////////////////////////////////////////////////////////////
 const login_form  = document.getElementById("login-form");
