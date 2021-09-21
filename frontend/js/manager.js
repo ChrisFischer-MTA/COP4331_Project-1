@@ -16,7 +16,7 @@ let searchParams = new URLSearchParams(window.location.search.split('?', 2)[1]);
 let api = null;
 
 if (searchParams.has('id')) {
-  api = new API(searchParams.id);
+  api = new API(searchParams.get('id'));
 }
 
 // This is just testing - remove later
@@ -128,6 +128,7 @@ class ContactList extends Component {
       li.addEventListener('click', () => {
         if (!store.state.form.canViewOther()) {
           // TODO: show an alert 
+          createErrorAlert('You must your save changes.');
         }
         else {
           if (this.state.topIsNewContact) {
@@ -404,8 +405,8 @@ const actions = {
     }
 
     response.then(
-      (userId) => {
-        contact.id = userId;
+      (contactId) => {
+        contact.id = contactId;
         context.commit('updateContactForm', {
           editable: false,
           saveContact: true,

@@ -3,9 +3,6 @@
 export default class API {
   constructor(userId) {
     this.userId = userId;
-    this.nopEndpoints = [
-      'readContact',
-    ];
   }
 
   static async jsonPost(endpoint, req) {
@@ -135,7 +132,6 @@ export default class API {
   }
 
   async updateContact(contact) {
-    let id = this.userId;
     let request = {
       FirstName: contact.firstName,
       LastName: contact.lastName,
@@ -155,11 +151,13 @@ export default class API {
 
     return response.then(
       (data) => {
-        if (data.error == '') {
-          return Promise.resolve(id);
+        // if (data.error == '') {
+        if (data.Status == 'Success') {
+          return Promise.resolve(contact.id);
         }
         else {
-          return Promise.reject(data.error);
+          return Promise.reject(data.Status);
+          // return Promise.reject(data.error);
         }
       }
     );
