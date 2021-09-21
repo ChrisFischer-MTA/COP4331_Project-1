@@ -70,7 +70,7 @@ option_signup_button.addEventListener("click", showSignupForm);
 ////////////////////////////////////////////////////////////
 
 const login-button = document.getElementById("login-button");
-const signup-button = document.getElementById("login-button");
+const signup-button = document.getElementById("signup-button");
 
 login-button.addEventListener("click", tryLogin);
 login-button.addEventListener("click", trySignup);
