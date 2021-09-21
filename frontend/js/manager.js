@@ -128,6 +128,7 @@ class ContactList extends Component {
       li.addEventListener('click', () => {
         if (!store.state.form.canViewOther()) {
           // TODO: show an alert 
+          createErrorAlert('You must your save changes.');
         }
         else {
           if (this.state.topIsNewContact) {
