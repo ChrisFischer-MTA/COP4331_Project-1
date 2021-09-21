@@ -167,14 +167,14 @@ export default class API {
     let id = this.userId;
 
     let request = {
-      ContactIds: contactIds,
+      ID: contactIds,
     };
 
     let response = API.jsonPost('deleteContact', request);
 
     return response.then(
       (data) => {
-        if (data.error == '') {
+        if (!data.hasOwnProperty('error')) {
           return Promise.resolve(id);
         }
         else {
@@ -185,11 +185,9 @@ export default class API {
   }
 
   async search(text) {
-    let id = this.id;
-
     let request = {
-      Search: text,
-      UserID: id,
+      sub: text,
+      UserID: this.userId,
     };
 
     let response = API.jsonPost('search', request);
