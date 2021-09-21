@@ -188,7 +188,7 @@ export default class API {
     let id = this.id;
 
     let request = {
-      Search: text,
+      sub: text,
       UserID: id,
     };
 
