@@ -9,7 +9,6 @@ login_button.addEventListener("click", showLoginForm);
 signup_button.addEventListener("click", showSignupForm);
 
 const login_form  = document.getElementById("login-form")
-login_form.
 const signup_form  = document.getElementById("signup-form")
 
 function showLoginForm() {
