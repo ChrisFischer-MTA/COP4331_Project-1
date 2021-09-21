@@ -174,7 +174,7 @@ export default class API {
 
     return response.then(
       (data) => {
-        if (data.error == '') {
+        if (!data.hasOwnProperty('error')) {
           return Promise.resolve(id);
         }
         else {
