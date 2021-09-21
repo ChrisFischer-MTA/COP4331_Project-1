@@ -5,10 +5,14 @@ const URL = "https://webapp.thegentlemengaming.com/LAMPAPI/login.php";
 const login_button = document.getElementById("option-button-login");
 const signup_button = document.getElementById("option-button-signup");
 
+login_button.addEventListener("click", showLoginForm);
+signup_button.addEventListener("click", showSignupForm);
+
 const login_form  = document.getElementById("login-form")
+login_form.
 const signup_form  = document.getElementById("signup-form")
 
-export function showLoginForm() {
+function showLoginForm() {
 	login_button.classList.remove('disabled');
 	login_button.className += " active";
 
@@ -19,7 +23,7 @@ export function showLoginForm() {
 	signup_form.reset();
 }
 
-export function showSignupForm() {
+function showSignupForm() {
 	signup_button.classList.remove('disabled');
 	signup_button.className += " active";
 
@@ -30,11 +34,11 @@ export function showSignupForm() {
 	signup_form.style.display = "block"
 }
 
-export function validateLoginCredentials(creds) {
+function validateLoginCredentials(creds) {
 	return creds.username != "" && creds.password != "";
 }
 
-export function tryLogin() {
+function tryLogin() {
 	const myForm = login_form;
 	const formData = new FormData(myForm);
 
@@ -73,7 +77,7 @@ export function tryLogin() {
 	*/
 }
 
-export function trySignup() {
+function trySignup() {
 	const myForm = signup_form;
 	const formData = new FormData(myForm);
 
