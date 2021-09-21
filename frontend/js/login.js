@@ -1,13 +1,7 @@
 import API from './api.js';
 
-const option_login_button = document.getElementById("option-button-login");
-const option_signup_button = document.getElementById("option-button-signup");
 
-option_login_button.addEventListener("click", showLoginForm);
-option_signup_button.addEventListener("click", showSignupForm);
-
-const login_form  = document.getElementById("login-form");
-const signup_form  = document.getElementById("signup-form");
+/* Methods */
 
 function showLoginForm() {
 	option_login_button.classList.remove('disabled');
@@ -67,7 +61,24 @@ function trySignup() {
 	}
 }
 
-// Main
+/* Main */
+const option_login_button = document.getElementById("option-button-login");
+const option_signup_button = document.getElementById("option-button-signup");
+
+option_login_button.addEventListener("click", showLoginForm);
+option_signup_button.addEventListener("click", showSignupForm);
+////////////////////////////////////////////////////////////
+
+const login-button = document.getElementById("login-button");
+const signup-button = document.getElementById("login-button");
+
+login-button.addEventListener("click", tryLogin);
+login-button.addEventListener("click", trySignup);
+
+////////////////////////////////////////////////////////////
+const login_form  = document.getElementById("login-form");
+const signup_form  = document.getElementById("signup-form");
+
 console.log("script loaded");
 showLoginForm();
 
