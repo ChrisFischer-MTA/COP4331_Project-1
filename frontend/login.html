@@ -28,10 +28,20 @@
 		  <a class="forgot" onclick="tryGetPasswordHint()">Forgot password</a>
 	  </div>
 
-	  <button class="btn"class="btn"type="button" >Login</button>
+	  <button class="btn"class="btn"type="button" id="login-button">Login</button>
 	</form>
 
 	<form id="signup-form" style="display: none;">
+	  <div class="button-bundle">
+		  <label>First Name</label>
+		  <input type="text" name="firstname">
+		  <br>
+	  </div>
+	  <div class="button-bundle">
+		  <label>Last Name</label>
+		  <input type="text" name="lastname">
+		  <br>
+	  </div>
 	  <div class="button-bundle">
 		  <label for="signup-username">Username:</label>
 		  <input type="text" id="signup-username" name="username">
@@ -50,7 +60,7 @@
 		  <br>
 	  </div>
 
-	  <button class="btn"type="button" >Signup</button>
+	  <button class="btn" type="button" id="signup-button">Signup</button>
 	</form>
 	  <!--<img src="./public/undraw_Sign_in_re_o58h.png" alt="undraw image"> -->
   </body>
