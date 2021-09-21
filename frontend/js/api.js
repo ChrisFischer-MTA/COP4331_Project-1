@@ -167,7 +167,7 @@ export default class API {
     let id = this.userId;
 
     let request = {
-      ContactIds: contactIds,
+      ID: contactIds,
     };
 
     let response = API.jsonPost('deleteContact', request);
