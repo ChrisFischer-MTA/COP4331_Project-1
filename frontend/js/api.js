@@ -187,7 +187,7 @@ export default class API {
   async search(text) {
     let request = {
       sub: text,
-      UserID: userId,
+      UserID: this.userId,
     };
 
     let response = API.jsonPost('search', request);
