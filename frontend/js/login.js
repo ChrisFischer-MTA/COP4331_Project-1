@@ -36,6 +36,7 @@ function validateLoginCredentials(creds) {
 }
 
 function tryLogin() {
+	alert('hello');
 	const myForm = login_form;
 	const formData = new FormData(myForm);
 
@@ -50,6 +51,7 @@ function tryLogin() {
 }
 
 function trySignup() {
+	alert('hello from signup');
 	const myForm = signup_form;
 	const formData = new FormData(myForm);
 
@@ -57,8 +59,8 @@ function trySignup() {
 	formData.forEach((key, value) =>  {
 		object[key] = value;
 	});
-	console.log(object);
 
+	console.log(object);
 
 	if (validateLoginCredentials(object)) {
 		API.Register(object['firstname'], object['lastname'],object['username'], object['password'])
@@ -66,5 +68,6 @@ function trySignup() {
 }
 
 // Main
+console.log("script loaded");
 showLoginForm();
 
