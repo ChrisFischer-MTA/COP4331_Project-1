@@ -1,33 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&display=swap');
 
 .bg-purple { background-color: #6f42c1; }
 .bg-blue { background-color: #0000FF; }
 
-* {
-  font: 14px black;
-  font-family: 'Kaisei HarunoUmi';
+a {
+	font-family: 'Bonheur Royale', cursive;
+	color: var(--font-color);
 }
 
-body, html, main {
-  height: 100vh;
-  overflow: hidden;
-  /* display: flex; */
-}
-
-/* main { */
-/*   display: flex; */
-/*   flex-wrap: nowrap; */
-/*   height: 100vh; */
-/*   height: -webkit-fill-available; */
-/*   max-height: 100vh; */
-/*   overflow-x: auto; */
-/*   overflow-y: hidden; */
-/* } */
-
-/* https://stackoverflow.com/questions/29038596/bootstrap-fixed-header-and-footer-with-scrolling-body-content-area-in-fluid-cont */
-/* html body { */
-/*   overflow: hidden; */
-/* } */
 html body .container-fluid.body-content {
   position: absolute;
   /* top: 50px; */

@@ -40,7 +40,7 @@ function tryLogin() {
 	});
 	console.log(object);
 	if (validateLoginCredentials(object)) {
-		API.login(object['username'], object['password'])
+		API.login(object['username'], object['password']).then((res) =>{console.log(res)});
 	}
 }
 
@@ -57,7 +57,7 @@ function trySignup() {
 	console.log(object);
 
 	if (validateLoginCredentials(object)) {
-		API.Register(object['firstname'], object['lastname'],object['username'], object['password'])
+		API.register(object['firstname'], object['lastname'],object['username'], object['password']).then((res) =>{console.log(res)});
 	}
 }
 
