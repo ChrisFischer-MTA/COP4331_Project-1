@@ -31,7 +31,6 @@ function validateLoginCredentials(creds) {
 
 function passwordsEqual(password, confirmedPassword) {
 	return password == confirmedPassword;
-
 }
 
 function tryLogin() {
@@ -49,7 +48,7 @@ function tryLogin() {
 		API.login(object['username'], object['password'])
 		.then((res) => {
 			console.log("Logged in with " + res);
-			window.location.replace(`https://webapp.thegentlemengaming.com/frontend/manager.html?id=${res['userID']}`);
+			window.location.replace(`https://webapp.thegentlemengaming.com/frontend/manager.html?id=${res.userId}`);
 		})
 		.catch((err) => {console.log(err)});
 	}
@@ -93,6 +92,6 @@ signup_button.addEventListener("click", trySignup);
 const login_form  = document.getElementById("login-form");
 const signup_form  = document.getElementById("signup-form");
 
-console.log("script loaded");
+console.log("The script has been loaded.");
 showLoginForm();
 
