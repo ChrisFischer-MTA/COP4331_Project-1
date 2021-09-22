@@ -217,7 +217,7 @@ export default class API {
         let contacts = [];
 
         for (let i = 0; i < data.numIds; i++) {
-          contacts = new Contact(data.FirstName[i], data.LastName[i], data.ID[i]);
+          contacts.push(new Contact(data.FirstName[i], data.LastName[i], data.ID[i]));
         }
 
         return Promise.resolve(contacts);
