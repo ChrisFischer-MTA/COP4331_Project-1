@@ -3,17 +3,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Bonheur+Royale&display=swap');
 
 :root {
-    --background-color: white;
-    --accent-color: #c0c5ce;
-    --accent-color-two: #1b2b34;
+    --background-color: #011936FF;
+    --accent-color: #ED254EFF;
+    --accent-color-two: #F9DC5CFF;
 
     --button-color: #6699cc;
     --delete-button-color: #EC5f67;
     --delete-button-hglt-color: #d16d92;
-    --button-hglt-color: #62b3b2;
+    --button-hglt-color: #F9DC5CFF;
 
-    --font-color: #282c34;
-    --font-accent-color: white;
+    --font-color: #011936FF;
+    --font-accent-color: #F4FFFDFF;
     --font-size: 1.2em;
 }
 
@@ -31,7 +31,7 @@ button:hover, button:active {
     background-color: var(--button-hglt-color);
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.09);
     transition-duration: 0.6s;
-    color: white;
+    color: var(--font-accent-color);
 }
 
 label {
@@ -39,6 +39,7 @@ label {
     text-align: left;
     margin-bottom: 0;
     padding-bottom: 0;
+	color: var(--font-accent-color);
 }
 
 h1 {

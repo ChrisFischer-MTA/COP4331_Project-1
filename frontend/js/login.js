@@ -5,7 +5,7 @@ import API from './api.js';
 
 function showLoginForm() {
 	option_login_button.classList.remove('disabled');
-	option_login_button.className += " active";
+	option_login_button.className += " selected";
 
 	option_signup_button.className += " disabled";
 
@@ -16,7 +16,7 @@ function showLoginForm() {
 
 function showSignupForm() {
 	option_signup_button.classList.remove('disabled');
-	option_signup_button.className += " active";
+	option_signup_button.className += " selected";
 
 	option_login_button.className += " disabled";
 
