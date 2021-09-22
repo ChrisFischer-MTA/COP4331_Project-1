@@ -7,6 +7,7 @@ import {createTimedAlert, dismissAllAlerts} from './alert.js';
 const timeout = 5000;
 const alertPositionElement = parent=document.getElementById('alert-position');
 let createErrorAlert = (message) => createTimedAlert('danger', message, timeout, alertPositionElement);
+let createInfoAlert = (message) => createTimedAlert('info', message, timeout, alertPositionElement);
 let dismissAlerts = () => dismissAllAlerts(alertPositionElement);
 
 // TODO: get the id from the URL "URL?id=THE_ID" using URLSearchParams and call "new API(id)"
@@ -458,8 +459,12 @@ const actions = {
 
   search(context, searchText) {
     api.search(searchText).then(
-      (results) => context.commit('updateContactList', {newElements: results}),
+      (results) => {
+        dismissAlerts();
+        context.commit('updateContactList', {newElements: results})
+      },
       (error) => {
+        dismissAlerts();
         createErrorAlert(`No results.`);
         context.commit('updateContactList', {newElements: []});
       }
@@ -555,12 +560,18 @@ createContactBtnElement.addEventListener('click', (event) => {
   }
 });
 
-searchBtnElement.addEventListener('click', () => {
+function doSearch() {
+  dismissAlerts();
+  createInfoAlert('Searching...')
   store.dispatch('search', searchInputElement.value);
+} 
+
+searchBtnElement.addEventListener('click', () => {
+  doSearch();
 });
 
 searchInputElement.addEventListener('keypress', () => {
-  store.dispatch('search', searchInputElement.value);
+  doSearch();
 });
 
 const contactList = new ContactList(store, listElement, 'manager');
