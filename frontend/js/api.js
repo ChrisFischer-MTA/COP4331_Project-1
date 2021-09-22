@@ -6,11 +6,13 @@ export default class API {
   }
 
   static async jsonPost(endpoint, req) {
+    console.log('-------- Start API --------')
     const url = 'webapp.thegentlemengaming.com/LAMPAPI';
     const reqUrl = `https://${url}/${endpoint}.php`;
     const reqJson = JSON.stringify(req);
     console.log(`Sending request to "${reqUrl}": ${reqJson}`);
-    console.log(`From request object: ${req}`);
+    console.log(`JSON generated from request object:`);
+    console.log(req);
 
     let response = await fetch(reqUrl, {
       method: 'POST',
@@ -23,9 +25,11 @@ export default class API {
       body: reqJson,
     });
 
+    console.log('Response:')
     console.log(response);
     let responseTextPromise = response.text().then((string) => string.trim());
     console.log(responseTextPromise);
+    console.log('-------- End API --------')
     return responseTextPromise.then((string) => JSON.parse(string));
   }
     
