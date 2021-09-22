@@ -29,8 +29,11 @@ function validateLoginCredentials(creds) {
 	return creds.username != "" && creds.password != "";
 }
 
+function passwordsEqual(password, confirmedPassword) {
+	return password == confirmedPassword;
+}
+
 function tryLogin() {
-	alert('hello');
 	const myForm = login_form;
 	const formData = new FormData(myForm);
 
@@ -38,26 +41,36 @@ function tryLogin() {
 	formData.forEach((value, key) =>  {
 		object[key] = value;
 	});
-	console.log(object);
+
+	console.log("Login object " + object);
+
 	if (validateLoginCredentials(object)) {
-		API.login(object['username'], object['password']).then((res) =>{console.log(res)});
+		API.login(object['username'], object['password'])
+		.then((res) => {
+			console.log("Logged in with " + res);
+			window.location.replace(`https://webapp.thegentlemengaming.com/frontend/manager.html?id=${res.userId}`);
+		})
+		.catch((err) => {console.log(err)});
 	}
 }
 
 function trySignup() {
-	alert('hello from signup');
 	const myForm = signup_form;
 	const formData = new FormData(myForm);
 
 	let object  = {};
-	formData.forEach((key, value) =>  {
+	formData.forEach((value, key) =>  {
 		object[key] = value;
 	});
 
-	console.log(object);
+	console.log("Signup object: " + object);
 
-	if (validateLoginCredentials(object)) {
-		API.register(object['firstname'], object['lastname'],object['username'], object['password']).then((res) =>{console.log("The account was created\n" + res)});
+	if (passwordsEqual(object['password'], object['confirmedPassword'])) {
+		if (validateLoginCredentials(object)) {
+			API.register(object['firstname'], object['lastname'],object['username'], object['password'])
+			.then((res) =>{console.log("The account was created\n" + res)})
+			.catch((err) => {console.log("Failed " + err)});
+		}
 	}
 }
 
@@ -79,6 +92,6 @@ signup_button.addEventListener("click", trySignup);
 const login_form  = document.getElementById("login-form");
 const signup_form  = document.getElementById("signup-form");
 
-console.log("script loaded");
+console.log("The script has been loaded.");
 showLoginForm();
 
