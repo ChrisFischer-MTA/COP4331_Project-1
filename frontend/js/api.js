@@ -28,6 +28,25 @@ export default class API {
     return responseTextPromise.then((string) => JSON.parse(string));
   }
     
+  static async forgotPassword(username) {
+    let request = {
+      login: username, 
+    };
+
+    let response = jsonPost('forgot', request);
+
+    return response.then(
+      (data) => {
+        if (!data.hasOwnProperty('error')) {
+          return Promise.resolve(data.Hint);
+        }
+        else {
+          return Promise.reject('Username not found!');
+        }
+      }
+    )
+  }
+
   static async login(username, password) {
     let request = {
       login: username,
@@ -194,11 +213,11 @@ export default class API {
 
     return response.then(
     (data) => {
-      if (data.error == '') {
+      if (!data.hasOwnProperty('error')) {
         let contacts = [];
 
-        for (let result of data.searchResults) {
-          contacts = new Contact(result.firstName, result.lastName, id=result.id);
+        for (let i = 0; i < data.numIds; i++) {
+          contacts = new Contact(data.FirstName[i], data.LastName[i], data.ID[i]);
         }
 
         return Promise.resolve(contacts);
@@ -208,5 +227,6 @@ export default class API {
       }
     });
   }
+
 }
 
