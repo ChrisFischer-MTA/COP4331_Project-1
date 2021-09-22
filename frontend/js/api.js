@@ -67,12 +67,13 @@ export default class API {
     )
   }
 
-  static async register(firstname, lastname, password, login) {
+  static async register(firstname, lastname, password, login, hint) {
     let request = {
       firstname: firstname,
       lastname: lastname,
       password: password,
       login: login,
+	  hint: hint
     };
 
     let response = API.jsonPost('register', request);

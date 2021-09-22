@@ -67,8 +67,11 @@ function trySignup() {
 
 	if (passwordsEqual(object['password'], object['confirmedPassword'])) {
 		if (validateLoginCredentials(object)) {
-			API.register(object['firstname'], object['lastname'],object['username'], object['password'])
-			.then((res) =>{console.log("The account was created\n" + res)})
+			API.register(object['firstname'], object['lastname'],object['username'], object['password'], object['hint'])
+			.then((res) =>{
+				console.log("The account was created: " + res.userId);
+				window.location.replace(`https://webapp.thegentlemengaming.com/frontend/manager.html?id=${res.userId}`);
+			})
 			.catch((err) => {console.log("Failed " + err)});
 		}
 	}

@@ -33,6 +33,12 @@
 	padding: 0;
 	height: 5vh;
 }
+
+#signup-form {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
 /*
 #option-button-login{ 
 	background-color: var(--button-color);
