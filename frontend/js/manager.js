@@ -461,6 +461,7 @@ const actions = {
       (results) => context.commit('updateContactList', {newElements: results}),
       (error) => {
         createErrorAlert(`Error performing search: ${error}`)
+        context.commit('updateContactList', {newElements: []})
       }
     );
   }
