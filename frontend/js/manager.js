@@ -562,7 +562,7 @@ createContactBtnElement.addEventListener('click', (event) => {
 
 function doSearch() {
   dismissAlerts();
-  createInfoAlert('Searching...')
+  // createInfoAlert('Searching...')
   store.dispatch('search', searchInputElement.value);
 } 
 
@@ -570,7 +570,7 @@ searchBtnElement.addEventListener('click', () => {
   doSearch();
 });
 
-searchInputElement.addEventListener('keypress', () => {
+searchInputElement.addEventListener('keyup', () => {
   doSearch();
 });
 
