@@ -107,8 +107,8 @@ export default class API {
     let response = API.jsonPost('newContact', request);
     return response.then(
       (data) => {
-        if (data.error == '') {
-          return Promise.resolve(data.contactId);
+        if (!data.hasOwnProperty('error')) {
+          return Promise.resolve(data.ID);
         } 
         else {
           return Promise.reject(data.error);
