@@ -6,6 +6,8 @@ export default class API {
   }
 
   static async jsonPost(endpoint, req) {
+    API.defaultVerify(req);
+
     console.log('-------- Start API --------')
     const url = 'webapp.thegentlemengaming.com/LAMPAPI';
     const reqUrl = `https://${url}/${endpoint}.php`;
@@ -31,6 +33,14 @@ export default class API {
     console.log(responseTextPromise);
     console.log('-------- End API --------')
     return responseTextPromise.then((string) => JSON.parse(string));
+  }
+
+  static defaultVerify(obj) {
+    for (const [key, value] of Object.entries(obj)) {
+      if (typeof value === 'undefined') {
+        throw `Undefined key:value for ${key}`;
+      }
+    }
   }
     
   static async forgotPassword(username) {
