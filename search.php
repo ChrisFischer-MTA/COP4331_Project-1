@@ -2,7 +2,7 @@
   mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
   $inputData = getRequestInfo();
   $substring = $inputData["sub"];
-  $namesArray = [];
+  $userID = $inputData["UserID"];
 
   $conn = new mysqli("localhost", "TheTester", "WeLoveCOP4331", "SmallProject");
 
@@ -12,38 +12,42 @@
   }
   else
   {
-    $result = mysqli_query($conn, "SELECT FirstName, LastName, ID FROM Contact WHERE FirstName LIKE '%$substring%' OR LastName LIKE '%$substring%'");
+    $result = mysqli_query($conn, "SELECT FirstName, LastName, ID FROM Contact
+      WHERE (FirstName LIKE '%$substring%' AND UserID = $userID)
+      OR (LastName LIKE '%$substring%' AND UserID = $userID)");
     $found = False;
 
     # Declare three arrays.
-    $arrayVwV = array();
-    $arrayVwV['FirstName'] = array();
-    $arrayVwV['LastName'] = array();
-    $arrayVwV['ID'] = array();
+    $arrV = array();
+    $arrV['FirstName'] = array();
+    $arrV['LastName'] = array();
+    $arrV['ID'] = array();
 
     # Current number of members of the array.
     $currNum = 0;
 
     while($row = $result->fetch_array())
     {
-      $currNum = array_push($arrayVwV['FirstName'], $row['FirstName']);
-      array_push($arrayVwV['LastName'], $row['LastName']);
-      array_push($arrayVwV['ID'], $row['ID']);
+      $currNum = array_push($arrV['FirstName'], $row['FirstName']);
+      array_push($arrV['LastName'], $row['LastName']);
+      array_push($arrV['ID'], $row['ID']);
       $found = True;
 
     }
-    $arrayVwV['OhSoMuchID'] = $currNum;
+    $arrV['numIds'] = $currNum;
+    $conn->close();
 
-    returnWithInfo($arrayVwV);
-
-    if(!$found)
+    if($found)
     {
-             return FailwithReason("User name not found");
+      return returnWithInfo($arrV);
     }
 
-
-        $conn->close();
+    else
+    {
+      return FailwithReason("User name not found");
     }
+
+  }
 
     function getRequestInfo()
     {
@@ -62,9 +66,9 @@
         sendResultInfoAsJson( $retValue );
     }
 
-    function returnWithInfo($arrayVwV)
+    function returnWithInfo($arrV)
     {
-        $retValue = json_encode($arrayVwV);
+        $retValue = json_encode($arrV);
         sendResultInfoAsJson( $retValue );
     }
 ?>
