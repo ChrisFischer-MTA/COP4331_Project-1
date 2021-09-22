@@ -57,7 +57,7 @@ function trySignup() {
 	console.log(object);
 
 	if (validateLoginCredentials(object)) {
-		API.register(object['firstname'], object['lastname'],object['username'], object['password']).then((res) =>{console.log(res)});
+		API.register(object['firstname'], object['lastname'],object['username'], object['password']).then((res) =>{console.log("The account was created\n" + res)});
 	}
 }
 

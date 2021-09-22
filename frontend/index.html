@@ -1,12 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="stylesheet" href="./styles/login.css">
   <head>
-    <meta http-equiv="Refresh" content="0; url='login.html'" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Loading...</title>
+    <title>GG - Login Page</title>
   </head>
   <body>
-  	<h1>Loading...</h1>
+    <header>
+      <h1>Gentleman Gaming Contacts</h1> 
+    </header>
+	  <div id="option-buttons">
+		  <button class="btn btn-large btn-block" id="option-button-login" type="button">Login</button>
+		  <button class="btn btn-large btn-block"  id="option-button-signup" type="button">Signup</button>
+	  </div>
+    <div id="login-signup">
+      <form action="/public"id="login-form">
+	  <div class="button-bundle">
+		  <label for="login-username">Username:</label>
+		  <input type="text" id="login-username" name="username">
+	  </div>
+
+	  <div class="button-bundle">
+		  <label for="login-password">Password:</label>
+		  <input type="password" id="login-password" name="password">
+		  <a class="forgot" onclick="tryGetPasswordHint()">Forgot password</a>
+	  </div>
+
+	  <button class="btn"class="btn"type="button" id="login-button">Login</button>
+	</form>
+
+	<form id="signup-form" style="display: none;">
+	  <div class="button-bundle">
+		  <label>First Name</label>
+		  <input type="text" name="firstname">
+		  <br>
+	  </div>
+	  <div class="button-bundle">
+		  <label>Last Name</label>
+		  <input type="text" name="lastname">
+		  <br>
+	  </div>
+	  <div class="button-bundle">
+		  <label for="signup-username">Username:</label>
+		  <input type="text" id="signup-username" name="username">
+		  <br>
+	  </div>
+
+	  <div class="button-bundle">
+		  <label for="signup-password">Password:</label>
+		  <input type="password" id="signup-password" name="password">
+		  <br>
+	  </div>
+
+	  <div class="button-bundle">
+		  <label for="signup-confirm-password">Confirm Password:</label>
+		  <input type="password" id="signup-confirm-password" name="confirmedPassword">
+		  <br>
+	  </div>
+
+	  <button class="btn" type="button" id="signup-button">Signup</button>
+	</form>
+	  <!--<img src="./public/undraw_Sign_in_re_o58h.png" alt="undraw image"> -->
   </body>
+  <script type="module" src="js/login.js"></script>
 </html>

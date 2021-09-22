@@ -48,7 +48,7 @@ export default class API {
     )
   }
 
-  async register(firstname, lastname, password, login) {
+  static async register(firstname, lastname, password, login) {
     let request = {
       firstname: firstname,
       lastname: lastname,
@@ -208,5 +208,6 @@ export default class API {
       }
     });
   }
+}
 }
 
