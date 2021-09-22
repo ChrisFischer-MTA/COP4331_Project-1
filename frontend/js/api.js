@@ -10,6 +10,7 @@ export default class API {
     const reqUrl = `https://${url}/${endpoint}.php`;
     const reqJson = JSON.stringify(req);
     console.log(`Sending request to "${reqUrl}": ${reqJson}`);
+    console.log(`From request object: ${req}`);
 
     let response = await fetch(reqUrl, {
       method: 'POST',
@@ -73,7 +74,7 @@ export default class API {
       lastname: lastname,
       password: password,
       login: login,
-	  hint: hint
+      PasswordHint: hint
     };
 
     let response = API.jsonPost('register', request);
