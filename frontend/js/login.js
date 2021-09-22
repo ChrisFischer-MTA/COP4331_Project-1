@@ -1,4 +1,5 @@
 import API from './api.js';
+import {createTimedAlert, dismissAllAlerts} from './alert.js';
 
 
 /* Methods */
