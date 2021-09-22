@@ -209,5 +209,4 @@ export default class API {
     });
   }
 }
-}
 
