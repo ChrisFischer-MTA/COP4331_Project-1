@@ -41,7 +41,7 @@ export default class API {
           return Promise.resolve(data.Hint);
         }
         else {
-          return Promise.reject(data.error);
+          return Promise.reject('Username not found!');
         }
       }
     )
