@@ -27,7 +27,7 @@ function showSignupForm() {
 }
 
 function validateLoginCredentials(creds) {
-	return creds.username != "" && creds.password != "";
+	return creds.login != "" && creds.password != "";
 }
 
 function passwordsEqual(password, confirmedPassword) {
@@ -46,7 +46,7 @@ function tryLogin() {
 	console.log("Login object " + object);
 
 	if (validateLoginCredentials(object)) {
-		API.login(object['username'], object['password'])
+		API.login(object['login'], object['password'])
 		.then((res) => {
 			console.log("Logged in with " + res);
 			window.location.replace(`https://webapp.thegentlemengaming.com/frontend/manager.html?id=${res.userId}`);
@@ -68,7 +68,7 @@ function trySignup() {
 
 	if (passwordsEqual(object['password'], object['confirmedPassword'])) {
 		if (validateLoginCredentials(object)) {
-			API.register(object['firstname'], object['lastname'],object['username'], object['password'], object['hint'])
+			API.register(object['firstname'], object['lastname'], object['password'], object[object['login'], object['hint'])
 			.then((res) =>{
 				console.log("The account was created: " + res.userId);
 				window.location.replace(`https://webapp.thegentlemengaming.com/frontend/manager.html?id=${res.userId}`);
