@@ -1,4 +1,4 @@
-// import Contact from './contact.js';
+import Contact from './contact.js';
 
 export default class API {
   constructor(userId) {
@@ -108,8 +108,8 @@ export default class API {
     let response = API.jsonPost('newContact', request);
     return response.then(
       (data) => {
-        if (data.error == '') {
-          return Promise.resolve(data.contactId);
+        if (!data.hasOwnProperty('error')) {
+          return Promise.resolve(data.ID);
         } 
         else {
           return Promise.reject(data.error);
@@ -218,7 +218,7 @@ export default class API {
         let contacts = [];
 
         for (let i = 0; i < data.numIds; i++) {
-          contacts = new Contact(data.FirstName[i], data.LastName[i], data.ID[i]);
+          contacts.push(new Contact(data.FirstName[i], data.LastName[i], data.ID[i]));
         }
 
         return Promise.resolve(contacts);

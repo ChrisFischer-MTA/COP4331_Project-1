@@ -7,6 +7,7 @@ import {createTimedAlert, dismissAllAlerts} from './alert.js';
 const timeout = 5000;
 const alertPositionElement = parent=document.getElementById('alert-position');
 let createErrorAlert = (message) => createTimedAlert('danger', message, timeout, alertPositionElement);
+let createInfoAlert = (message) => createTimedAlert('info', message, timeout, alertPositionElement);
 let dismissAlerts = () => dismissAllAlerts(alertPositionElement);
 
 // TODO: get the id from the URL "URL?id=THE_ID" using URLSearchParams and call "new API(id)"
@@ -55,12 +56,12 @@ const FORM_STATUS = {
 // TODO: Make compare functions in Contact class instead
 const CONTACT_SORT_FUNCS = {
   passthrough: (list) => list,
-  firstName: (list) => list.sort((a, b)=> a.firstName.localeCompare(b.firstName)),
-  lastName: (list) => list.sort((a, b)=> a.lastName.localeCompare(b.lastName)),
+  firstName: (a, b)=> a.firstName.localeCompare(b.firstName),
+  lastName: (a, b)=> a.lastName.localeCompare(b.lastName),
 };
 
 let toolbarState = {
-  sortFunc: CONTACT_SORT_FUNCS.firstName,
+  sortFunc: CONTACT_SORT_FUNCS.lastName,
 };
 
 let state = {
@@ -76,13 +77,15 @@ class ContactList extends Component {
 
     this.state = {
       elements: [
-        //new Contact('Paul', 'Wood', 7),
-        //new Contact('Ligma', 'Balls', 67),
+        // new Contact('A', 'F', 7),
+        // new Contact('Paul', 'Wood', 7),
+        // new Contact('Ligma', 'Balls', 67),
       ],
       topIsNewContact: false,
       // NOTE: maybe remove these
       prepend: (c) => this.prepend(c),
       append: (c) => this.append(c),
+      sort: (f) => this.sort(f),
     };
 
     store.state[name] = this.state;
@@ -96,6 +99,10 @@ class ContactList extends Component {
     this.state.elements.push(contact);
   }
 
+  sort(func) {
+    this.state.elements.sort(func);
+  }
+
   render() {
     let contacts = store.state.manager.elements;
 
@@ -106,7 +113,6 @@ class ContactList extends Component {
       return;
     }
 
-    store.state.toolbar.sortFunc(contacts);
     let selection = store.state.form.selection;
 
     this.element.innerHTML = `
@@ -399,7 +405,6 @@ const actions = {
       response = api.newContact(contact);
     }
     else {
-      // TODO(Rick): update contact
       context.state.form.saveContact();
       response = api.updateContact(contact);
     }
@@ -454,9 +459,14 @@ const actions = {
 
   search(context, searchText) {
     api.search(searchText).then(
-      (results) => context.commit('setListElements', results),
+      (results) => {
+        dismissAlerts();
+        context.commit('updateContactList', {newElements: results})
+      },
       (error) => {
-        createErrorAlert(`Error performing search: ${error}`)
+        dismissAlerts();
+        createErrorAlert(`No results.`);
+        context.commit('updateContactList', {newElements: []});
       }
     );
   }
@@ -464,13 +474,15 @@ const actions = {
 
 // TODO: fix mutations functions - I hate how it's organized
 const mutations = {
-  setListElements(state, elements) {
-    state.manager.elements = elements;
-
-    return state;
-  },
-
   updateContactList(state, params) {
+    if (params.newElements) {
+      state.manager.elements = params.newElements;
+      state.form.selection = null;
+    }
+
+    state.manager.sort(state.toolbar.sortFunc);
+
+
     if (params.create) {
       state.manager.prepend(params.contact);
     }
@@ -492,6 +504,8 @@ const mutations = {
           break;
         }
       }
+
+      state.form.selection = null;
     }
 
     return state;
@@ -546,12 +560,18 @@ createContactBtnElement.addEventListener('click', (event) => {
   }
 });
 
-searchBtnElement.addEventListener('click', () => {
+function doSearch() {
+  dismissAlerts();
+  // createInfoAlert('Searching...')
   store.dispatch('search', searchInputElement.value);
+} 
+
+searchBtnElement.addEventListener('click', () => {
+  doSearch();
 });
 
-searchInputElement.addEventListener('keypress', () => {
-  store.dispatch('search', searchInputElement.value);
+searchInputElement.addEventListener('keyup', () => {
+  doSearch();
 });
 
 const contactList = new ContactList(store, listElement, 'manager');
