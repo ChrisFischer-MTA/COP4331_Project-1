@@ -76,9 +76,9 @@ class ContactList extends Component {
 
     this.state = {
       elements: [
-        new Contact('A', 'F', 7),
-        new Contact('Paul', 'Wood', 7),
-        new Contact('Ligma', 'Balls', 67),
+        // new Contact('A', 'F', 7),
+        // new Contact('Paul', 'Wood', 7),
+        // new Contact('Ligma', 'Balls', 67),
       ],
       topIsNewContact: false,
       // NOTE: maybe remove these
