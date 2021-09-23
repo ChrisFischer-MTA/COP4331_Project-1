@@ -49,7 +49,7 @@ function tryLogin() {
 	if (validateLoginCredentials(object)) {
 		API.login(object['login'], object['password'])
 		.then((res) => {
-			console.log(createInfoAlert("Signed in", alertPositionElement, timeout);
+			createInfoAlert("Signed in", alertPositionElement, timeout);
 			window.location.replace(`https://webapp.thegentlemengaming.com/frontend/manager.html?id=${res.userId}`);
 		})
 		.catch((err) => {createErrorAlert(err, alertPositionElement, timeout)});
@@ -71,7 +71,7 @@ function trySignup() {
 		if (validateLoginCredentials(object)) {
 			API.register(object['firstname'], object['lastname'], object['password'], object['login'], object['hint'])
 			.then((res) =>{
-				console.log(createInfoAlert("Signed in", alertPositionElement, timeout);
+				createInfoAlert("Signed in", alertPositionElement, timeout);
 				window.location.replace(`https://webapp.thegentlemengaming.com/frontend/manager.html?id=${res.userId}`);
 			})
 			.catch((err) => {createErrorAlert(err, alertPositionElement, timeout)});
