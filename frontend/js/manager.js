@@ -437,7 +437,7 @@ const actions = {
       response = Promise.resolve(69);
     }
     else {
-      response = api.deleteContact([contact.id]);
+      response = api.deleteContact(contact.id);
     }
     
     response.then(
