@@ -2,13 +2,14 @@ import Store from './beedle.js';
 import Component from './component.js';
 import Contact from './contact.js';
 import API from './api.js';
-import {createTimedAlert, dismissAllAlerts} from './alert.js';
+import {createTimedAlert, dismissAllAlerts, createErrorAlert, createInfoAlert, dismissAlerts} from './alert.js';
 
 const timeout = 5000;
 const alertPositionElement = parent=document.getElementById('alert-position');
-let createErrorAlert = (message) => createTimedAlert('danger', message, timeout, alertPositionElement);
-let createInfoAlert = (message) => createTimedAlert('info', message, timeout, alertPositionElement);
-let dismissAlerts = () => dismissAllAlerts(alertPositionElement);
+
+//let createErrorAlert = (message, alertPositionElement, timeout) => createTimedAlert('danger', message, timeout, alertPositionElement);
+//let createInfoAlert = (message, alertPositionElement, timeout) => createTimedAlert('info', message, timeout, alertPositionElement);
+//let dismissAlerts = (alertPositionElement) => dismissAllAlerts(alertPositionElement);
 
 // TODO: get the id from the URL "URL?id=THE_ID" using URLSearchParams and call "new API(id)"
 // Has to be called "api"
@@ -32,7 +33,8 @@ console.log('API:');
 console.log(api);
 
 if (api == null) {
-  document.body.innerHTML = '<p>You are not logged in.</p>';
+  //document.body.innerHTML = '<p>You are not logged in.</p>';
+  window.location.replace("https://webapp.thegentlemangaming.com");
 }
 
 
@@ -134,7 +136,7 @@ class ContactList extends Component {
       li.addEventListener('click', () => {
         if (!store.state.form.canViewOther()) {
           // TODO: show an alert 
-          createErrorAlert('You must your save changes.');
+          createErrorAlert('You must your save changes.', alertPositionElement, timeout);
         }
         else {
           if (this.state.topIsNewContact) {
@@ -363,7 +365,7 @@ const actions = {
 
       (error) => {
         console.log(`Error reading contact! ${error}`);
-        createErrorAlert(`Error reading contact! ${error}`);
+        createErrorAlert(`Error reading contact! ${error}`, alertPositionElement, timeout);
         // TODO: display error alert
       }
     );
@@ -419,7 +421,7 @@ const actions = {
       }, 
       (error) => {
         console.log(`Error saving contact! ${error}`);
-        createErrorAlert(`Error saving contact! ${error}`);
+        createErrorAlert(`Error saving contact! ${error}`, alertPositionElement, timeout);
         // TODO: display error alert
       }
     );
@@ -451,7 +453,7 @@ const actions = {
       }, 
       (error) => {
         console.log(`Error deleting contact! ${error}`);
-        createErrorAlert(`Error deleting contact! ${error}`);
+        createErrorAlert(`Error deleting contact! ${error}`, alertPositionElement, timeout);
         // TODO: display error alert
       }
     );
@@ -465,7 +467,7 @@ const actions = {
       },
       (error) => {
         dismissAlerts();
-        createErrorAlert(`No results.`);
+        createErrorAlert(`No results.`, alertPositionElement, timeout);
         context.commit('updateContactList', {newElements: []});
       }
     );
@@ -556,7 +558,7 @@ createContactBtnElement.addEventListener('click', (event) => {
   else {
     console.log('Cannot view other contact with pending changes!');
     // TODO: Display error popup
-    createErrorAlert('You must save your changes.');
+    createErrorAlert(`You must save your changes.`, alertPositionElement, timeout);
   }
 });
 

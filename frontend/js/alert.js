@@ -31,3 +31,15 @@ export function createTimedAlert(context, message, time=5000, parent=document.bo
 export function dismissAllAlerts(parent) {
   parent.innerHTML = '';
 }
+
+export function createErrorAlert (message, alertPositionElement, timeout) { 
+	createTimedAlert('danger', message, timeout, alertPositionElement);
+}
+
+export function createInfoAlert (message, alertPositionElement, timeout) { 
+	createTimedAlert('info', message, timeout, alertPositionElement);
+}
+
+export function dismissAlerts (alertPositionElement) { 
+	dismissAllAlerts(alertPositionElement);
+}

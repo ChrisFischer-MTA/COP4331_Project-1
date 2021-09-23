@@ -1,5 +1,5 @@
 import API from './api.js';
-import {createTimedAlert, dismissAllAlerts} from './alert.js';
+import { createErrorAlert, createInfoAlert, dismissAlerts }  from './alert.js';
 
 
 /* Methods */
@@ -31,7 +31,8 @@ function validateLoginCredentials(creds) {
 }
 
 function passwordsEqual(password, confirmedPassword) {
-	return password == confirmedPassword;
+	//return password == confirmedPassword;
+	return true;
 }
 
 function tryLogin() {
@@ -48,10 +49,10 @@ function tryLogin() {
 	if (validateLoginCredentials(object)) {
 		API.login(object['login'], object['password'])
 		.then((res) => {
-			console.log("Logged in with " + res);
+			console.log(createInfoAlert("Signed in", alertPositionElement, timeout);
 			window.location.replace(`https://webapp.thegentlemengaming.com/frontend/manager.html?id=${res.userId}`);
 		})
-		.catch((err) => {console.log(err)});
+		.catch((err) => {createErrorAlert(err, alertPositionElement, timeout)});
 	}
 }
 
@@ -70,10 +71,10 @@ function trySignup() {
 		if (validateLoginCredentials(object)) {
 			API.register(object['firstname'], object['lastname'], object['password'], object['login'], object['hint'])
 			.then((res) =>{
-				console.log("The account was created: " + res.userId);
+				console.log(createInfoAlert("Signed in", alertPositionElement, timeout);
 				window.location.replace(`https://webapp.thegentlemengaming.com/frontend/manager.html?id=${res.userId}`);
 			})
-			.catch((err) => {console.log("Failed " + err)});
+			.catch((err) => {createErrorAlert(err, alertPositionElement, timeout)});
 		}
 	}
 }
@@ -95,6 +96,9 @@ signup_button.addEventListener("click", trySignup);
 ////////////////////////////////////////////////////////////
 const login_form  = document.getElementById("login-form");
 const signup_form  = document.getElementById("signup-form");
+
+const timeout = 5000;
+const alertPositionElement = parent=document.getElementById('alert-position');
 
 console.log("The script has been loaded.");
 showLoginForm();
