@@ -12,64 +12,86 @@
     <header>
       <h1>Karen's Contact (Ur) Manager</h1> 
     </header>
-	  <div id="option-buttons">
-		  <button class="btn btn-block" id="option-button-login" type="button">Login</button>
-		  <button class="btn btn-block" id="option-button-signup" type="button">Signup</button>
-	  </div>
-    <div id="login-signup">
-      <form action="/public"id="login-form">
-	  <div class="button-bundle">
-		  <label for="login-username">Username:</label>
-		  <input type="text" id="login-username" name="login">
-	  </div>
 
-	  <div class="button-bundle">
-		  <label for="login-password">Password:</label>
-		  <input type="password" id="login-password" name="password">
-		  <a class="forgot" onclick="tryGetPasswordHint()">Forgot password</a>
-	  </div>
+    <div id="vanta-canvas"></div>
 
-	  <button class="btn" type="button" id="login-button">Login</button>
-	</form>
+    <main class="container d-flex justify-content-center kcum-main  align-items-center">
+      <div>
+      <div id="option-buttons" class="row px-4">
+        <button class="btn btn-block col" id="option-button-login" type="button">Login</button>
+        <button class="btn btn-block col" id="option-button-signup" type="button">Signup</button>
+      </div>
 
-	<form id="signup-form" style="display: none;">
-	  <div class="button-bundle">
-		  <label>First Name</label>
-		  <input type="text" name="firstname">
-		  <br>
-	  </div>
-	  <div class="button-bundle">
-		  <label>Last Name</label>
-		  <input type="text" name="lastname">
-		  <br>
-	  </div>
-	  <div class="button-bundle">
-		  <label for="signup-username">Username:</label>
-		  <input type="text" id="signup-username" name="login">
-		  <br>
-	  </div>
+      <div id="login-signup" class="row">
+        <form action="/public"id="login-form">
+          <div class="button-bundle">
+            <label for="login-username">Username:</label>
+            <input type="text" id="login-username" name="login">
+          </div>
 
-	  <div class="button-bundle">
-		  <label for="signup-password">Password:</label>
-		  <input type="password" id="signup-password" name="password">
-		  <br>
-	  </div>
+          <div class="button-bundle">
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" name="password">
+            <a class="forgot" onclick="tryGetPasswordHint()">Forgot password</a>
+          </div>
 
-	  <div class="button-bundle">
-		  <label for="signup-confirm-password">Confirm Password:</label>
-		  <input type="password" id="signup-confirm-password" name="confirmedPassword">
-		  <br>
-	  </div>
+          <button class="btn" type="button" id="login-button">Login</button>
+        </form>
 
-	  <div class="button-bundle">
-		  <label for="signup-confirm-password">Password Hint: </label>
-		  <input type="text" id="signup-hint" name="hint">
-		  <br>
-	  </div>
+      <form id="signup-form" >
+        <div class="button-bundle">
+          <label>First Name</label>
+          <input type="text" name="firstname">
+          <br>
+        </div>
+        <div class="button-bundle">
+          <label>Last Name</label>
+          <input type="text" name="lastname">
+          <br>
+        </div>
+        <div class="button-bundle">
+          <label for="signup-username">Username:</label>
+          <input type="text" id="signup-username" name="login">
+          <br>
+        </div>
 
-	  <button class="btn" type="button" id="signup-button">Signup</button>
-	</form>
+        <div class="button-bundle">
+          <label for="signup-password">Password:</label>
+          <input type="password" id="signup-password" name="password">
+          <br>
+        </div>
+
+        <div class="button-bundle">
+          <label for="signup-confirm-password">Confirm Password:</label>
+          <input type="password" id="signup-confirm-password" name="confirmedPassword">
+          <br>
+        </div>
+
+        <div class="button-bundle">
+          <label for="signup-confirm-password">Password Hint: </label>
+          <input type="text" id="signup-hint" name="hint">
+          <br>
+        </div>
+
+        <button class="btn" type="button" id="signup-button">Signup</button>
+      </form>
+      </div>
+    </main>
 	  <!--<img src="./public/undraw_Sign_in_re_o58h.png" alt="undraw image"> -->
   </body>
   <script type="module" src="js/login.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.21/dist/vanta.net.min.js"></script>
+  <script>
+    VANTA.NET({
+      el: "#vanta-canvas",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00
+    })
+</script>
 </html>
