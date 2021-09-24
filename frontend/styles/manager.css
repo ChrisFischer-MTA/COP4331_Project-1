@@ -47,18 +47,6 @@ header {
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 
-
-/* Contact manager alert */
-.cm-alert {
-  z-index: 1000;
-  position: fixed;
-  /* height: 100px; */
-  /* width: 300px; */
-  right: 0;
-  /* display: flex; */
-  justify-content: flex-end;
-}
-
 .divider {
   flex-shrink: 0;
   width: 1rem;

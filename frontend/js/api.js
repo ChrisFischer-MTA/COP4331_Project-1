@@ -88,7 +88,7 @@ export default class API {
       lastname: lastname,
       password: password,
       login: login,
-      PasswordHint: hint
+      hint: hint
     };
 
     let response = API.jsonPost('register', request);

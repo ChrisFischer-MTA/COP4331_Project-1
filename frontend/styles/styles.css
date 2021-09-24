@@ -50,3 +50,14 @@ h1 {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.14),0 17px 50px 0 rgba(0,0,0,0.19);
 	font-family: 'Bonheur Royale', cursive;
 }
+
+/* Contact manager alert */
+.cm-alert {
+  z-index: 1000;
+  position: fixed;
+  /* height: 100px; */
+  /* width: 300px; */
+  right: 0;
+  /* display: flex; */
+  justify-content: flex-end;
+}
