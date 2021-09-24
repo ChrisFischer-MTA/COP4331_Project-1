@@ -95,7 +95,7 @@ export default class API {
     return response.then(
       (data) => {
         if (data.error == '') {
-          return Promise.resolve();
+          return Promise.resolve(new API(data.ID));
         }
         else {
           return Promise.reject(data.error);
