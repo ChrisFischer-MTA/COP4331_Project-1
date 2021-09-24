@@ -52,7 +52,7 @@ function tryLogin() {
 			createInfoAlert("Signed in", alertPositionElement, timeout);
 			window.location.replace(`https://webapp.thegentlemengaming.com/frontend/manager.html?id=${res.userId}`);
 		})
-		.catch((err) => {createErrorAlert(err, alertPositionElement, timeout)});
+		.catch((err) => {createErrorAlert(`Error: ${err}`, alertPositionElement, timeout)});
 	}
 }
 
@@ -74,7 +74,7 @@ function trySignup() {
 				createInfoAlert("Signed in", alertPositionElement, timeout);
 				window.location.replace(`https://webapp.thegentlemengaming.com/frontend/manager.html?id=${res.userId}`);
 			})
-			.catch((err) => {createErrorAlert(err, alertPositionElement, timeout)});
+			.catch((err) => {createErrorAlert(`Error: ${err}`, alertPositionElement, timeout)});
 		}
 	}
 }
