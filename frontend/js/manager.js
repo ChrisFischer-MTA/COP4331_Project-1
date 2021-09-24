@@ -380,7 +380,7 @@ const actions = {
   },
   
   cancelContactEdit(context, _) {
-    dismissAlerts();
+    dismissAlerts(alertPositionElement);
 
     context.commit('updateContactForm', {
       editable: false,
@@ -394,7 +394,7 @@ const actions = {
   },
 
   saveContact(context, _) {
-    dismissAlerts();
+    dismissAlerts(alertPositionElement);
 
     // This is the Contact object to save or create
     let contact = context.state.form.selection;
@@ -428,7 +428,7 @@ const actions = {
   },
 
   deleteContact(context, _) {
-    dismissAlerts();
+    dismissAlerts(alertPositionElement);
 
     let contact = context.state.form.selection;
 
@@ -462,11 +462,11 @@ const actions = {
   search(context, searchText) {
     api.search(searchText).then(
       (results) => {
-        dismissAlerts();
+        dismissAlerts(alertPositionElement);
         context.commit('updateContactList', {newElements: results})
       },
       (error) => {
-        dismissAlerts();
+        dismissAlerts(alertPositionElement);
         createErrorAlert(`No results.`, alertPositionElement, timeout);
         context.commit('updateContactList', {newElements: []});
       }
@@ -563,7 +563,7 @@ createContactBtnElement.addEventListener('click', (event) => {
 });
 
 function doSearch() {
-  dismissAlerts();
+  dismissAlerts(alertPositionElement);
   // createInfoAlert('Searching...')
   store.dispatch('search', searchInputElement.value);
 } 
