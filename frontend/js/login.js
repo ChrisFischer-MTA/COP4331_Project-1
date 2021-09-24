@@ -72,7 +72,7 @@ function trySignup() {
 			API.register(object['firstname'], object['lastname'], object['password'], object['login'], object['hint'])
 			.then((res) =>{
 				createInfoAlert("Signed in", alertPositionElement, timeout);
-				window.location.replace(`https://webapp.thegentlemengaming.com/frontend/manager.html?id=${res.userId}`);
+				window.location.replace(`https://webapp.thegentlemengaming.com/frontend/manager.html?id=${res.ID}`);
 			})
 			.catch((err) => {createErrorAlert(err, alertPositionElement, timeout)});
 		}
