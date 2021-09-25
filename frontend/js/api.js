@@ -270,4 +270,3 @@ export default class API {
     });
   }
 
-api.readContact(data.ID[i])
