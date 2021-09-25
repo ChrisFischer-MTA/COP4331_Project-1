@@ -8,7 +8,7 @@ a {
 }
 
 html body .container-fluid.body-content {
-  position: absolute;
+  position: relative;
   /* top: 50px; */
   /* bottom: 30px; */
   /* right: 0; */

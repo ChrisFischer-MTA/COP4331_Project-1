@@ -110,7 +110,6 @@ class ContactList extends Component {
 
     if (contacts.length === 0) {
       this.element.innerHTML = `
-        <p>You have no friends.</p>
       `;
       return;
     }
@@ -198,7 +197,11 @@ class ContactForm extends Component {
 
     if (store.state.form.selection == null) {
       this.element.innerHTML = `
-        <p>No contact selected</p>
+        <div class="d-flex col-md-12 align-items-center justify-content-center" >
+        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="#bbbbbb" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+  <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+</svg>
+        </div>
       `;
       return;
     }
@@ -573,9 +576,9 @@ function doSearch() {
   store.dispatch('search', searchInputElement.value);
 } 
 
-searchBtnElement.addEventListener('click', () => {
-  doSearch();
-});
+// searchBtnElement.addEventListener('click', () => {
+//   doSearch();
+// });
 
 searchInputElement.addEventListener('keyup', () => {
   doSearch();
