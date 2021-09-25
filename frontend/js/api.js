@@ -260,7 +260,7 @@ export default class API {
 		let contact;
 
         for (let i = 0; i < data.numIds; i++) {
-		  contact = await readContact(data.ID[i]);
+		  contact = readContact(parseInt(data.ID[i]));
           contacts.push(contact);
         }
 
