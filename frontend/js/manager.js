@@ -74,15 +74,16 @@ let state = {
 
 
 class ContactList extends Component {
-  constructor(store, element, name) {
-    super({store, element});
+  constructor(store, element, elements, name) {
+    super({store, elements});
 
     this.state = {
-      elements: [
+      elements: elements, 
+	  //[
         // new Contact('A', 'F', 7),
         // new Contact('Paul', 'Wood', 7),
         // new Contact('Ligma', 'Balls', 67),
-      ],
+      //],
       topIsNewContact: false,
       // NOTE: maybe remove these
       prepend: (c) => this.prepend(c),
@@ -576,8 +577,16 @@ searchInputElement.addEventListener('keyup', () => {
   doSearch();
 });
 
-const contactList = new ContactList(store, listElement, 'manager');
-const contactForm = new ContactForm(store, formElement, 'form');
+// TODO: get all of the  contacts
+objects = await api.getAll();
+elements = [];
+
+for (obj in objects) {
+	elements.push(Contact.fromObj(obj));
+}
+
+const contactList = new ContactList(store, listElement, elements, 'manager');
+const contactForm = new ContactForm(store, formElement, elements, 'form');
 
 contactList.render();
 contactForm.render();

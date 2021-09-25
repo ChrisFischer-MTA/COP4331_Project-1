@@ -244,5 +244,30 @@ export default class API {
     });
   }
 
-}
 
+  async getAll() {
+    let request = {
+      sub: "",
+      UserID: this.userId,
+    };
+
+    let response = API.jsonPost('search', request);
+
+    return response.then(
+    (data) => {
+      if (!data.hasOwnProperty('error')) {
+        let contacts = [];
+
+        for (let i = 0; i < data.numIds; i++) {
+          contacts.push(this.readContact(data.ID[i]);
+        }
+
+        return Promise.resolve(contacts);
+      }
+      else {
+        return Promise.reject(data.error);
+      }
+    });
+  }
+
+api.readContact(data.ID[i])
