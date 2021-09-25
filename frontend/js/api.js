@@ -259,7 +259,7 @@ export default class API {
         let contacts = [];
 
         for (let i = 0; i < data.numIds; i++) {
-          contacts.push(this.readContact(data.ID[i]));
+          contacts.push(await this.readContact(data.ID[i]));
         }
 
         return Promise.resolve(contacts);
