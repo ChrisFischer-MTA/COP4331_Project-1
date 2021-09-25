@@ -257,9 +257,11 @@ export default class API {
     (data) => {
       if (!data.hasOwnProperty('error')) {
         let contacts = [];
+		let contact;
 
         for (let i = 0; i < data.numIds; i++) {
-          contacts.push(await this.readContact(data.ID[i]));
+		  contact = await readContact(data.ID[i]);
+          contacts.push(contact);
         }
 
         return Promise.resolve(contacts);
