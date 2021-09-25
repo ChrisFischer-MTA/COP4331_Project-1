@@ -418,6 +418,11 @@ const actions = {
           editable: false,
           saveContact: true,
         });
+
+        // Sort list only if we created a new contact
+        if (context.state.manager.topIsNewContact) {
+          context.commit('updateContactList', {});
+        }
       }, 
       (error) => {
         console.log(`Error saving contact! ${error}`);
