@@ -578,8 +578,8 @@ searchInputElement.addEventListener('keyup', () => {
 });
 
 // TODO: get all of the  contacts
-objects = await api.getAll();
-elements = [];
+const objects = await api.getAll();
+const elements = [];
 
 for (obj in objects) {
 	elements.push(Contact.fromObj(obj));
