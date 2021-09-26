@@ -21,6 +21,10 @@ header {
     /* height: 50px; */
 }
 
+#column {
+  background-color: var(--background-color);
+}
+
 .scrollarea {
   overflow-y: auto;
   display: flex;

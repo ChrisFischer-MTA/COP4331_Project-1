@@ -50,7 +50,7 @@ h1 {
     font-size: 35px;
     color: var(--font-color);
     text-align: center;
-    border: 2.5px solid var(--accent-color);
+    border: 2.5px solid var(--background-color);
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.14),0 17px 50px 0 rgba(0,0,0,0.19);
 	font-family: 'Bonheur Royale', cursive;
 }

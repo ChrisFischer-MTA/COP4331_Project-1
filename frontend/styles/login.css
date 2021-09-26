@@ -31,6 +31,7 @@ body main{
 	display: flex;
 	align-items: center;
 	justify-content: center; 
+	width: 60vw;
 }                                                                                         
 
 
@@ -51,7 +52,7 @@ body main{
 	padding: 0px;
 	border-bottom: 0px;
 	height: 5vh;
-	width: 95vw;
+	width: 60vw;
 }
 
 #signup-form {
@@ -79,7 +80,6 @@ body main{
 	background-color: red;
 	font-size: 100px;
 }
-
 
 /*
 input[type:text] {
