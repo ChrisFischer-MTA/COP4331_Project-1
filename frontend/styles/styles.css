@@ -4,17 +4,17 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;500&display=swap');
 
 :root {
-    --background-color: #011936FF;
-    --accent-color: #ED254EFF;
-    --accent-color-two: #F9DC5CFF;
+    --background-color: #2A2F45;
+    --accent-color: #A6ACCD;
+    --accent-color-two: #C3E88D60;
 
     --button-color: #6699cc;
     --delete-button-color: #EC5f67;
     --delete-button-hglt-color: #d16d92;
-    --button-hglt-color: #F9DC5CFF;
+    --button-hglt-color: #80CBC4;
 
     --font-color: black;
-    --font-accent-color: #F4FFFDFF;
+    --font-accent-color: #676E95;
     --font-size: 1.2em;
 	--main-font: 'IBM Plex Sans', sans-serif;
 }
@@ -33,11 +33,13 @@ button:hover, button:active {
     background-color: var(--button-hglt-color);
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.09);
     transition-duration: 0.6s;
-    color: var(--font-accent-color);
+    color: white;
+	font-weight: 500;
 }
 
 label {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
+	font-weight: 500;
     text-align: left;
     margin-bottom: 0;
     padding-bottom: 0;
@@ -56,6 +58,7 @@ h1 {
 /* Contact manager alert */
 .cm-alert {
 	font-family: var(--main-font);
+	font-weight: 100;
   	z-index: 1000;
   	position: fixed;
   	/* height: 100px; */
