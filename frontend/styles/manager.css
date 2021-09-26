@@ -3,7 +3,7 @@
 .bg-blue { background-color: #0000FF; }
 
 a {
-	font-family: 'Bonheur Royale', cursive;
+	font-family: var(--main-font);
 	color: var(--font-color);
 }
 

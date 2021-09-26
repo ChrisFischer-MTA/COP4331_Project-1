@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swa');
 @import url('https://fonts.googleapis.com/css2?family=Bonheur+Royale&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;500&display=swap');
 
 :root {
     --background-color: #011936FF;
@@ -12,9 +13,10 @@
     --delete-button-hglt-color: #d16d92;
     --button-hglt-color: #F9DC5CFF;
 
-    --font-color: #011936FF;
+    --font-color: black;
     --font-accent-color: #F4FFFDFF;
     --font-size: 1.2em;
+	--main-font: 'IBM Plex Sans', sans-serif;
 }
 
 body {
@@ -53,11 +55,12 @@ h1 {
 
 /* Contact manager alert */
 .cm-alert {
-  z-index: 1000;
-  position: fixed;
-  /* height: 100px; */
-  /* width: 300px; */
-  right: 0;
-  /* display: flex; */
-  justify-content: flex-end;
+	font-family: var(--main-font);
+  	z-index: 1000;
+  	position: fixed;
+  	/* height: 100px; */
+  	/* width: 300px; */
+  	right: 0;
+  	/* display: flex; */
+  	justify-content: flex-end;
 }
