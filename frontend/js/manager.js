@@ -210,15 +210,15 @@ class ContactForm extends Component {
       renderedButtons = `
         <div class="col-md-6 d-flex justify-content-center py-5">
           <button id="cancel-edit-contact-btn" type="button" 
-            class="btn btn-secondary col-12">Cancel</button>
+            class="btn btn-secondary col-12 rounded-0">Cancel</button>
         </div>
         <div class="col-md-6 d-flex justify-content-center py-5">
           <button id="save-contact-btn" type="button" 
-            class="btn btn-primary col-12">Save</button>
+            class="btn btn-primary col-12 rounded-0">Save</button>
         </div>
         <div class="col-md-12 d-flex justify-content-center py-5">
           <button id="delete-contact-btn" type="button" 
-            class="btn btn-danger col-6">Delete</button>
+            class="btn btn-danger col-6 rounded-0">Delete</button>
         </div>
       `;
 
@@ -244,7 +244,7 @@ class ContactForm extends Component {
       renderedButtons = `
         <div class="col-12 d-flex justify-content-center py-5">
           <button id="edit-contact-btn" type="button" 
-            class="btn btn-primary col-6">Edit</button>
+            class="btn btn-primary col-6 rounded-0">Edit</button>
         </div>
       `;
 
