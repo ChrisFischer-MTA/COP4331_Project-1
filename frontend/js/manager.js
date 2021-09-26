@@ -580,7 +580,7 @@ function doSearch() {
 //   doSearch();
 // });
 
-searchInputElement.addEventListener('keyup', () => {
+searchInputElement.addEventListener('input', () => {
   doSearch();
 });
 
