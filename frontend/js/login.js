@@ -86,6 +86,10 @@ function trySignup() {
         alertPositionElement, timeout, '../frontend/public/risitas.jpg');
     }
 	}
+  else {
+    createErrorAlert('Passwords must match!', 
+      alertPositionElement, timeout, '../frontend/public/risitas.jpg');
+  }
 }
 
 /* Main */
