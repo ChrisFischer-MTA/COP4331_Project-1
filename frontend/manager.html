@@ -5,8 +5,6 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
   <!-- Bootstrap CSS & Icons -->
   <link 
     rel="stylesheet" 
@@ -20,7 +18,7 @@
   <link href="./styles/manager.css" rel="stylesheet">
 </head>
 
-<body>
+<body id="vanta-canvas">
 
 <!-- Top bar -->
 <header class="navbar sticky-top  flex-md-nowrap p-1 navbar-expand-lg navbar-light">
@@ -68,5 +66,22 @@
 </script>
 
 <script type="module" src="js/manager.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.21/dist/vanta.net.min.js"></script>
+  <script>
+    VANTA.NET({
+      el: "#vanta-canvas",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0xc792ea,
+      backgroundColor: 0x2A2F45
+    })
+</script>
+
 </body>
 </html>
