@@ -54,6 +54,9 @@ function tryLogin() {
 		})
 		.catch((err) => {createErrorAlert(`Error: ${err}`, alertPositionElement, timeout)});
 	}
+  else {
+    createErrorAlert('No username and password provided!', alertPositionElement, timeout);
+  }
 }
 
 function trySignup() {
@@ -101,5 +104,6 @@ const timeout = 5000;
 const alertPositionElement = parent=document.getElementById('alert-position');
 
 console.log("The script has been loaded.");
+console.log(alertPositionElement);
 showLoginForm();
 
