@@ -8,8 +8,7 @@ const timeout = 3000;
 const alertPositionElement = parent=document.getElementById('alert-position');
 
 //let createErrorAlert = (message, alertPositionElement, timeout) => createTimedAlert('danger', message, timeout, alertPositionElement);
-//let createInfoAlert = (message, alertPositionElement, timeout) => createTimedAlert('info', message, timeout, alertPositionElement);
-//let dismissAlerts = (alertPositionElement) => dismissAllAlerts(alertPositionElement);
+//let createInfoAlert = (message, alertPositionElement, timeout) => createTimedAlert('info', message, timeout, alertPositionElement); //let dismissAlerts = (alertPositionElement) => dismissAllAlerts(alertPositionElement);
 
 // TODO: get the id from the URL "URL?id=THE_ID" using URLSearchParams and call "new API(id)"
 // Has to be called "api"
@@ -210,15 +209,15 @@ class ContactForm extends Component {
       renderedButtons = `
         <div class="col-md-6 d-flex justify-content-center py-5">
           <button id="cancel-edit-contact-btn" type="button" 
-            class="btn btn-secondary col-12 rounded-0 manager-btn">Cancel</button>
+            class="btn col-12 rounded-0 manager-btn">Cancel</button>
         </div>
         <div class="col-md-6 d-flex justify-content-center py-5">
           <button id="save-contact-btn" type="button" 
-            class="btn btn-primary col-12 rounded-0 manager-btn">Save</button>
+            class="btn col-12 rounded-0 manager-btn">Save</button>
         </div>
         <div class="col-md-12 d-flex justify-content-center py-5">
           <button id="delete-contact-btn" type="button" 
-            class="btn btn-danger col-6 rounded-0 manager-btn">Delete</button>
+            class="btn col-6 rounded-0 manager-btn">Delete</button>
         </div>
       `;
 
@@ -244,7 +243,7 @@ class ContactForm extends Component {
       renderedButtons = `
         <div class="col-12 d-flex justify-content-center py-5">
           <button id="edit-contact-btn" type="button" 
-            class="btn btn-primary col-6 rounded-0">Edit</button>
+            class="btn col-6 rounded-0 manager-btn">Edit</button>
         </div>
       `;
 

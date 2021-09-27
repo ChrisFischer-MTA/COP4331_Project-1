@@ -44,10 +44,14 @@ header {
 .manager-btn {
 	color: var(--accent-color);
 	font-size: 1.1rem;
-
 }
 
 .manager-btn:hover {
+	color: white;
+}
+
+.active {
+	background-color: #c792ea;
 	color: white;
 }
 
