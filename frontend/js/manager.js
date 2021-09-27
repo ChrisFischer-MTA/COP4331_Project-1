@@ -4,7 +4,7 @@ import Contact from './contact.js';
 import API from './api.js';
 import {createTimedAlert, dismissAllAlerts, createErrorAlert, createInfoAlert, dismissAlerts} from './alert.js';
 
-const timeout = 5000;
+const timeout = 3000;
 const alertPositionElement = parent=document.getElementById('alert-position');
 
 //let createErrorAlert = (message, alertPositionElement, timeout) => createTimedAlert('danger', message, timeout, alertPositionElement);
@@ -467,15 +467,17 @@ const actions = {
     );
   },
 
-  search(context, searchText) {
-    api.search(searchText).then(
+  search(context, params) {
+    api.search(params.searchText).then(
       (results) => {
         dismissAlerts(alertPositionElement);
         context.commit('updateContactList', {newElements: results})
       },
       (error) => {
         dismissAlerts(alertPositionElement);
-        createErrorAlert(`No results.`, alertPositionElement, timeout);
+        if (params.showAlert) {
+          createErrorAlert(`No results.`, alertPositionElement, timeout);
+        }
         context.commit('updateContactList', {newElements: []});
       }
     );
@@ -570,10 +572,10 @@ createContactBtnElement.addEventListener('click', (event) => {
   }
 });
 
-function doSearch() {
+function doSearch(showAlert) {
   dismissAlerts(alertPositionElement);
   // createInfoAlert('Searching...')
-  store.dispatch('search', searchInputElement.value);
+  store.dispatch('search', {searchText: searchInputElement.value, showAlert});
 } 
 
 // searchBtnElement.addEventListener('click', () => {
@@ -581,7 +583,7 @@ function doSearch() {
 // });
 
 searchInputElement.addEventListener('input', () => {
-  doSearch();
+  doSearch(true);
 });
 
 // TODO: get all of the  contacts
@@ -601,4 +603,7 @@ const contactForm = new ContactForm(store, formElement, 'form');
 contactList.render();
 contactForm.render();
 
-store.dispatch('search', '');
+doSearch(false);
+// store.dispatch('search', '');
+// This is ugly but I don't care
+// dismissAlerts(alertPositionElement);
