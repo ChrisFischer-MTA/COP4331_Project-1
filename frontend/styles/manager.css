@@ -42,12 +42,14 @@ header {
 }
 
 .manager-btn {
-	color: var(--accent-color);
+	border: solid 1px var(--accent-color);
+	background-color: var(--background-color);
+	color: white;
 	font-size: 1.1rem;
 }
 
 .manager-btn:hover {
-	color: white;
+	background-color: var(--accent-color);
 }
 
 .active {
