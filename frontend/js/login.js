@@ -60,6 +60,33 @@ function tryLogin() {
   }
 }
 
+function validateSignup(obj) {
+  let reqFields = [
+    'firstname',
+    'lastname',
+    'password',
+    'login',
+    'password',
+    'confirmedPassword',
+    'hint'
+  ];
+
+  console.log(obj);
+  for (const rf of reqFields) {
+    console.log(rf);
+    console.log(obj[rf]);
+    if(!obj[rf]){
+      return 'All fields are required!';
+    }
+  }
+
+  if (obj.confirmedPassword != obj.password) {
+    return 'Passwords do not match!'
+  }
+
+  return '';
+}
+
 function trySignup() {
 	const myForm = signup_form;
 	const formData = new FormData(myForm);
@@ -72,23 +99,17 @@ function trySignup() {
 	console.log("Signup object: " + object);
 
   dismissAlerts(alertPositionElement);
-	if (passwordsEqual(object['password'], object['confirmedPassword'])) {
-		if (validateLoginCredentials(object)) {
-			API.register(object['firstname'], object['lastname'], object['password'], object['login'], object['hint'])
-			.then((res) =>{
-				createInfoAlert("Signed in", alertPositionElement, timeout);
-				window.location.replace(`https://webapp.thegentlemengaming.com/frontend/manager.html?id=${res.userId}`);
-			})
-			.catch((err) => {createErrorAlert(`Error: ${err}`, alertPositionElement, timeout)});
-		}
-    else {
-      createErrorAlert('You must provide a username <br>and password to make an account!', 
-        alertPositionElement, timeout, '../frontend/public/risitas.jpg');
-    }
+  const signupError = validateSignup(object);
+	if (!signupError) {
+    API.register(object['firstname'], object['lastname'], object['password'], object['login'], object['hint'])
+    .then((res) =>{
+      createInfoAlert("Signed in", alertPositionElement, timeout);
+      window.location.replace(`https://webapp.thegentlemengaming.com/frontend/manager.html?id=${res.userId}`);
+    })
+    .catch((err) => {createErrorAlert(`Error: ${err}`, alertPositionElement, timeout)});
 	}
   else {
-    createErrorAlert('Passwords must match!', 
-      alertPositionElement, timeout, '../frontend/public/risitas.jpg');
+    createErrorAlert(signupError, alertPositionElement, timeout, '../frontend/public/risitas.jpg');
   }
 }
 
