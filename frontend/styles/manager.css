@@ -52,7 +52,7 @@ header {
 	background-color: var(--accent-color);
 }
 
-.active {
+.c-active {
 	background-color: #c792ea;
 	color: white;
 }

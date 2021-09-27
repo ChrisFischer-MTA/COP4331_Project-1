@@ -121,7 +121,7 @@ class ContactList extends Component {
           let liClass = 'list-group-item list-group-item-action';
 
           if (selection != null && selection.id == contact.id) {
-            liClass += ' active';
+            liClass += ' c-active';
           }
           return `
             <li class="${liClass}">${contact.firstName} ${contact.lastName}</li>
