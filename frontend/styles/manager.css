@@ -43,8 +43,9 @@ header {
 }
 
 #contact-manager {
-	font-color: #c792ea;
+	color: #c792ea;
 	font-family: 'Bonheur Royale', cursive;
+	font-size: 1.5rem;
 }
 
 .manager-btn {
