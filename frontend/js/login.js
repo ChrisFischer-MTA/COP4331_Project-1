@@ -82,7 +82,8 @@ function trySignup() {
 			.catch((err) => {createErrorAlert(`Error: ${err}`, alertPositionElement, timeout)});
 		}
     else {
-      createErrorAlert('You must provide a username <br>and password to make an account!', alertPositionElement, timeout, '../public/risitas.jpg');
+      createErrorAlert('You must provide a username <br>and password to make an account!', 
+        alertPositionElement, timeout, '../frontend/public/risitas.jpg');
     }
 	}
 }
