@@ -63,7 +63,7 @@ header {
 
 .divider {
   flex-shrink: 0;
-  width: 1rem;
+  width: 0.35rem;
   height: 100vh;
   background-color: var(--button-hglt-color);
   /* border: solid rgba(0,0,0,0.15); */
