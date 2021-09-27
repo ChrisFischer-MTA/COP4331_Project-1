@@ -18,6 +18,7 @@ html body .container-fluid.body-content {
   overflow-y: auto;
   height: 100%;
 }
+
 header {
     position: relative;
     /* left: 0; */
@@ -39,6 +40,11 @@ header {
 
 #create-contact-btn:hover {
 	color: white;
+}
+
+#contact-manager {
+	font-color: #c792ea;
+	font-family: 'Bonheur Royale', cursive;
 }
 
 .manager-btn {
