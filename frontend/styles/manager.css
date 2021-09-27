@@ -4,16 +4,22 @@ a {
 	color: var(--font-color);
 }
 
+main {
+  max-height: 90vh;
+  column-fill:auto;
+}
+
 html body .container-fluid.body-content {
-  position: relative;
+  position:relative ;
   /* top: 50px; */
   /* bottom: 30px; */
   /* right: 0; */
   /* left: 0; */
   overflow-y: auto;
+  height: 100%;
 }
 header {
-    position: absolute;
+    position: relative;
     /* left: 0; */
     /* right: 0; */
     /* top: 0; */
@@ -64,7 +70,7 @@ header {
 .divider {
   flex-shrink: 0;
   width: 0.35rem;
-  height: 100vh;
+  /* height: 100%; */
   background-color: var(--button-hglt-color);
   /* border: solid rgba(0,0,0,0.15); */
   /* border-width: 1px 0; */
