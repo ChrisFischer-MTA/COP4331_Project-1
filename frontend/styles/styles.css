@@ -59,14 +59,25 @@ h1 {
 .cm-alert {
 	font-family: var(--main-font);
 	font-weight: 100;
-  	z-index: 1000;
-  	position: fixed;
-  	/* height: 100px; */
-  	/* width: 300px; */
-  	right: 0;
-  	/* display: flex; */
-  	justify-content: flex-end;
+  z-index: 1000;
+  position: fixed;
+  /* height: 100px; */
+  /* width: 300px; */
+  right: 0;
+  /* display: flex; */
+  justify-content: flex-end;
 }
+
+.cm-danger-alert {
+  background-color: #F07178;
+  color: #000000;
+}
+
+.cm-danger-alert:hover {
+  background-color: #dc6068;
+}
+
+
 #vanta-canvas {
 	width: 100vw;
 	height: 100vh;
