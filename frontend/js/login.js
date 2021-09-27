@@ -114,7 +114,7 @@ function trySignup() {
 }
 
 function forgotPasswordHandler() {
-  API.forgotPassword(document.getElementById('login-username')).then(
+  API.forgotPassword(document.getElementById('login-username').value).then(
     (hint) => createInfoAlert(hint, alertPositionElement, timeout),
     (errorMsg) => createErrorAlert(errorMsg, alertPositionElement, timeout) 
   );
