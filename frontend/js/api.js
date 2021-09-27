@@ -48,7 +48,7 @@ export default class API {
       login: username, 
     };
 
-    let response = jsonPost('forgot', request);
+    let response = API.jsonPost('forgot', request);
 
     return response.then(
       (data) => {
