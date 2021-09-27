@@ -22,6 +22,16 @@ body main{
   font-weight: 100;
 }
 
+/* David, sorry I didn't even realize there's forgot down below but I'm too lazy to change it lol */
+#forgot-password {
+  color: var(--font-color);
+  font-weight: 400;
+}
+
+#forgot-password:hover {
+  color: var(--purple); 
+}
+
 #login-signup { 
     border: 2.5px solid var(--accent-color);                                              
     padding: 10px;                                                                        

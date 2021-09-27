@@ -13,7 +13,10 @@
     --delete-button-hglt-color: #d16d92;
     --button-hglt-color: #80CBC4;
 
-    --font-color: black;
+    --purple: #C792EA; 
+    --dark-purple: #b480d6;
+
+    --font-color: #717CB4;
     --font-accent-color: #676E95;
     --font-size: 1.2em;
 	--main-font: 'IBM Plex Sans', sans-serif;

@@ -113,6 +113,13 @@ function trySignup() {
   }
 }
 
+function forgotPasswordHandler() {
+  API.forgotPassword(document.getElementById('login-username')).then(
+    (hint) => createInfoAlert(hint, alertPositionElement, timeout),
+    (errorMsg) => createErrorAlert(errorMsg, alertPositionElement, timeout) 
+  );
+}
+
 /* Main */
 const option_login_button = document.getElementById("option-button-login");
 const option_signup_button = document.getElementById("option-button-signup");
@@ -126,6 +133,7 @@ const signup_button = document.getElementById("signup-button");
 
 login_button.addEventListener("click", tryLogin);
 signup_button.addEventListener("click", trySignup);
+document.getElementById('forgot-password').addEventListener('click', forgotPasswordHandler)
 
 ////////////////////////////////////////////////////////////
 const login_form  = document.getElementById("login-form");
