@@ -3,14 +3,16 @@ export function createTimedAlert(
   message,
   time = 5000,
   parent = document.body,
+  imagePath="../frontend/public/karen.jpg"
 ) {
   let alertDiv = document.createElement("div");
   let alertId = `${context}-alert-${Math.random().toString(16).slice(2)}`;
   console.log(message);
+  console.log('Using picture path: ' + imagePath);
 
   alertDiv.innerHTML = `
-  <div id="${alertId}" class="alert alert-${context} cm-alert cm-${context}-alert" role="alert">
-    <img src="../frontend/public/karen.jpg" width="200" height="112">
+  <div id="${alertId}" class="alert alert-${context} cm-alert cm-${context}-alert" role="alert" style="text-align: center;">
+    <img src="${imagePath}" width="200" height="112">
     <p style="text-align: center; margin-top: 30px; margin-bottom: 0px; font-size: 110%;">
       <b>${message}</b>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-square " viewBox="0 0 16 16">
@@ -43,8 +45,13 @@ export function dismissAllAlerts(parent) {
   parent.innerHTML = "";
 }
 
-export function createErrorAlert(message, alertPositionElement, timeout) {
-  createTimedAlert("danger", message, timeout, alertPositionElement);
+export function createErrorAlert(message, alertPositionElement, timeout, imagePath=null) {
+  if (imagePath) {
+    createTimedAlert("danger", message, timeout, alertPositionElement, imagePath);
+  }
+  else {
+    createTimedAlert("danger", message, timeout, alertPositionElement);
+  }
 }
 
 export function createInfoAlert(message, alertPositionElement, timeout) {
