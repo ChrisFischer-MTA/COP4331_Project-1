@@ -46,6 +46,7 @@ function tryLogin() {
 
 	console.log("Login object " + object);
 
+  dismissAlerts(alertPositionElement);
 	if (validateLoginCredentials(object)) {
 		API.login(object['login'], object['password'])
 		.then((res) => {
@@ -70,6 +71,7 @@ function trySignup() {
 
 	console.log("Signup object: " + object);
 
+  dismissAlerts(alertPositionElement);
 	if (passwordsEqual(object['password'], object['confirmedPassword'])) {
 		if (validateLoginCredentials(object)) {
 			API.register(object['firstname'], object['lastname'], object['password'], object['login'], object['hint'])
@@ -79,6 +81,9 @@ function trySignup() {
 			})
 			.catch((err) => {createErrorAlert(`Error: ${err}`, alertPositionElement, timeout)});
 		}
+    else {
+      createErrorAlert('You must provide a username <br>and password to make an account!', alertPositionElement, timeout, '../public/risitas.jpg');
+    }
 	}
 }
 
