@@ -23,6 +23,16 @@ header {
 
 #column {
   background-color: var(--background-color);
+  border: solid 2.5px var(--accent-color);
+}
+
+#create-contact-btn {
+	color: var(--accent-color);
+	font-size: 1.1rem;
+}
+
+#create-contact-btn:hover {
+	color: white;
 }
 
 .scrollarea {
@@ -32,6 +42,7 @@ header {
   max-height: 100vh;
   /* border: solid rgba(0,0,0,0.15); */
   background-color: var(--background-color);
+  border: solid 2.5px var(--accent-color);
 }
 
 .items-list {
