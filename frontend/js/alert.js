@@ -12,8 +12,8 @@ export function createTimedAlert(
 
   alertDiv.innerHTML = `
   <div id="${alertId}" class="alert alert-${context} cm-alert cm-${context}-alert" role="alert" style="text-align: center;">
-    <img src="${imagePath}" width="200" height="112">
-    <p style="text-align: center; margin-top: 30px; margin-bottom: 0px; font-size: 110%;">
+    ${(imagePath) ? '<img src="${imagePath}" width="200" height="112">' : ''}
+    <p style="text-align: center; margin-top: ${(imagePath) ? '30px' : '0px'}; margin-bottom: 0px; font-size: 110%;">
       <b>${message}</b>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-square " viewBox="0 0 16 16">
           <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
@@ -54,8 +54,8 @@ export function createErrorAlert(message, alertPositionElement, timeout, imagePa
   }
 }
 
-export function createInfoAlert(message, alertPositionElement, timeout) {
-  createTimedAlert("info", message, timeout, alertPositionElement);
+export function createInfoAlert(message, alertPositionElement, timeout, imagePath=null) {
+  createTimedAlert("info", message, timeout, alertPositionElement, imagePath);
 }
 
 export function dismissAlerts(alertPositionElement) {
