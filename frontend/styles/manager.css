@@ -41,6 +41,16 @@ header {
 	color: white;
 }
 
+.manager-btn {
+	color: var(--accent-color);
+	font-size: 1.1rem;
+
+}
+
+.manager-btn:hover {
+	color: white;
+}
+
 .scrollarea {
   overflow-y: auto;
   display: flex;
