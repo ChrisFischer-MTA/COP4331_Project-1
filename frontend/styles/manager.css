@@ -59,7 +59,7 @@ header {
 	background-color: var(--accent-color);
 }
 
-.c-active {
+.c-active, .c-active:hover {
 	background-color: #c792ea;
 	color: #EEFFFF;
 }
