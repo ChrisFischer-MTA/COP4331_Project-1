@@ -38,6 +38,12 @@ header {
   color: var(--font-color);
 }
 
+header>h1 {
+  margin: 0px;
+  padding: 0.5vh;
+  color: var(--purple);
+}
+
 body {
     overflow: hidden;
     height: 100vh;
