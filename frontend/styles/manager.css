@@ -1,3 +1,4 @@
+@import "styles.css";
 
 a {
 	font-family: var(--main-font);
@@ -18,6 +19,10 @@ html body .container-fluid.body-content {
   /* left: 0; */
   overflow-y: auto;
   height: 100%;
+}
+
+#search-input {
+  background-color: var(--white);
 }
 
 header {
@@ -60,10 +65,10 @@ header {
 	background-color: var(--accent-color);
 }
 
-.c-active, .c-active:hover {
-	background-color: #c792ea;
-	color: #EEFFFF;
-}
+/* .c-active, .c-active:hover { */
+/* 	background-color: #c792ea; */
+/* 	color: #EEFFFF; */
+/* } */
 
 .scrollarea {
   overflow-y: auto;
@@ -91,6 +96,31 @@ header {
   background-color: var(--background-color);
 }
 
+.list-group-item.active {
+  background-color: var(--dark-purple);
+  border: 0px;
+  color: var(--white);
+}
+
+.c-form {
+  background-color: var(--white) !important;
+  color: var(--contrast-font-color);
+}
+
+.c-form:read-only {
+  color: var(--font-color) !important;
+}
+
+.list-group-item {
+  background-color: var(--white);
+  border-color: var(--foreground-color);
+  color: var(--contrast-font-color);
+}
+
+.list-group-item:hover {
+  background-color: var(--foreground-color);
+}
+
 .divider {
   flex-shrink: 0;
   width: 0.35rem;
@@ -98,7 +128,7 @@ header {
   background-color: var(--button-hglt-color);
   /* border: solid rgba(0,0,0,0.15); */
   /* border-width: 1px 0; */
-  box-shadow: inset 0 .5em 1.5em rgba(0,0,0, .1), inset 0 .125em .5em rgba(0,0,0,0.15);
+  /* box-shadow: inset 0 .5em 1.5em rgba(0,0,0, .1), inset 0 .125em .5em rgba(0,0,0,0.15); */
 }
 
 .contact-notes {

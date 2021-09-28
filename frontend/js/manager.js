@@ -44,7 +44,7 @@ const searchBtnElement = document.getElementById('search-btn');
 const searchInputElement = document.getElementById('search-input');
 
 const disabledEndpoints = [
-  // 'readContact',
+  'readContact',
 ];
 
 const FORM_STATUS = {
@@ -78,9 +78,9 @@ class ContactList extends Component {
 
     this.state = {
       elements: [
-        // new Contact('A', 'F', 7),
-        // new Contact('Paul', 'Wood', 7),
-        // new Contact('Ligma', 'Balls', 67),
+        new Contact('A', 'F', 7),
+        new Contact('Paul', 'Wood', 7),
+        new Contact('Ligma', 'Balls', 67),
       ],
       topIsNewContact: false,
       // NOTE: maybe remove these
@@ -121,7 +121,7 @@ class ContactList extends Component {
           let liClass = 'list-group-item list-group-item-action';
 
           if (selection != null && selection.id == contact.id) {
-            liClass += ' c-active';
+            liClass += ' active';
           }
           return `
             <li class="${liClass}">${contact.firstName} ${contact.lastName}</li>
@@ -197,7 +197,7 @@ class ContactForm extends Component {
     if (store.state.form.selection == null) {
       this.element.innerHTML = `
         <div class="d-flex col-md-12 align-items-center justify-content-center" >
-        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="#bbbbbb" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="var(--foreground-color)" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
   <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
 </svg>
         </div>
@@ -256,65 +256,65 @@ class ContactForm extends Component {
 
     // TODO make separate render functions for fields and buttons
     this.element.innerHTML = `
-      <form class="d-flex row g-3 px-5 py-4">
+      <form class="d-flex row g-3 px-5 py-4 ">
         <!-- Column 1 -->
         <div class="col-md-4 ${fs}">
           <label for="contact-first-name" class="form-label">First Name</label>
-          <input type="text" class="form-control" id="contact-first-name" value="${c.firstName}" name="firstName" ${otherAttr}>
+          <input type="text" class="form-control c-form" id="contact-first-name" value="${c.firstName}" name="firstName" ${otherAttr}>
         </div>
         <div class="col-md-4 ${fs}">
           <label for="contact-last-name" class="form-label">Last Name</label>
-          <input type="text" class="form-control" id="contact-last-name" value="${c.lastName}" name="lastName" ${otherAttr}>
+          <input type="text" class="form-control c-form" id="contact-last-name" value="${c.lastName}" name="lastName" ${otherAttr}>
         </div>
         <div class="col-md-4 ${fs}">
           <label for="contact-dob" class="form-label">Date of Birth</label>
-          <input type="text" class="form-control" id="contact-dob" value="${c.dob}" name="dob" ${otherAttr}>
+          <input type="text" class="form-control c-form" id="contact-dob" value="${c.dob}" name="dob" ${otherAttr}>
         </div>
 
         <!-- Column 2 -->
         <div class="col-12 ${fs}">
           <label for="contact-addr1" class="form-label">Street Address 1</label>
-          <input type="text" class="form-control" id="contact-addr1" name="addr1" value="${c.addr1}" ${otherAttr}>
+          <input type="text" class="form-control c-form" id="contact-addr1" name="addr1" value="${c.addr1}" ${otherAttr}>
         </div>
 
         <!-- Column 3 -->
         <div class="col-12 ${fs}">
           <label for="contact-addr2" class="form-label">Street Address 2</label>
-          <input type="text" class="form-control" id="contact-addr2" name="addr2" value="${c.addr2}" ${otherAttr}>
+          <input type="text" class="form-control c-form" id="contact-addr2" name="addr2" value="${c.addr2}" ${otherAttr}>
         </div>
 
         <!-- Column 4 -->
         <div class="col-md-4 ${fs}">
           <label for="contact-city" class="form-label">City</label>
-          <input type="text" class="form-control" id="contact-city" name="city" value="${c.city}" ${otherAttr}>
+          <input type="text" class="form-control c-form" id="contact-city" name="city" value="${c.city}" ${otherAttr}>
         </div>
         <div class="col-md-4 ${fs}">
           <label for="contact-state" class="form-label">State</label>
-          <input type="text" class="form-control" id="contact-state" name="state" value="${c.state}" ${otherAttr}>
+          <input type="text" class="form-control c-form" id="contact-state" name="state" value="${c.state}" ${otherAttr}>
         </div>
         <div class="col-md-4 ${fs}">
           <label for="contact-zip" class="form-label">Zip Code</label>
-          <input type="text" class="form-control" id="contact-zip" name="zip" value="${c.zip}" ${otherAttr}>
+          <input type="text" class="form-control c-form" id="contact-zip" name="zip" value="${c.zip}" ${otherAttr}>
         </div>
 
         <!-- Column 5 -->
         <div class="col-md-4 ${fs}">
           <label for="contact-relationship" class="form-label">Relationship</label>
-          <input type="text" class="form-control" id="contact-relationship" name="relation" value="${c.relation}" ${otherAttr}>
+          <input type="text" class="form-control c-form" id="contact-relationship" name="relation" value="${c.relation}" ${otherAttr}>
         </div>
         <div class="col-md-4 ${fs}">
           <label for="contact-profession" class="form-label">Profession</label>
-          <input type="text" class="form-control" id="contact-profession" name="profession" value="${c.profession}" ${otherAttr}>
+          <input type="text" class="form-control c-form" id="contact-profession" name="profession" value="${c.profession}" ${otherAttr}>
         </div>
         <div class="col-md-4 ${fs}">
           <label for="contact-phoneno" class="form-label">Phone Number</label>
-          <input type="text" class="form-control" id="contact-phoneno" name="phoneno" value="${c.phoneno}" ${otherAttr}>
+          <input type="text" class="form-control c-form" id="contact-phoneno" name="phoneno" value="${c.phoneno}" ${otherAttr}>
         </div>
 
         <!-- Column 6 -->
         <div class="col-md-12 ${fs}">
           <label for="contact-notes" class="form-label">Notes</label>
-          <input type="text" class="form-control contact-notes" id="contact-notes" name="notes" value="${c.notes}" ${otherAttr}>
+          <input type="text" class="form-control contact-notes c-form" id="contact-notes" name="notes" value="${c.notes}" ${otherAttr}>
         </div>
         ${renderedButtons}
       </form>
@@ -602,7 +602,7 @@ const contactForm = new ContactForm(store, formElement, 'form');
 contactList.render();
 contactForm.render();
 
-doSearch(false);
+// doSearch(false);
 // store.dispatch('search', '');
 // This is ugly but I don't care
 // dismissAlerts(alertPositionElement);

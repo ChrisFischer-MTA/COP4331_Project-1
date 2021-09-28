@@ -4,9 +4,14 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;500&display=swap');
 
 :root {
-    --background-color: #2A2F45;
+    --foreground-color: #A6ACCD;
+    --background-color: #292D3E;
+    --dark-background-color: #1B1E2B;
     --accent-color: #A6ACCD;
     --accent-color-two: #C3E88D60;
+
+    --white: #EEFFFF;
+    --gray: #717CB4;
 
     --button-color: #6699cc;
     --delete-button-color: #EC5f67;
@@ -15,11 +20,22 @@
 
     --purple: #C792EA; 
     --dark-purple: #b480d6;
+    --black: #000000;
 
     --font-color: #717CB4;
+    --contrast-font-color: #000000;
     --font-accent-color: #676E95;
     --font-size: 1.2em;
 	--main-font: 'IBM Plex Sans', sans-serif;
+}
+
+input {
+  background-color: var(--white);
+}
+
+header {
+  background-color: var(--dark-background-color);
+  color: var(--font-color);
 }
 
 body {
