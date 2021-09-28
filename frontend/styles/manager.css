@@ -6,7 +6,7 @@ a {
 
 main {
   max-height: 90vh;
-  column-fill:auto;
+  min-height: 90vh;
 }
 
 html body .container-fluid.body-content {
