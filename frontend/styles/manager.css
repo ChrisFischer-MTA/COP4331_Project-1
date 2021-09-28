@@ -75,7 +75,7 @@ header {
 }
 
 .items-list {
-  position: relative;
+  position: absolute;
   /* height: 100%; */
   /* top: 40px; */
   /* rtl:raw:
