@@ -44,7 +44,7 @@ const searchBtnElement = document.getElementById('search-btn');
 const searchInputElement = document.getElementById('search-input');
 
 const disabledEndpoints = [
-  'readContact',
+  // 'readContact',
 ];
 
 const FORM_STATUS = {
@@ -78,9 +78,9 @@ class ContactList extends Component {
 
     this.state = {
       elements: [
-        new Contact('A', 'F', 7),
-        new Contact('Paul', 'Wood', 7),
-        new Contact('Ligma', 'Balls', 67),
+        // new Contact('A', 'F', 7),
+        // new Contact('Paul', 'Wood', 7),
+        // new Contact('Ligma', 'Balls', 67),
       ],
       topIsNewContact: false,
       // NOTE: maybe remove these
@@ -602,7 +602,7 @@ const contactForm = new ContactForm(store, formElement, 'form');
 contactList.render();
 contactForm.render();
 
-// doSearch(false);
+doSearch(false);
 // store.dispatch('search', '');
 // This is ugly but I don't care
 // dismissAlerts(alertPositionElement);
