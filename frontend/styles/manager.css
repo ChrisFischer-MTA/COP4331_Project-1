@@ -39,7 +39,7 @@ header {
 }
 
 #create-contact-btn:hover {
-	color: white;
+	color: #EEFFFF;
 }
 
 #contact-manager {
@@ -51,7 +51,7 @@ header {
 .manager-btn {
 	border: solid 1px var(--accent-color);
 	background-color: var(--background-color);
-	color: white;
+	color: #EEFFFF;
 	font-size: 1.1rem;
 }
 
@@ -59,9 +59,9 @@ header {
 	background-color: var(--accent-color);
 }
 
-.c-active {
+.c-active, .c-active:hover {
 	background-color: #c792ea;
-	color: white;
+	color: #EEFFFF;
 }
 
 .scrollarea {
