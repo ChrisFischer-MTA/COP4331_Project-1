@@ -45,7 +45,7 @@ header {
 
 #contact-manager {
 	color: #c792ea;
-	font-family: 'Bonheur Royale', cursive;
+	font-family: var(--main-font);
 	font-size: 1.5rem;
 }
 
