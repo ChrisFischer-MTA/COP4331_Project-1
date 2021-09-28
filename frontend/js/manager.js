@@ -116,7 +116,7 @@ class ContactList extends Component {
     let selection = store.state.form.selection;
 
     this.element.innerHTML = `
-      <ul id="contactsList" class="list-group list-group-flush border-bottom scrollarea">
+      <ul id="contactsList" class="list-group list-group-flush border-bottom scrollarea" style="max-height:90vh;">
         ${contacts.map(contact => {
           let liClass = 'list-group-item list-group-item-action';
 

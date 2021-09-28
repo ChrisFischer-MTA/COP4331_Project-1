@@ -12,7 +12,7 @@ export function createTimedAlert(
 
   alertDiv.innerHTML = `
   <div id="${alertId}" class="alert alert-${context} cm-alert cm-${context}-alert" role="alert" style="text-align: center;">
-    ${(imagePath) ? '<img src="${imagePath}" width="200" height="112">' : ''}
+    ${(imagePath) ? `<img src="${imagePath}" width="200" height="112">` : ''}
     <p style="text-align: center; margin-top: ${(imagePath) ? '30px' : '0px'}; margin-bottom: 0px; font-size: 110%;">
       <b>${message}</b>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-square " viewBox="0 0 16 16">
