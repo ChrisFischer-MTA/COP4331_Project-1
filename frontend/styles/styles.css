@@ -55,7 +55,8 @@ h1 {
     text-align: center;
     border: 2.5px solid var(--background-color);
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.14),0 17px 50px 0 rgba(0,0,0,0.19);
-	font-family: 'Bonheur Royale', cursive;
+	/*font-family: 'Bonheur Royale', cursive;*/
+	font-family: var(--main-font);
 }
 
 /* Contact manager alert */

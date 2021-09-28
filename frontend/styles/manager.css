@@ -2,6 +2,7 @@
 a {
 	font-family: var(--main-font);
 	color: var(--font-color);
+	font: var(--main-font);
 }
 
 main {
