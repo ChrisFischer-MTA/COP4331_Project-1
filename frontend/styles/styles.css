@@ -42,6 +42,7 @@ header>h1 {
   margin: 0px;
   padding: 0.5vh;
   color: var(--purple);
+  font-weight: 300;
 }
 
 body {
