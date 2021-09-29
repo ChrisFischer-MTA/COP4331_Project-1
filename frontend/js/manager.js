@@ -62,7 +62,7 @@ const CONTACT_SORT_FUNCS = {
 };
 
 let toolbarState = {
-  sortFunc: CONTACT_SORT_FUNCS.lastName,
+  sortFunc: CONTACT_SORT_FUNCS.firstName,
 };
 
 let state = {
