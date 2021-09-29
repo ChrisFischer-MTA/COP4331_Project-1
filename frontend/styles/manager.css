@@ -54,6 +54,16 @@ header {
 	font-size: 1.5rem;
 }
 
+ #delete-contact-btn:hover {
+ 	background-color: #bb0000;
+
+ }
+
+ #save-contact-btn:hover {
+ 	background-color: #529d00;
+
+ }
+
 .manager-btn {
 	border: solid 1px var(--accent-color);
 	background-color: var(--background-color);
