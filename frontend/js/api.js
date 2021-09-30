@@ -171,7 +171,7 @@ export default class API {
       FirstName: contact.firstName,
       LastName: contact.lastName,
       Street1: contact.addr1,
-      Street2: contact.addr1,
+      Street2: contact.addr2,
       ZipCode: contact.zip,
       State: contact.state,
       City: contact.city,
