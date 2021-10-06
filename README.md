@@ -28,7 +28,7 @@ Showing off the awesome [VantaJS](https://www.vantajs.com/) net WebGL background
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/5152848/136274631-3acb9de9-bc97-46d8-81aa-20148c837626.gif)
 
 ### Signup Demo
-![signup-demo](https://user-images.githubusercontent.com/5152848/136277081-fe656033-ca8a-4a8f-99b7-ded662e2b28b.gif)
+![signup-demo](https://user-images.githubusercontent.com/5152848/136278740-825191ec-c571-4f3f-a040-93b17d64963b.gif)
 
 
 ### Login Demo
