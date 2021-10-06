@@ -21,7 +21,7 @@ The goal of this project was to create a full-stack contact manager website util
 The API endpoints are detailed on [our SwaggerHub page](https://app.swaggerhub.com/apis/rpenrose/ContactManagerAPI/1.0.0)! :sunglasses:
 
 ## Demo GIFs
-Since the website won't be up forever (things cost money!), here are some screenshots & gifs :point_down:
+Since the website won't be up forever (things cost money!), here are some gifs demoing our project :point_down:
 
 ### Login Page
 Showing off the awesome [VantaJS](https://www.vantajs.com/) net WebGL background!
