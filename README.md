@@ -1,5 +1,5 @@
 <div style="display: flex;">
-<img src="https://img.shields.io/website?style=for-the-badge&down_color=red&down_message=offline&up_color=green&up_message=online&url=https%3A%2F%2Fwebapp.thegentlemengaming.com">
+<a href="https://webapp.thegentlemengaming.com/" <img src="https://img.shields.io/website?style=for-the-badge&down_color=red&down_message=offline&up_color=green&up_message=online&url=https%3A%2F%2Fwebapp.thegentlemengaming.com"></a>
 <img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white">
 <img src="https://img.shields.io/badge/Apache-A22160?style=for-the-badge&logo=apache&logoColor=white">
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
@@ -11,7 +11,7 @@
 
 # COP4331_Project-1 - Contact Manager
 The goal of this project was to create a full-stack contact manager website utilizing a LAMP stack and a REST API. The user can:
-- Regiser
+- Register
 - Login
 - Create a contact
 - Edit a contact
