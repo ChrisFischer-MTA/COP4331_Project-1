@@ -51,3 +51,9 @@ Showing off the awesome [VantaJS](https://www.vantajs.com/) net WebGL background
 
 
 ## Contributors
+- 📋 Chris Fischer - Project Lead
+- 🖥 Paul Wood - Frontend
+- 🖥 David Schnek - Frontend
+- 🗃 Blake Purden - Database
+- ⌨️ Jason Dookhoo - Backend
+- ⌨️ Richard Penrose - Backend
