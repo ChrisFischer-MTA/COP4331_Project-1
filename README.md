@@ -10,8 +10,44 @@
 
 
 # COP4331_Project-1 - Contact Manager
-The goal of this project was to create a full-stack contact manager website utilizing a LAMP stack. Once users are registered and logged in, they can create, edit, delete, and search for contacts. This functionality is done through a REST API.
+The goal of this project was to create a full-stack contact manager website utilizing a LAMP stack and a REST API. The user can:
+- Regiser
+- Login
+- Create a contact
+- Edit a contact
+- Delete a contact
+- Search for contacts
 
-##
+The API endpoints are detailed on [our SwaggerHub page](https://app.swaggerhub.com/apis/rpenrose/ContactManagerAPI/1.0.0)! :sunglasses:
+
+## Demo GIFs
+Since the website won't be up forever (things cost money!), here are some screenshots & gifs :point_down:
+
+### Login Page
+Showing off the awesome [VantaJS](https://www.vantajs.com/) net WebGL background!
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/5152848/136274631-3acb9de9-bc97-46d8-81aa-20148c837626.gif)
+
+### Signup Demo
+![signup-demo](https://user-images.githubusercontent.com/5152848/136277081-fe656033-ca8a-4a8f-99b7-ded662e2b28b.gif)
+
+
+### Login Demo
+![login-demo](https://user-images.githubusercontent.com/5152848/136277162-cdd5594e-7ef8-482c-843f-2a7edd7bbec3.gif)
+
+
+### Create Contact Demo
+![create-demo](https://user-images.githubusercontent.com/5152848/136277179-2c03009a-c849-4767-bb35-9a40fcccef91.gif)
+
+
+### Read & Edit Contact Demo
+![edit-demo](https://user-images.githubusercontent.com/5152848/136277200-0b548bf0-7c26-4b70-8d53-499c7bf9e7b3.gif)
+
+### Delete Demo
+![delete-demo](https://user-images.githubusercontent.com/5152848/136277255-565ca7c7-ba1c-4e74-b3c5-c8c1322217d6.gif)
+
+
+### Search Demo
+![search-demo](https://user-images.githubusercontent.com/5152848/136277217-d6914ce2-8a77-4d7a-80bf-d3010310903a.gif)
+
 
 ## Contributors
